@@ -1,0 +1,138 @@
+sitemap home label="Main menu"
+{
+	Frame label="Flat" {
+		Group item=Power label="Electricity" icon="energy"{
+			Frame {
+				Text item=Power_Counter
+				Text item=Power_Energy
+				Text item=Power_Voltage
+				Text item=Power_Current
+				Text item=Power_PowerH
+
+			}
+			Frame label="Voltage"{
+				Switch item=Power_Volt_Sens_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж."]
+				Chart item=Power_Volt_Sens_Chart period=h refresh=600 visibility=[Power_Volt_Sens_Chart_Period==0, Power_Volt_Sens_Chart_Period=="Uninitialized"]
+				Chart item=Power_Volt_Sens_Chart period=D refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==1]
+				Chart item=Power_Volt_Sens_Chart period=W refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==2]
+			}
+
+			Frame label="Current"{
+				Switch item=Power_Curr_Sens_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Power_Curr_Sens_Chart period=h refresh=600 visibility=[Power_Curr_Sens_Chart_Period==0, Power_Curr_Sens_Chart_Period=="Uninitialized"]
+				Chart item=Power_Curr_Sens_Chart period=D refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==1]
+				Chart item=Power_Curr_Sens_Chart period=W refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==2]
+				Chart item=Power_Curr_Sens_Chart period=M refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==3]
+
+			}
+			Frame label="Power"{
+				Switch item=Power_Wt_Sens_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж."]
+				Chart item=Power_Wt_Sens_Chart period=h refresh=600 visibility=[Power_Wt_Sens_Chart_Period==0, Power_Wt_Sens_Chart_Period=="Uninitialized"]
+				Chart item=Power_Wt_Sens_Chart period=D refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==1]
+				Chart item=Power_Wt_Sens_Chart period=W refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==2]
+			}
+		}
+		Group item=Sensors label="Climate" icon="climate" {
+			Frame  {
+				Text item=RoomCO2
+				Text item=RoomHum
+				Text item=RoomTemp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Hall_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Serv_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Balc_Temp valuecolor=[>25="red",>15="orange",>5="green",<=5="blue"]
+			}
+			Frame {
+				Switch item=Sensors_COlev_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Sensors_COlev_Chart period=h refresh=600 visibility=[Sensors_COlev_Chart_Period==0, Sensors_COlev_Chart_Period=="Uninitialized"]
+				Chart item=Sensors_COlev_Chart period=D refresh=3600 visibility=[Sensors_COlev_Chart_Period==1]
+				Chart item=Sensors_COlev_Chart period=W refresh=3600 visibility=[Sensors_COlev_Chart_Period==2]
+				Chart item=Sensors_COlev_Chart period=M refresh=3600 visibility=[Sensors_COlev_Chart_Period==3]
+			}
+
+			Frame {
+				Switch item=Sensors_HumCO_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Sensors_HumCO_Chart period=h refresh=600 visibility=[Sensors_HumCO_Chart_Period==0, Sensors_HumCO_Chart_Period=="Uninitialized"]
+				Chart item=Sensors_HumCO_Chart period=D refresh=3600 visibility=[Sensors_HumCO_Chart_Period==1]
+				Chart item=Sensors_HumCO_Chart period=W refresh=3600 visibility=[Sensors_HumCO_Chart_Period==2]
+				Chart item=Sensors_HumCO_Chart period=M refresh=3600 visibility=[Sensors_HumCO_Chart_Period==3]
+			}
+
+			Frame {
+				Switch item=Sensors_TempServ_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Sensors_TempServ_Chart period=h refresh=600 visibility=[Sensors_TempServ_Chart_Period==0, Sensors_TempServ_Chart_Period=="Uninitialized"]
+				Chart item=Sensors_TempServ_Chart period=D refresh=3600 visibility=[Sensors_TempServ_Chart_Period==1]
+				Chart item=Sensors_TempServ_Chart period=W refresh=3600 visibility=[Sensors_TempServ_Chart_Period==2]
+				Chart item=Sensors_TempServ_Chart period=M refresh=3600 visibility=[Sensors_TempServ_Chart_Period==3]
+			}
+
+			Frame  {
+				Text item=Heat_Inp_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Bath_Back_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Hall_Back_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=Kitch_Back_Temp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+
+			}
+			Frame {
+				Switch item=Heater_Temp_Flat_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Heater_Temp_Flat_Chart period=h refresh=600 visibility=[Heater_Temp_Flat_Chart_Period==0, Heater_Temp_Flat_Chart_Period=="Uninitialized"]
+				Chart item=Heater_Temp_Flat_Chart period=D refresh=3600 visibility=[Heater_Temp_Flat_Chart_Period==1]
+				Chart item=Heater_Temp_Flat_Chart period=W refresh=3600 visibility=[Heater_Temp_Flat_Chart_Period==2]
+				Chart item=Heater_Temp_Flat_Chart period=M refresh=3600 visibility=[Heater_Temp_Flat_Chart_Period==3]
+			}
+
+		}
+
+		Group item=Gaz label="Gas" icon="fire" {
+			Frame  {
+				Text item=Gaz_Count
+				Text item=Gaz_Cons
+				Text item=Gaz_Counter
+				
+		}
+
+			Frame {
+				Switch item=Gaz_Cons_Chart_Period label="Період" mappings=[1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Gaz_Cons_Chart period=D refresh=3600 visibility=[Gaz_Cons_Chart_Period==1, Gaz_Cons_Chart_Period=="Uninitialized"]
+				Chart item=Gaz_Cons_Chart period=W refresh=3600 visibility=[Gaz_Cons_Chart_Period==2]
+				Chart item=Gaz_Cons_Chart period=M refresh=3600 visibility=[Gaz_Cons_Chart_Period==3]
+			}
+
+		}
+		Group item=Light label="Light" icon="switch" {
+			Frame  {
+				Switch item=Room_Light label="Підсвітка"
+		}
+
+
+	}
+		Group item=Power label="APC UPS" icon="energy"{
+			Frame label="APC BH500NET"{
+				Text item=Power_UPS2_STATUS
+				Text item=Power_UPS2_BCHARGE
+				Text item=Power_UPS2_LOADPCT
+				Text item=Power_UPS2_TIMELEFT
+			}
+}
+
+	}
+	Frame label="Weather" {
+		Text item=Temp_Weather icon="temperature" valuecolor=[>25="red",>15="orange",>0="yellow",<=0="blue"]{
+			Frame {
+				Text item=Temp_Weather
+				Text item=Weather_Humidity
+			}
+			Frame {
+				Switch item=Temp_Weather_Chart_Period label="Період" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Chart item=Temp_Weather_Chart period=h refresh=600 visibility=[Temp_Weather_Chart_Period==0, Temp_Weather_Chart_Period=="Uninitialized"]
+				Chart item=Temp_Weather_Chart period=D refresh=3600 visibility=[Temp_Weather_Chart_Period==1]
+				Chart item=Temp_Weather_Chart period=W refresh=3600 visibility=[Temp_Weather_Chart_Period==2]
+				Chart item=Temp_Weather_Chart period=M refresh=3600 visibility=[Temp_Weather_Chart_Period==3]			}
+		}
+	}
+
+	Frame label="Date" {
+		Text item=Date
+	}
+
+}
+

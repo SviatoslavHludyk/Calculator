@@ -1,0 +1,78 @@
+Group All
+Group Gates 		(All)
+Group Weather 	(All)
+Group Heaters		(All)
+Group Temp 		(All)
+Group Sensors		(All)
+Group Power 		(All)
+Group Flat		(All)
+Group Lights		(All)
+Group Gaz		(All)
+
+Group Power_Volt_Sens_Chart	(Power)
+Group Power_Curr_Sens_Chart	(Power)
+Group Power_Wt_Sens_Chart	(Power)
+Group Heaters_Temp_Chart	(Heaters, Temp)
+Group Sensors_TempCO_Chart	(Sensors, Temp)
+Group Sensors_COlev_Chart	(Sensors)
+Group Sensors_HumCO_Chart	(Sensors)
+Group Sensors_TempServ_Chart(Sensors, Temp)
+Group Sensors_TempBalc_Chart(Sensors, Temp)
+Group Temp_Weather_Chart	(Weather, Temp)
+Group Heater_Temp_Flat_Chart (Sensors, Temp)
+Group Gaz_Cons_Chart		(Gaz)
+
+Number Power_Counter		"Ел. ліч. [%.2f kWh]"<energy>(Power)
+Number PCount1		"Спожито-1 [%.2f kW]"<energy>(Power)
+Number PCount2		"Спожито-2 [%.2f kW]"<energy>(Power)
+Number PCount3		"Спожито-3 [%.2f kW]"<energy>(Power)
+Number Power_Energy		"Energy [%d Wh]" <energy>	(Power){http="<[powerCache:60000:REGEX(.*?E: (.*?) Wh.*)]" }
+Number Power_Voltage		"Voltage [%.1f V]" <energy>	(Power, Power_Volt_Sens_Chart){ http="<[powerCache:60000:REGEX(.*?U: (.*?) V.*)]" }
+Number Power_Current		"Current [%.1f A]" <energy>	(Power, Power_Curr_Sens_Chart){ http="<[powerCache:60000:REGEX(.*?I: (.*?) A.*)]" }
+Number Power_PowerH		"Power [%d W]" <energy>	(Power, Power_Wt_Sens_Chart){http="<[powerCache:60000:REGEX(.*?P: (.*?) W.*)]" }
+
+Number Power_Volt_Sens_Chart_Period			"Період"
+Number Power_Curr_Sens_Chart_Period			"Період"
+Number Power_Wt_Sens_Chart_Period				"Період"
+
+
+String RoomCO2	"Рівень СО2 [%d ppm]" <climate>	(Sensors, Sensors_COlev_Chart){ channel="exec:command:roomco2:output" }
+String RoomHum	"Вологість [%s %%]" <climate>	(Sensors, Sensors_HumCO_Chart){ channel="exec:command:roomhumidity:output" }
+Number Sensors_COlev_Chart_Period			"Період"
+Number Sensors_TempCO_Chart_Period			"Період"
+Number Sensors_HumCO_Chart_Period			"Період"
+
+Number Gaz_Count		"Газ ліч. [%.2f m3]"			(Gaz)
+Number Gaz_Cons		"Споживання [%.2f m3/год]"		(Gaz, Gaz_Cons_Chart)
+Number GCons1			"Спожито-1 [%.2f m3]"	(Gaz)
+Number GCons2			"Спожито-2 [%.2f m3]"	(Gaz)
+Number GCons3			"Спожито-3 [%.2f m3]"	(Gaz)
+Number Gaz_Counter		"Ard.counter [%d]" 			(Gaz){http="<[powerCache:60000:REGEX(.*?Gaz: (.*?)<br />.*)]" }
+
+Number Gaz_Cons_Chart_Period     "Період"
+
+String RoomTemp	"Кімната [%s °C]" <temperature>			(Flat, Sensors_TempServ_Chart){ channel="exec:command:roomtemp:output" }
+Number Balc_Temp		"Балкон [%.1f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0x3a, 0xe4, 0x2a, 0x05, 0x00, 0x00, 0xa7.; T[0-9]: (.*?) C.*)]" }
+Number Serv_Temp		"Серверна [%.1f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0x3b, 0x99, 0x3e, 0x05, 0x00, 0x00, 0x27.; T[0-9]: (.*?) C.*)]" }
+Number Heat_Inp_Temp		"Котел [%.1f °C]" <temperature>		(Flat, Heater_Temp_Flat_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0xff, 0xf1, 0x8a, 0x02, 0x16, 0x03, 0x0a.; T[0-9]: (.*?) C.*)]" }
+Number Bath_Back_Temp		"Ванна зв. [%.1f °C]" <temperature>	(Flat, Heater_Temp_Flat_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0xff, 0x7d, 0x8f, 0x02, 0x16, 0x03, 0x61.; T[0-9]: (.*?) C.*)]" }
+Number Hall_Back_Temp		"Коридор зв. [%.1f °C]" <temperature>	(Flat, Heater_Temp_Flat_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0xff, 0x6c, 0x93, 0x02, 0x16, 0x03, 0xfa.; T[0-9]: (.*?) C.*)]" }
+Number Kitch_Back_Temp		"Кухня зв. [%.1f °C]" <temperature>	(Flat, Heater_Temp_Flat_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0xff, 0xb9, 0x3d, 0x03, 0x16, 0x03, 0x61.; T[0-9]: (.*?) C.*)]" }
+Number Hall_Temp		"Коридор [%.1f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){http="<[powerCache:60000:REGEX(.*0x28, 0x73, 0xdb, 0xcf, 0x02, 0x00, 0x00, 0x1d.; T[0-9]: (.*?) C.*)]" }
+
+Number Heater_Temp_Flat_Chart_Period		"Період"
+Number Sensors_TempServ_Chart_Period		"Період"
+Switch Room_Light 			"Підсвітка" (Flat, Lights)	{http=">[ON:POST:http://192.168.15.30/?rl1=1] >[OFF:POST:http://192.168.15.30/?rl1=0]" }
+
+String Power_UPS2_STATUS	"Status [%s]" <energy>	(Power){ http="<[apcHSUPSCache:60000:REGEX(.*?<img src=o.*?.gif align=absmiddle>(.*?)&nbsp;Line.</font>.*)]" }
+Number Power_UPS2_BCHARGE	"Battery charge [%d %%]" <energy>(Power){ http="<[apcHSUPSCache:60000:REGEX(.*?<img src=led.*.gif align=absmiddle>&nbsp;.*?([0-9.]*).*?&nbsp;%</font></b></td>.*)]" }
+Number Power_UPS2_TIMELEFT	"Time left [%d min]" <energy>	(Power){ http="<[apcHSUPSCache:60000:REGEX(.*?<img src=clock.*?.gif align=absmiddle>.*?([0-9.]*).*?&nbsp;minutes</b></font>.*)]"}
+Number Power_UPS2_LOADPCT	"Load [%d W]" <energy>	(Power){ http="<[apcHSUPSCache:60000:REGEX(.*?providing:</font></td>    <td width=40% height=28><b><font face=\'MS Sans Serif\' size=2 color=006699>.*?([0-9.]*).*?&nbsp;Watts.*)]" }
+
+Group Weather_Chart													(Weather)
+Number Temp_Weather 	"Outdoor temp [%.2f °C]"	<temperature> (Temp_Weather_Chart) { channel="yahooweather:weather:c6d8f33f:temperature" }
+Number Weather_Humidity     "Вологість [%d %%]"        { channel="yahooweather:weather:c6d8f33f:humidity" }
+Number Temp_Weather_Chart_Period		"Період"
+DateTime Weather_LastUpdate		"Востаннє поновлено [%1$ta %1$tR]"	<clock>
+
+DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}

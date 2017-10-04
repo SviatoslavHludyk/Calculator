@@ -1,0 +1,3 @@
+Thing exec:command:roomtemp [command="bash /var/opt/getclim", transform="REGEX(.*?ppm:T(.*?)C:H.*)"]
+Thing exec:command:roomhumidity [command="bash /var/opt/getclim", transform="REGEX(.*?C:H(.*?)%:d.*)"]
+Thing exec:command:roomco2 [command="bash /var/opt/getclim", transform="REGEX(.*?C(.*?)ppm:T.*)"]
