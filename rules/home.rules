@@ -1,83 +1,57 @@
-import org.openhab.core.library.types.*
-import org.openhab.core.persistence.*
-import org.openhab.model.script.actions.*
-import java.util.Date
-
-
-// Creates an item that stores the last update time of this item
-//var Number gprev_count = Gaz_Count.state as DecimalType
-
-rule "Update gaz counter"
-when
-	Item Gaz_Counter received update
-then
-	var Number gcounter = Gaz_Counter.state as DecimalType
-	Gaz_Count.postUpdate(gcounter/100)
-//(gcounter + 167125)/100
-end
-
-rule "Update power counter"
-when
-	Item Power_Energy received update
-then
-	var Number pcounter = Power_Energy.state as DecimalType
-	Power_Counter.postUpdate(pcounter/1000)
-//(pcounter + 1390000)/1000
-end
-
-
 rule "Gaz calc"
 	when 
-		//System started or
-		Time cron "0 0 * * * ?"
+		Time cron "0 0/1 * * * ?"
 	then
-//			var Number gprev_count = Gaz_Count.previousState().state as DecimalType
-//			var Number gcount = Gaz_Count.state as DecimalType
-//		Gaz_Cons.postUpdate(gcount-gprev_count)
-//		gprev_count = gcount
-var Number gcons = Gaz_Count.deltaSince(now.minusHours(1)) as DecimalType
+
+var Number gcons = WB_GazCounter.deltaSince(now.minusMinutes(1)) / 100
 Gaz_Cons.postUpdate(gcons)
 end
 
-rule "GСalc up"
+rule "GazD calc"
 	when 
-		System started or
-		Time cron "0 0 1 * * ?"
+		Time cron "0 0 0 * * ?"
 	then
-		var Number g_cons0 = Gaz_Count.historicState(now.toDateMidnight).state as DecimalType
-		var Number g_cons1 = Gaz_Count.historicState(now.toDateMidnight.minusDays(1)).state as DecimalType
-		var Number g_cons2 = Gaz_Count.historicState(now.toDateMidnight.minusDays(2)).state as DecimalType
-		var Number g_cons3 = Gaz_Count.historicState(now.toDateMidnight.minusDays(3)).state as DecimalType
-	
-		GCons1.postUpdate(g_cons0-g_cons1)
-		GCons2.postUpdate(g_cons1-g_cons2)
-		GCons3.postUpdate(g_cons2-g_cons3)
-		var Number p_cons0 = Power_Counter.historicState(now.toDateMidnight).state as DecimalType
-		var Number p_cons1 = Power_Counter.historicState(now.toDateMidnight.minusDays(1)).state as DecimalType
-		var Number p_cons2 = Power_Counter.historicState(now.toDateMidnight.minusDays(2)).state as DecimalType
-		var Number p_cons3 = Power_Counter.historicState(now.toDateMidnight.minusDays(3)).state as DecimalType
-		
-		PCount1.postUpdate(p_cons0-p_cons1)
-		PCount2.postUpdate(p_cons1-p_cons2)
-		PCount3.postUpdate(p_cons2-p_cons3)
-
+var Number gdcons = WB_GazCounter.deltaSince(now.minusDays(1)) / 100
+Gaz_ConsD.postUpdate(gdcons)
 end
+
+rule "GazMN calc"
+	when 
+		Time cron "0 0/1 * * * ?"
+	then
+var Number gmncons = WB_GazCounter.deltaSince(now.withTimeAtStartOfDay()) / 100
+Gaz_ConsMN.postUpdate(gmncons)
+end
+
+rule "Power calc"
+	when 
+		Time cron "0 0 0 * * ?"
+	then
+var Number pcons = Power_Energy.deltaSince(now.minusDays(1))
+Power_Cons.postUpdate(pcons)
+end
+
+rule "Power calc"
+	when 
+		Time cron "0 0/1 * * * ?"
+	then
+var Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
+Power_ConsMN.postUpdate(pconsmn)
+end
+
+
 
 rule "Send counters"
 	when 
 		Time cron "0 30 09 1 * ?"
 	then
-		var Number gcount = Gaz_Count.historicState(now.toDateMidnight.withDayOfMonth(1)).state as DecimalType
-		var Number g_old_count = Gaz_Count.historicState(now.toDateMidnight.minusMonths(1).withDayOfMonth(1)).state as DecimalType
-//		var Number g_avg_count = Gaz_Cons.averageSince(now.toDateMidnight.minusDays(1)) as DecimalType
-//		var Number g_delta_count = Gaz_Count.deltaSince(now.toDateMidnight.minusDays(1)) as DecimalType
-		var Number pcount = Power_Energy.historicState(now.toDateMidnight.withDayOfMonth(1)).state as DecimalType
-		var Number p_old_count = Power_Energy.historicState(now.toDateMidnight.minusMonths(1).withDayOfMonth(1)).state as DecimalType
-//		var Number p_delta_count = Power_Energy.deltaSince(now.toDateMidnight.minusMonths(1).withDayOfMonth(1)) as DecimalType
+		var Number gcount = WB_GazCounter.historicState(now.withTimeAtStartOfDay().withDayOfMonth(1)).state as DecimalType
+		var Number g_old_count = WB_GazCounter.historicState(now.withTimeAtStartOfDay().minusMonths(1).withDayOfMonth(1)).state as DecimalType
+		var Number pcount = Power_Energy.historicState(now.withTimeAtStartOfDay().withDayOfMonth(1)).state as DecimalType
+		var Number p_old_count = Power_Energy.historicState(now.withTimeAtStartOfDay().minusMonths(1).withDayOfMonth(1)).state as DecimalType
 
 		var String message = "Показники лічильника газу\n\n" + "Показник станом на 01." + now.minusMonths(1).getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", g_old_count.floatValue()) + " m3\n" +	
 		"Показник станом на 01." + now.getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", gcount.floatValue()) + " m3\n" +			
-//		"Споживання в середньому за добу: " + String::format("%.2f", (g_avg_count*24).floatValue()) + " m3\n" +
 		"Спожито за місяць: " + String::format("%.2f", (gcount-g_old_count).floatValue()) + " m3\n\n\n" + 
 		"Показники лічильника ел.енергії\n\n" + "Показник станом на 01." + now.minusMonths(1).getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", (p_old_count/1000).floatValue()) + " kWh\n" +	
 		"Показник станом на 01." + now.getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", (pcount/1000).floatValue()) + " kWh\n" +			
@@ -86,23 +60,16 @@ rule "Send counters"
 		
 end
 
-
-// Creates an item that stores the last update time of this item
-/*rule "Records last weather update time"
+rule "get_8266_data"
 when
-  Item Weather_Temperature received update
+	Item TmpString changed
 then
-  postUpdate(Weather_LastUpdate, new DateTimeType())
-end*/
+	val newtemp = transform("REGEX", ".*?ppm:T(.*?)C:H.*", TmpString.state.toString)
+	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", TmpString.state.toString)
+	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", TmpString.state.toString)
 
+	RoomCO2.postUpdate(newco2)
+	RoomHum.postUpdate(newhum)
+	RoomTemp.postUpdate(newtemp)
 
-/*rule "sens"  
-     when   
-       Item RoomCO2 received update
-	Time cron "0 * * * * ?" or
-	System started
-	
-     then  
-		if(RoomCO2 > 1000 && RoomVent.state == OFF) sendHttpPostRequest("http://192.168.10.20/form", "text/html", "r2=0")
-		if(RoomCO2 < 800 && RoomVent.state == ON) sendHttpPostRequest("http://192.168.10.20/form", "text/html", "r2=1")
-end */
+end
