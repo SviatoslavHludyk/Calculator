@@ -31,14 +31,14 @@ Number Power_Volt_Sens_Chart_Period			"Період"
 Number Power_Curr_Sens_Chart_Period			"Період"
 Number Power_Wt_Sens_Chart_Period				"Період"
 
-Number Power_Cons	"Power Consumption [%.3f kWh]" <energy>	(Power)
-Number Power_ConsMN	"Power Consumption [%.3f kWh]" <energy>	(Power)
+Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power)
+Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
 Number WB_GazCounter	"Gas Counter [JS(divide100.js):%.2f m3]" <gas>	(Gaz){ channel="mqtt:topic:cf2b98f3:GazCounter" }
-Number Gaz_Cons	"Gas Consumption [%.2f m3/min]" <gas>	(Gaz, Gas_Cons_Chart)
-Number Gaz_ConsD	"Gas cons. p.d. [%.2f m3/d]" <gas>	(Gaz)
-Number Gaz_ConsMN	"Gas cons. from mn [%.2f m3]" <gas>	(Gaz)
+Number Gaz_Cons	"Розхід [%.2f m3/min]" <gas>	(Gaz, Gas_Cons_Chart)
+Number Gaz_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gaz)
+Number Gaz_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gaz)
 Number Gas_Cons_Chart_Period			"Період"
 
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)

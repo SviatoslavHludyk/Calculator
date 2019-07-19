@@ -31,7 +31,7 @@ var Number pcons = Power_Energy.deltaSince(now.minusDays(1))
 Power_Cons.postUpdate(pcons)
 end
 
-rule "Power calc"
+rule "Power calcMN"
 	when 
 		Time cron "0 0/1 * * * ?"
 	then
