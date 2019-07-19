@@ -48,11 +48,10 @@ rule "GСalc up"
 		var Number g_cons1 = Gaz_Count.historicState(now.toDateMidnight.minusDays(1)).state as DecimalType
 		var Number g_cons2 = Gaz_Count.historicState(now.toDateMidnight.minusDays(2)).state as DecimalType
 		var Number g_cons3 = Gaz_Count.historicState(now.toDateMidnight.minusDays(3)).state as DecimalType
-		
+	
 		GCons1.postUpdate(g_cons0-g_cons1)
 		GCons2.postUpdate(g_cons1-g_cons2)
 		GCons3.postUpdate(g_cons2-g_cons3)
-
 		var Number p_cons0 = Power_Counter.historicState(now.toDateMidnight).state as DecimalType
 		var Number p_cons1 = Power_Counter.historicState(now.toDateMidnight.minusDays(1)).state as DecimalType
 		var Number p_cons2 = Power_Counter.historicState(now.toDateMidnight.minusDays(2)).state as DecimalType

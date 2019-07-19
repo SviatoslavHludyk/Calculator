@@ -105,15 +105,6 @@ sitemap home label="Main menu"
 
 
 	}
-		Group item=Power label="APC UPS" icon="energy"{
-			Frame label="APC BH500NET"{
-				Text item=Power_UPS2_STATUS
-				Text item=Power_UPS2_BCHARGE
-				Text item=Power_UPS2_LOADPCT
-				Text item=Power_UPS2_TIMELEFT
-			}
-}
-
 	}
 	Frame label="Weather" {
 		Text item=Temp_Weather icon="temperature" valuecolor=[>25="red",>15="orange",>0="yellow",<=0="blue"]{
