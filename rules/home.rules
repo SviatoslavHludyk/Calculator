@@ -39,29 +39,6 @@ val Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
 Power_ConsMN.postUpdate(pconsmn)
 end
 
-
-
-/*rule "Send counters"
-	when 
-		Time cron "0 30 09 1 * ?"
-	then
-		val Number gcount = WB_Gas
-		Counter.historicState(now.toDateMidnight().withDayOfMonth(1)).state as DecimalType
-		val Number g_old_count = WB_Gas
-		Counter.historicState(now.toDateMidnight().minusMonths(1).withDayOfMonth(1)).state as DecimalType
-		val Number pcount = Power_Energy.historicState(now.toDateMidnight().withDayOfMonth(1)).state as DecimalType
-		val Number p_old_count = Power_Energy.historicState(now.toDateMidnight().minusMonths(1).withDayOfMonth(1)).state as DecimalType
-
-		val String message = "Показники лічильника газу\n\n" + "Показник станом на 01." + now.minusMonths(1).getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", g_old_count.floatValue()) + " m3\n" +	
-		"Показник станом на 01." + now.getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", gcount.floatValue()) + " m3\n" +			
-		"Спожито за місяць: " + String::format("%.2f", (gcount-g_old_count).floatValue()) + " m3\n\n\n" + 
-		"Показники лічильника ел.енергії\n\n" + "Показник станом на 01." + now.minusMonths(1).getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", (p_old_count/1000).floatValue()) + " kWh\n" +	
-		"Показник станом на 01." + now.getMonthOfYear.toString() + "." + now.getYear.toString() + ": " + String::format("%.2f", (pcount/1000).floatValue()) + " kWh\n" +			
-		"Спожито за місяць: " + String::format("%.2f", ((pcount-p_old_count)/1000).floatValue()) + " kWh\n"
-		sendMail("sv_h@ukr.net", "Показники лічильників", message)
-		
-end*/
-
 rule "Send counters"
 	when 
 		Time cron "0 30 09 1 * ?"
