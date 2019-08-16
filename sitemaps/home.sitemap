@@ -1,6 +1,6 @@
 sitemap home label="Main menu"
 {
-		Group item=Sensors label="Climate" icon="climate" {
+		Group item=Sensors label="Клімат" icon="climate" {
 			Frame  {
 				Text item=RoomCO2 valuecolor=[>3000="red",>2500="orange",>1500="green",>500="blue"]
 				Text item=RoomHum
@@ -8,6 +8,8 @@ sitemap home label="Main menu"
                 		Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Corridor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_KidsRoom valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=WB_Hall valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+
 			}
 			Frame {
 				Switch item=Sensors_COlev_Chart_Period label="CO2, ppm" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
@@ -18,14 +20,14 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Sensors_HumCO_Chart_Period label="Humidity, %" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Sensors_HumCO_Chart_Period label="Вологість, %" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Sensors_HumCO_Chart period=h refresh=600 visibility=[Sensors_HumCO_Chart_Period==0, Sensors_HumCO_Chart_Period=="Uninitialized"]
 				Chart item=Sensors_HumCO_Chart period=D refresh=3600 visibility=[Sensors_HumCO_Chart_Period==1]
 				Chart item=Sensors_HumCO_Chart period=W refresh=3600 visibility=[Sensors_HumCO_Chart_Period==2]
 				Chart item=Sensors_HumCO_Chart period=M refresh=3600 visibility=[Sensors_HumCO_Chart_Period==3]
 			}
 			Frame {
-				Switch item=Sensors_TempServ_Chart_Period label="Temperature, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Sensors_TempServ_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Sensors_TempServ_Chart period=h refresh=600 visibility=[Sensors_TempServ_Chart_Period==0, Sensors_TempServ_Chart_Period=="Uninitialized"]
 				Chart item=Sensors_TempServ_Chart period=D refresh=3600 visibility=[Sensors_TempServ_Chart_Period==1]
 				Chart item=Sensors_TempServ_Chart period=W refresh=3600 visibility=[Sensors_TempServ_Chart_Period==2]
@@ -33,15 +35,15 @@ sitemap home label="Main menu"
 			}
 
 		}
-		Group item=Gas label="Gas" icon="gas" {
+		Group item=Gas label="Газ" icon="gas" {
 			Frame  {
-				Text item=WB_GazCounter
-				Text item=Gaz_Cons
-				Text item=Gaz_ConsD
-				Text item=Gaz_ConsMN
+				Text item=WB_GasCounter
+				Text item=Gas_Cons
+				Text item=Gas_ConsD
+				Text item=Gas_ConsMN
             }
 			Frame {
-                Switch item=Gas_Cons_Chart_Period label="Gas Consumption, m3/h" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+                Switch item=Gas_Cons_Chart_Period label="Споживання, m3/h" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Gas_Cons_Chart period=h refresh=600 visibility=[Gas_Cons_Chart_Period==0, Gas_Cons_Chart_Period=="Uninitialized"]
 				Chart item=Gas_Cons_Chart period=D refresh=3600 visibility=[Gas_Cons_Chart_Period==1]
 				Chart item=Gas_Cons_Chart period=W refresh=3600 visibility=[Gas_Cons_Chart_Period==2]
@@ -49,14 +51,14 @@ sitemap home label="Main menu"
 			}
 		}
 
-		Group item=Water label="Water" icon="water" {
+		Group item=Water label="Вода" icon="water" {
 			Frame  {
 				Text item=WB_Pressure
 				Switch item=WB_Valve
 				Switch item=WB_RPump
             }
 			Frame {
-				Switch item=Water_Press_Chart_Period label="Pressure, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Water_Press_Chart_Period label="Тиск, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Water_Press_Chart period=h refresh=600 visibility=[Water_Press_Chart_Period==0, Water_Press_Chart_Period=="Uninitialized"]
 				Chart item=Water_Press_Chart period=D refresh=3600 visibility=[Water_Press_Chart_Period==1]
 				Chart item=Water_Press_Chart period=W refresh=3600 visibility=[Water_Press_Chart_Period==2]
@@ -64,7 +66,7 @@ sitemap home label="Main menu"
 			}
 		}
 
-		Group item=Power label="Power" icon="energy" {
+		Group item=Power label="Електрика" icon="energy" {
 			Frame  {
 				Text item=Power_Energy
 				Text item=Power_Voltage
@@ -74,21 +76,21 @@ sitemap home label="Main menu"
 				Text item=Power_ConsMN
 			}
 			Frame {
-				Switch item=Power_Volt_Sens_Chart_Period label="Voltage, V" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Volt_Sens_Chart_Period label="Напруга, V" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Power_Volt_Sens_Chart period=h refresh=600 visibility=[Power_Volt_Sens_Chart_Period==0, Power_Volt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Volt_Sens_Chart period=D refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==1]
 				Chart item=Power_Volt_Sens_Chart period=W refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==2]
 				Chart item=Power_Volt_Sens_Chart period=M refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==3]
 			}
 			Frame {
-				Switch item=Power_Curr_Sens_Chart_Period label="Current, A" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Curr_Sens_Chart_Period label="Струм, A" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Power_Curr_Sens_Chart period=h refresh=600 visibility=[Power_Curr_Sens_Chart_Period==0, Power_Curr_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Curr_Sens_Chart period=D refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==1]
 				Chart item=Power_Curr_Sens_Chart period=W refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==2]
 				Chart item=Power_Curr_Sens_Chart period=M refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==3]
 			}
 			Frame {
-				Switch item=Power_Wt_Sens_Chart_Period label="Power, W" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Power_Wt_Sens_Chart period=h refresh=600 visibility=[Power_Wt_Sens_Chart_Period==0, Power_Wt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Wt_Sens_Chart period=D refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==1]
 				Chart item=Power_Wt_Sens_Chart period=W refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==2]
@@ -97,7 +99,7 @@ sitemap home label="Main menu"
 
 		}
 
-		Group item=Weather label="Weather" icon="sun_clouds" {
+		Group item=Weather label="Погода" icon="sun_clouds" {
 
     Frame label="Current local weather" {
         Text item=localLastMeasurement

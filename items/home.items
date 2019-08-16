@@ -7,7 +7,7 @@ Group Sensors		(All)
 Group Power 		(All)
 Group Flat		(All)
 Group Lights		(All)
-Group Gaz		(All)
+Group Gas		(All)
 Group Water		(All)
 
 Group Power_Volt_Sens_Chart	(Power)
@@ -18,14 +18,14 @@ Group Sensors_TempCO_Chart	(Sensors, Temp)
 Group Sensors_COlev_Chart	(Sensors)
 Group Sensors_HumCO_Chart	(Sensors)
 Group Heater_Temp_Flat_Chart (Sensors, Temp)
-Group Gas_Cons_Chart	(Gaz)
+Group Gas_Cons_Chart	(Gas)
 Group Water_Press_Chart	(Water)
 
 
-Number Power_Energy		"Energy [%.3f kWh]" <energy>	(Power){ channel="modbus:data:312f4244:number" }
-Number Power_Voltage		"Voltage [%.1f V]" <energy>	(Power, Power_Volt_Sens_Chart){ channel="modbus:data:5bf2516b:number" }
-Number Power_Current		"Current [%.1f A]" <energy>	(Power, Power_Curr_Sens_Chart){ channel="modbus:data:ef0ab11d:number" }
-Number Power_PowerH		"Power [%d W]" <energy>	(Power, Power_Wt_Sens_Chart){ channel="modbus:data:1fd5096a:number" }
+Number Power_Energy		"Енергія [%.3f kWh]" <energy>	(Power){ channel="modbus:data:312f4244:number" }
+Number Power_Voltage		"Напруга [%.1f V]" <energy>	(Power, Power_Volt_Sens_Chart){ channel="modbus:data:5bf2516b:number" }
+Number Power_Current		"Струм [%.1f A]" <energy>	(Power, Power_Curr_Sens_Chart){ channel="modbus:data:ef0ab11d:number" }
+Number Power_PowerH		"Потужність [%d W]" <energy>	(Power, Power_Wt_Sens_Chart){ channel="modbus:data:1fd5096a:number" }
 
 Number Power_Volt_Sens_Chart_Period			"Період"
 Number Power_Curr_Sens_Chart_Period			"Період"
@@ -35,20 +35,22 @@ Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power)
 Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
-Number WB_GazCounter	"Gas Counter [JS(divide100.js):%.2f m3]" <gas>	(Gaz){ channel="mqtt:topic:cf2b98f3:GazCounter" }
-Number Gaz_Cons	"Розхід [%.2f m3/min]" <gas>	(Gaz, Gas_Cons_Chart)
-Number Gaz_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gaz)
-Number Gaz_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gaz)
+Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number Gas_Cons	"Розхід [%.2f m3/min]" <gas>	(Gas, Gas_Cons_Chart)
+Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas)
+Number Gas_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gas)
 Number Gas_Cons_Chart_Period			"Період"
 
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)
 Number RoomHum	"Вологість [%.1f %%]" <humidity>	(Sensors, Sensors_HumCO_Chart)
-Number RoomTemp	"Спальня [%.2f °C]" <temperature>		(Flat, Sensors_TempServ_Chart)
+Number RoomTemp	"Спальня [%.2f °C]" <temperature>		(Sensors, Sensors_TempServ_Chart)
 String TmpString	"[%s]" { channel="exec:command:data8266:output" }
 
-Number WB_Cabinet	"Кабінет [%.2f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Cabinet" }
-Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Corridor" }
-Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Flat, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number WB_Cabinet	"Кабінет [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Cabinet" }
+Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Corridor" }
+Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Hall" }
+
 
 Number Sensors_COlev_Chart_Period			"Період"
 Number Sensors_HumCO_Chart_Period			"Період"
@@ -58,9 +60,9 @@ Number Sensors_TempServ_Chart_Period		"Період"
 
 DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}
 
-Number WB_Pressure	"Water pressure [%.2f ppi]" <pressure>	(Water, Water_Press_Chart){ channel="mqtt:topic:cf2b98f3:water_pressure" }
-Switch WB_Valve	"Water valve" <water>	(Water){ channel="mqtt:topic:cf2b98f3:water_valve" }
-Switch WB_RPump	"Hot water recirculation" <pump>	(Water){ channel="mqtt:topic:cf2b98f3:recirc_pump" }
+Number WB_Pressure	"Тиск [%.2f ppi]" <pressure>	(Sensors, Water_Press_Chart){ channel="mqtt:topic:cf2b98f3:water_pressure" }
+Switch WB_Valve	"Кран" <water>	(Water){ channel="mqtt:topic:cf2b98f3:water_valve" }
+Switch WB_RPump	"Рециркуляція" <pump>	(Water){ channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
 Number Water_Press_Chart_Period		"Період"
 
