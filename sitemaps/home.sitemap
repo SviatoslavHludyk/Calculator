@@ -5,7 +5,7 @@ sitemap home label="Main menu"
 				Text item=RoomCO2 valuecolor=[>3000="red",>2500="orange",>1500="green",>500="blue"]
 				Text item=RoomHum
 				Text item=RoomTemp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-                		Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+                Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Corridor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_KidsRoom valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Hall valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
@@ -44,12 +44,16 @@ sitemap home label="Main menu"
 				Text item=Gas_ConsMN
             }
 			Frame {
-                Switch item=Gas_Cons_Chart_Period label="Споживання, m3/h" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+                Switch item=Gas_Cons_Chart_Period label="Споживання, m3/h" mappings=[0="Год.", 1="День", 2="Тиж."]
 				Chart item=Gas_Cons_Chart period=h refresh=600 visibility=[Gas_Cons_Chart_Period==0, Gas_Cons_Chart_Period=="Uninitialized"]
 				Chart item=Gas_Cons_Chart period=D refresh=3600 visibility=[Gas_Cons_Chart_Period==1]
 				Chart item=Gas_Cons_Chart period=W refresh=3600 visibility=[Gas_Cons_Chart_Period==2]
-				Chart item=Gas_Cons_Chart period=M refresh=3600 visibility=[Gas_Cons_Chart_Period==3]
-				Chart item=Gas_Cons_Chart period=Y refresh=3600 visibility=[Gas_Cons_Chart_Period==4]
+			}
+            Frame {
+                Switch item=Gas_ConsD_Chart_Period label="Споживання, m3/h" mappings=[0="Тиж.", 1="Міс.", 2="Рік"]
+				Chart item=Gas_ConsD_Chart period=W refresh=3600 visibility=[Gas_ConsD_Chart_Period==0, Gas_ConsD_Chart_Period=="Uninitialized"]
+				Chart item=Gas_ConsD_Chart period=M refresh=3600 visibility=[Gas_ConsD_Chart_Period==1]
+				Chart item=Gas_ConsD_Chart period=Y refresh=3600 visibility=[Gas_ConsD_Chart_Period==2]
 			}
 		}
 
