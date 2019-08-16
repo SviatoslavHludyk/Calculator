@@ -50,12 +50,12 @@ rule "Send counters"
 		val Number pcount = ((Power_Energy.historicState(first,"rrd4j")).state as DecimalType).floatValue;
 		val Number p_old_count = ((Power_Energy.historicState(second,"rrd4j")).state as DecimalType).floatValue;
 
-		val String message1 = "Показники лічильника газу\n\n";
+		var String message1 = "Показники лічильника газу\n\n";
 		message1 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f m3\n", second.getMonthOfYear, second.getYear, (g_old_count/100));	
 		message1 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f m3\n", first.getMonthOfYear, first.getYear, (gcount/100));	
 		message1 += String::format("Спожито за місяць: %1$.2f m3", ((gcount-g_old_count)/100));	
 
-		val String message2 = "Показники лічильника ел.енергії\n\n";
+		var String message2 = "Показники лічильника ел.енергії\n\n";
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", second.getMonthOfYear, second.getYear, p_old_count);	
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", first.getMonthOfYear, first.getYear, pcount);	
 		message2 += String::format("Спожито за місяць: %1$.2f kWh", (pcount-p_old_count));	
