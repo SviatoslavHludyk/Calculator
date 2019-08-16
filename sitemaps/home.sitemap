@@ -72,7 +72,7 @@ sitemap home label="Main menu"
 			}
 		}
 
-		Group item=Power label="Електрика" icon="energy" {
+		Group item=Power label="Електроенергія" icon="energy" {
 			Frame  {
 				Text item=Power_Energy
 				Text item=Power_Voltage
