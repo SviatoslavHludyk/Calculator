@@ -96,11 +96,16 @@ sitemap home label="Main menu"
 				Chart item=Power_Curr_Sens_Chart period=M refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==3]
 			}
 			Frame {
-				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж."]
 				Chart item=Power_Wt_Sens_Chart period=h refresh=600 visibility=[Power_Wt_Sens_Chart_Period==0, Power_Wt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Wt_Sens_Chart period=D refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==1]
 				Chart item=Power_Wt_Sens_Chart period=W refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==2]
-				Chart item=Power_Wt_Sens_Chart period=M refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==3]
+			}
+            Frame {
+                Switch item=Power_ConsD_Chart_Period label="Споживання, kWh" mappings=[0="Тиж.", 1="Міс.", 2="Рік"]
+				Chart item=Power_ConsD_Chart period=W refresh=600 visibility=[Power_ConsD_Chart_Period==0, Power_ConsD_Chart_Period=="Uninitialized"]
+				Chart item=Power_ConsD_Chart period=M refresh=3600 visibility=[Power_ConsD_Chart_Period==1]
+				Chart item=Power_ConsD_Chart period=Y refresh=3600 visibility=[Power_ConsD_Chart_Period==2]
 			}
 
 		}

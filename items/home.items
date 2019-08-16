@@ -20,6 +20,7 @@ Group Sensors_HumCO_Chart	(Sensors)
 Group Heater_Temp_Flat_Chart (Sensors, Temp)
 Group Gas_Cons_Chart	(Gas)
 Group Gas_ConsD_Chart	(Gas)
+Group Power_ConsD_Chart	(Power)
 Group Water_Press_Chart	(Water)
 
 
@@ -31,8 +32,9 @@ Number Power_PowerH		"Потужність [%d W]" <energy>	(Power, Power_Wt_Sen
 Number Power_Volt_Sens_Chart_Period			"Період"
 Number Power_Curr_Sens_Chart_Period			"Період"
 Number Power_Wt_Sens_Chart_Period				"Період"
+Number Power_ConsD_Chart_Period				"Період"
 
-Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power)
+Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power, Power_ConsD_Chart)
 Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
