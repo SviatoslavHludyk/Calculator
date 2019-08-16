@@ -19,6 +19,7 @@ Group Sensors_COlev_Chart	(Sensors)
 Group Sensors_HumCO_Chart	(Sensors)
 Group Heater_Temp_Flat_Chart (Sensors, Temp)
 Group Gas_Cons_Chart	(Gas)
+Group Gas_ConsD_Chart	(Gas)
 Group Water_Press_Chart	(Water)
 
 
@@ -37,9 +38,10 @@ Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(
 
 Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
 Number Gas_Cons	"Розхід [%.2f m3/min]" <gas>	(Gas, Gas_Cons_Chart)
-Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas)
+Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas, Gas_ConsD_Chart)
 Number Gas_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gas)
 Number Gas_Cons_Chart_Period			"Період"
+Number Gas_ConsD_Chart_Period			"Період"
 
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)
 Number RoomHum	"Вологість [%.1f %%]" <humidity>	(Sensors, Sensors_HumCO_Chart)
