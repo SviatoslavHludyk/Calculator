@@ -9,6 +9,8 @@ sitemap home label="Main menu"
 				Text item=WB_Corridor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_KidsRoom valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Hall valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+				Text item=WB_Entrance valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+
 
 			}
 			Frame {
