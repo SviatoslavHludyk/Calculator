@@ -17,7 +17,7 @@ Group Sensors_TempServ_Chart(Sensors, Temp)
 Group Sensors_TempCO_Chart	(Sensors, Temp)
 Group Sensors_COlev_Chart	(Sensors)
 Group Sensors_HumCO_Chart	(Sensors)
-Group Heater_Temp_Flat_Chart (Sensors, Temp)
+Group Heater_Temp_Chart (Sensors, Temp)
 Group Gas_Cons_Chart	(Gas)
 Group Gas_ConsD_Chart	(Gas)
 Group Power_ConsD_Chart	(Power)
@@ -55,12 +55,13 @@ Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Sensors, Sensors_T
 Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
 Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Hall" }
 Number WB_Entrance		"Передпокій [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Entrance" }
+Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
 
 
 Number Sensors_COlev_Chart_Period			"Період"
 Number Sensors_HumCO_Chart_Period			"Період"
 Number Sensors_TempCO_Chart_Period			"Період"
-
+Number Heater_Temp_Chart_Period			"Період"
 Number Sensors_TempServ_Chart_Period		"Період"
 
 DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}
