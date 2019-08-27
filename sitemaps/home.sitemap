@@ -64,7 +64,7 @@ sitemap home label="Main menu"
 				Text item=WB_Pressure
 				Switch item=WB_Valve
 				Switch item=WB_RPump
-   				Text item=WB_Boiler valuecolor=[>65="red",>55="orange",>35="green",>20="blue"]
+   				Text item=WB_Boiler valuecolor=[>60="red",>50="orange",>35="green",>20="blue"]
             }
 			Frame {
 				Switch item=Water_Press_Chart_Period label="Тиск, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]

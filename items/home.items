@@ -55,7 +55,7 @@ Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Sensors, Sensors_T
 Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
 Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Hall" }
 Number WB_Entrance		"Передпокій [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Entrance" }
-Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
+Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
 
 
 Number Sensors_COlev_Chart_Period			"Період"
