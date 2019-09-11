@@ -9,6 +9,8 @@ Group Flat		(All)
 Group Lights		(All)
 Group Gas		(All)
 Group Water		(All)
+Group Vent		(All)
+
 
 Group Power_Volt_Sens_Chart	(Power)
 Group Power_Curr_Sens_Chart	(Power)
@@ -56,6 +58,16 @@ Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_Tem
 Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Hall" }
 Number WB_Entrance		"Передпокій [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Entrance" }
 Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
+
+
+Number WB_Setpoint	"Температура [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:Setpoint" }
+Number WB_VentMode	"Режим" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:Mode" }
+Number WB_FanSpeed	"Швидкість" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanSpeed" }
+Number WB_OutdoorAir	"Outdoor Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:OutdoorAir" }
+Number WB_SupplyAir	"Supply Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:SupplyAir" }
+Number WB_AfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:AfterRecuperator" }
+Number WB_Defrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:Defrostsensor" }
+Number WB_ExhaustAir	"Exhaust Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
 
 Number Sensors_COlev_Chart_Period			"Період"
