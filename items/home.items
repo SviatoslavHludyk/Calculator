@@ -25,6 +25,7 @@ Group Gas_ConsD_Chart	(Gas)
 Group Power_ConsD_Chart	(Power)
 Group Water_Press_Chart	(Water)
 Group Vent_Temp_Chart	(Vent, Temp)
+Group Vent_FanSpeed_Chart	(Vent)
 Group Weather_Temp_Chart (Weather, Temp)
 
 
@@ -71,6 +72,8 @@ Number WB_AirAfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent
 Number WB_AirDefrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:Defrostsensor" }
 Number WB_AirExhaust	"Exhaust Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
+Number WB_SFanSpeed	"Fans speed [%.1f %%]" <fan>	(Vent, Vent_FanSpeed_Chart){ channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+
 
 Number Sensors_COlev_Chart_Period			"Період"
 Number Sensors_HumCO_Chart_Period			"Період"
@@ -78,6 +81,8 @@ Number Sensors_TempCO_Chart_Period			"Період"
 Number Heater_Temp_Chart_Period			"Період"
 Number Sensors_TempServ_Chart_Period		"Період"
 Number Vent_Temp_Chart_Period		"Період"
+Number Vent_FanSpeed_Chart_Period		"Період"
+
 Number Weather_Temp_Chart_Period		"Період"
 
 DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}
