@@ -58,7 +58,7 @@ sitemap home label="Main menu"
                 Chart item=Vent_Temp_Chart period=Y refresh=3600 visibility=[Vent_Temp_Chart_Period==4]
 			}
             Frame {
-				Switch item=Vent_FanSpeed_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж."]
+				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Год.", 1="День", 2="Тиж."]
 				Chart item=Vent_FanSpeed_Chart period=h refresh=600 visibility=[Vent_FanSpeed_Chart_Period==0, Vent_FanSpeed_Chart_Period=="Uninitialized"]
 				Chart item=Vent_FanSpeed_Chart period=D refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==1]
 				Chart item=Vent_FanSpeed_Chart period=W refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==2]
