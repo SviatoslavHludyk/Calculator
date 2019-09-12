@@ -39,15 +39,22 @@ sitemap home label="Main menu"
 		}
 		Group item=Vent label="Вентиляція" icon="climate" {
 			Frame  {
-                Setpoint item=WB_Setpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.1
+                Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.1
                 Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]
                 Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
-   				Text item=WB_OutdoorAir valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-   				Text item=WB_SupplyAir valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-   				Text item=WB_AfterRecuperator valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-   				Text item=WB_Defrostsensor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-   				Text item=WB_ExhaustAir valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-
+   				Text item=WB_AirOutdoor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+   				Text item=WB_AirSupply valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+   				Text item=WB_AirAfterRecuperator valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+   				Text item=WB_AirDefrostsensor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+   				Text item=WB_AirExhaust valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+			}
+			Frame {
+				Switch item=Vent_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Chart item=Vent_Temp_Chart period=h refresh=600 visibility=[Vent_Temp_Chart_Period==0, Vent_Temp_Chart_Period=="Uninitialized"]
+				Chart item=Vent_Temp_Chart period=D refresh=3600 visibility=[Vent_Temp_Chart_Period==1]
+				Chart item=Vent_Temp_Chart period=W refresh=3600 visibility=[Vent_Temp_Chart_Period==2]
+				Chart item=Vent_Temp_Chart period=M refresh=3600 visibility=[Vent_Temp_Chart_Period==3]
+                Chart item=Vent_Temp_Chart period=Y refresh=3600 visibility=[Vent_Temp_Chart_Period==4]
 			}
         }
 		Group item=Gas label="Газ" icon="gas" {
@@ -261,7 +268,14 @@ sitemap home label="Main menu"
         Text item=localDailyforecastHours24RainVolume
         Text item=localDailyforecastHours24SnowVolume
     }
-
+            Frame {
+				Switch item=Weather_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Chart item=Weather_Temp_Chart period=h refresh=600 visibility=[Weather_Temp_Chart_Period==0, Weather_Temp_Chart_Period=="Uninitialized"]
+				Chart item=Weather_Temp_Chart period=D refresh=3600 visibility=[Weather_Temp_Chart_Period==1]
+				Chart item=Weather_Temp_Chart period=W refresh=3600 visibility=[Weather_Temp_Chart_Period==2]
+				Chart item=Weather_Temp_Chart period=M refresh=3600 visibility=[Weather_Temp_Chart_Period==3]
+                Chart item=Weather_Temp_Chart period=Y refresh=3600 visibility=[Weather_Temp_Chart_Period==4]
+			}
 }
 
 

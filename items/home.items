@@ -24,6 +24,8 @@ Group Gas_Cons_Chart	(Gas)
 Group Gas_ConsD_Chart	(Gas)
 Group Power_ConsD_Chart	(Power)
 Group Water_Press_Chart	(Water)
+Group Vent_Temp_Chart	(Vent, Temp)
+Group Weather_Temp_Chart (Weather, Temp)
 
 
 Number Power_Energy		"Енергія [%.3f kWh]" <energy>	(Power){ channel="modbus:data:312f4244:number" }
@@ -50,24 +52,24 @@ Number Gas_ConsD_Chart_Period			"Період"
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)
 Number RoomHum	"Вологість [%.1f %%]" <humidity>	(Sensors, Sensors_HumCO_Chart)
 Number RoomTemp	"Спальня [%.2f °C]" <temperature>		(Sensors, Sensors_TempServ_Chart)
-String TmpString	"[%s]" { channel="exec:command:data8266:output" }
-
-Number WB_Cabinet	"Кабінет [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Cabinet" }
-Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Corridor" }
 Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number WB_Corridor	"Коридор [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Corridor" }
+Number WB_Cabinet	"Кабінет [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Cabinet" }
 Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Hall" }
 Number WB_Entrance		"Передпокій [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Entrance" }
+
 Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
+String TmpString	"[%s]" { channel="exec:command:data8266:output" }
 
 
-Number WB_Setpoint	"Температура [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:Setpoint" }
+Number WB_AirSetpoint	"Setpoint [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:Setpoint" }
 Number WB_VentMode	"Режим" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:Mode" }
 Number WB_FanSpeed	"Швидкість" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanSpeed" }
-Number WB_OutdoorAir	"Outdoor Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:OutdoorAir" }
-Number WB_SupplyAir	"Supply Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:SupplyAir" }
-Number WB_AfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:AfterRecuperator" }
-Number WB_Defrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:Defrostsensor" }
-Number WB_ExhaustAir	"Exhaust Air [%.1f °C]" <temperature>	(Vent){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
+Number WB_AirOutdoor	"Outdoor Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:OutdoorAir" }
+Number WB_AirSupply	"Supply Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:SupplyAir" }
+Number WB_AirAfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:AfterRecuperator" }
+Number WB_AirDefrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:Defrostsensor" }
+Number WB_AirExhaust	"Exhaust Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
 
 Number Sensors_COlev_Chart_Period			"Період"
@@ -75,6 +77,8 @@ Number Sensors_HumCO_Chart_Period			"Період"
 Number Sensors_TempCO_Chart_Period			"Період"
 Number Heater_Temp_Chart_Period			"Період"
 Number Sensors_TempServ_Chart_Period		"Період"
+Number Vent_Temp_Chart_Period		"Період"
+Number Weather_Temp_Chart_Period		"Період"
 
 DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}
 
@@ -88,7 +92,7 @@ Number Water_Press_Chart_Period		"Період"
 DateTime localLastMeasurement "Timestamp of last measurement [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#time-stamp" }
 String localCurrentCondition "Current condition [%s]" <sun_clouds> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#condition" }
 Image localCurrentConditionIcon "Icon" { channel="openweathermap:weather-and-forecast:cdca1037:local:current#icon" }
-Number:Temperature localCurrentTemperature "Current temperature [%.1f %unit%]" <temperature> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#temperature" }
+Number:Temperature localCurrentTemperature "Current temperature [%.1f %unit%]" <temperature> (Weather, Temp, Weather_Temp_Chart) { channel="openweathermap:weather-and-forecast:cdca1037:local:current#temperature" }
 Number:Pressure localCurrentPressure "Current barometric pressure [%.1f %unit%]" <pressure> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#pressure" }
 Number:Dimensionless localCurrentHumidity "Current atmospheric humidity [%d %unit%]" <humidity> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#humidity" }
 Number:Speed localCurrentWindSpeed "Current wind speed [%.1f km/h]" <wind> { channel="openweathermap:weather-and-forecast:cdca1037:local:current#wind-speed" }
