@@ -39,7 +39,7 @@ sitemap home label="Main menu"
 		}
 		Group item=Vent label="Вентиляція" icon="climate" {
 			Frame  {
-                Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.1
+                Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.5
                 Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]
                 Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
    				Text item=WB_AirOutdoor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
@@ -284,6 +284,13 @@ sitemap home label="Main menu"
                 Chart item=Weather_Temp_Chart period=Y refresh=3600 visibility=[Weather_Temp_Chart_Period==4]
 			}
 }
+		Group item=Config label="Налаштування" icon="settings" {
+			Frame  {
+                Setpoint item=WB_FanSpeed1 label="Fans speed 1 [%d %%]" minValue=10 maxValue=50 step=1
+                Setpoint item=WB_FanSpeed2 label="Fans speed 2 [%d %%]" minValue=30 maxValue=80 step=1
+                Setpoint item=WB_FanSpeed3 label="Fans speed 3 [%d %%]" minValue=50 maxValue=100 step=1
 
+			}
+        }
 
 	}

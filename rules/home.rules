@@ -41,7 +41,7 @@ end
 
 rule "Send counters"
 	when 
-		Time cron "0 30 09 1 * ?"
+		Time cron "0 15 9 1 * ?"
 	then
 		val first = new DateTime(now.withTimeAtStartOfDay.withDayOfMonth(1));
 		val second = new DateTime(now.withTimeAtStartOfDay.minusMonths(1).withDayOfMonth(1));
@@ -59,8 +59,8 @@ rule "Send counters"
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", second.getMonthOfYear, second.getYear, p_old_count);	
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", first.getMonthOfYear, first.getYear, pcount);	
 		message2 += String::format("Спожито за місяць: %1$.2f kWh", (pcount-p_old_count));	
-
-		sendMail("sv_h@ukr.net", "Показники лічильників", message1 + "\n\n\n" + message2);
+		val mailActions = getActions("mail","mail:smtp:327b0d61")
+		mailActions.sendMail("sv_h@ukr.net", "Показники лічильників", message1 + "\n\n\n" + message2);
 		
 end
 
@@ -75,5 +75,20 @@ then
 	RoomCO2.postUpdate(newco2)
 	RoomHum.postUpdate(newhum)
 	RoomTemp.postUpdate(newtemp)
+	// WB_RoomCO2.postUpdate(newco2)
+	sendCommand(WB_RoomCO2, newco2)
+	sendCommand(WB_RoomHum, newhum)
 
 end
+
+
+// rule "Publish item changes"
+// when
+// Item RoomCO2 changed
+// then
+// WB_RoomCO2.postUpdate(RoomCO2.state.toString)
+// val actions = getActions("mqtt","mqtt:broker:8f67b874")
+// actions.publishMQTT("devices/ventilation_switcher/controls/CO2/on", "800")
+// logInfo("log", "publish:  mqtt:topic:cf2b98f3:WBCO2 ")
+
+// end

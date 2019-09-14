@@ -10,7 +10,7 @@ Group Lights		(All)
 Group Gas		(All)
 Group Water		(All)
 Group Vent		(All)
-
+Group Config		(All)
 
 Group Power_Volt_Sens_Chart	(Power)
 Group Power_Curr_Sens_Chart	(Power)
@@ -43,7 +43,7 @@ Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power, P
 Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
-Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter"[profile="transform:JS", function="divide100.js"] }
 Number Gas_Cons	"Розхід [%.2f m3/min]" <gas>	(Gas, Gas_Cons_Chart)
 Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas, Gas_ConsD_Chart)
 Number Gas_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gas)
@@ -51,6 +51,9 @@ Number Gas_Cons_Chart_Period			"Період"
 Number Gas_ConsD_Chart_Period			"Період"
 
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)
+Number WB_RoomCO2 "[%d]" { channel="mqtt:topic:cf2b98f3:WB_CO2"}
+Number WB_RoomHum "[%d]" { channel="mqtt:topic:cf2b98f3:WB_Hum"}
+
 Number RoomHum	"Вологість [%.1f %%]" <humidity>	(Sensors, Sensors_HumCO_Chart)
 Number RoomTemp	"Спальня [%.2f °C]" <temperature>		(Sensors, Sensors_TempServ_Chart)
 Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
@@ -73,6 +76,9 @@ Number WB_AirDefrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent, Vent
 Number WB_AirExhaust	"Exhaust Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
 Number WB_SFanSpeed	"Fans speed [%.1f %%]" <fan>	(Vent, Vent_FanSpeed_Chart){ channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+Number WB_FanSpeed1	"Fans speed 1 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS1" }
+Number WB_FanSpeed2	"Fans speed 2 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS2" }
+Number WB_FanSpeed3	"Fans speed 3 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS3" }
 
 
 Number Sensors_COlev_Chart_Period			"Період"
