@@ -37,7 +37,7 @@ sitemap home label="Main menu"
 			}
 
 		}
-		Group item=Vent label="Вентиляція" icon="climate" {
+		Group item=Vent label="Вентиляція" icon="fan" {
 			Frame  {
                 Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.5
                 Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]

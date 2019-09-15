@@ -43,7 +43,7 @@ Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power, P
 Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
-Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter"[profile="transform:JS", function="divide100.js"] }
+Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
 Number Gas_Cons	"Розхід [%.2f m3/min]" <gas>	(Gas, Gas_Cons_Chart)
 Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas, Gas_ConsD_Chart)
 Number Gas_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gas)
