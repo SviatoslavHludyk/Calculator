@@ -43,7 +43,7 @@ Number Power_Cons	"Спожито за вчора [%.3f kWh]" <energy>	(Power, P
 Number Power_ConsMN	"Спожито за сьогодні [%.3f kWh]" <energy>	(Power)
 
 
-Number WB_GasCounter	"Лічильник [JS(divide100.js):%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number WB_GasCounter	"Лічильник [%.2f m3]" <gas>	(Gas){ channel="mqtt:topic:cf2b98f3:GazCounter" }
 Number Gas_Cons	"Розхід [%.2f m3/min]" <gas>	(Gas, Gas_Cons_Chart)
 Number Gas_ConsD	"Спожито за вчора [%.2f m3]" <gas>	(Gas, Gas_ConsD_Chart)
 Number Gas_ConsMN	"Спожито за сьогодні [%.2f m3]" <gas>	(Gas)
@@ -51,9 +51,6 @@ Number Gas_Cons_Chart_Period			"Період"
 Number Gas_ConsD_Chart_Period			"Період"
 
 Number RoomCO2	"Рівень СО2 [%d ppm]" <carbondioxide>	(Sensors, Sensors_COlev_Chart)
-Number WB_RoomCO2 "[%d]" { channel="mqtt:topic:cf2b98f3:WB_CO2"}
-Number WB_RoomHum "[%d]" { channel="mqtt:topic:cf2b98f3:WB_Hum"}
-
 Number RoomHum	"Вологість [%.1f %%]" <humidity>	(Sensors, Sensors_HumCO_Chart)
 Number RoomTemp	"Спальня [%.2f °C]" <temperature>		(Sensors, Sensors_TempServ_Chart)
 Number WB_KidsRoom	"Дитяча [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:KidsRoom" }
@@ -63,12 +60,15 @@ Number WB_Hall		"Вітальня [%.2f °C]" <temperature>	(Sensors, Sensors_Te
 Number WB_Entrance		"Передпокій [%.2f °C]" <temperature>	(Sensors, Sensors_TempServ_Chart){ channel="mqtt:topic:cf2b98f3:Entrance" }
 
 Number WB_Boiler		"Бойлер [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:Boiler" }
-String TmpString	"[%s]" { channel="exec:command:data8266:output" }
+Number WB_ManifIn		"Гребінка Вх [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:ManifIn" }
+Number WB_ManifOut		"Гребінка Вих [%.2f °C]" <temperature>	(Sensors, Heater_Temp_Chart){ channel="mqtt:topic:cf2b98f3:ManifOut" }
 
+String TmpString	"[%s]" { channel="exec:command:data8266:output" }
 
 Number WB_AirSetpoint	"Setpoint [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:Setpoint" }
 Number WB_VentMode	"Режим" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:Mode" }
 Number WB_FanSpeed	"Швидкість" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanSpeed" }
+Switch WB_EcoMode	"Eco Mode" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:EcoMode" }
 Number WB_AirOutdoor	"Outdoor Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:OutdoorAir" }
 Number WB_AirSupply	"Supply Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:SupplyAir" }
 Number WB_AirAfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:AfterRecuperator" }
@@ -76,9 +76,16 @@ Number WB_AirDefrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent, Vent
 Number WB_AirExhaust	"Exhaust Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
 Number WB_SFanSpeed	"Fans speed [%.1f %%]" <fan>	(Vent, Vent_FanSpeed_Chart){ channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+Switch WB_VentDampers	"Air Dampers" <rollershutter>	(Vent){ channel="mqtt:topic:cf2b98f3:AirDampers" }
+Switch WB_VentRecuperator	"Recuperator" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:Recuperator" }
+Switch WB_VentCompressor	"Compressor" <pump>	(Vent){ channel="mqtt:topic:cf2b98f3:Compressor" }
+Switch WB_VentHeater	"Electric Heater" <heating>	(Vent){ channel="mqtt:topic:cf2b98f3:ElectricHeater" }
+
+
 Number WB_FanSpeed1	"Fans speed 1 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS1" }
 Number WB_FanSpeed2	"Fans speed 2 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS2" }
 Number WB_FanSpeed3	"Fans speed 3 [%d %%]" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:FanS3" }
+
 
 
 Number Sensors_COlev_Chart_Period			"Період"

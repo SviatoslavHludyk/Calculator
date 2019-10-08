@@ -2,25 +2,14 @@ rule "Gas calc"
 	when 
 		Time cron "0 0/1 * * * ?"
 	then
+		val Number gcons = WB_GasCounter.deltaSince(now.minusMinutes(1))
+		val Number gcons_today = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay())
+		val Number gcons_yest = ((WB_GasCounter.historicState(now.withTimeAtStartOfDay(),"rrd4j")).state as DecimalType).floatValue - ((WB_GasCounter.historicState(now.withTimeAtStartOfDay().minusDays(1),"rrd4j")).state as DecimalType).floatValue;
 
-val Number gcons = WB_GasCounter.deltaSince(now.minusMinutes(1)) / 100
-Gas_Cons.postUpdate(gcons)
-end
+		if (gcons!=null) Gas_Cons.postUpdate(gcons)
+		if (gcons_today!=null) Gas_ConsMN.postUpdate(gcons_today)
+		if (gcons_yest!=null) Gas_ConsD.postUpdate(gcons_yest)
 
-rule "GasD calc"
-	when 
-		Time cron "0 0 0 * * ?"
-	then
-val Number gdcons = WB_GasCounter.deltaSince(now.minusDays(1)) / 100
-Gas_ConsD.postUpdate(gdcons)
-end
-
-rule "GasMN calc"
-	when 
-		Time cron "0 0/1 * * * ?"
-	then
-val Number gmncons = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay()) / 100
-Gas_ConsMN.postUpdate(gmncons)
 end
 
 rule "Power calc"
@@ -28,7 +17,7 @@ rule "Power calc"
 		Time cron "0 0 0 * * ?"
 	then
 val Number pcons = Power_Energy.deltaSince(now.minusDays(1))
-Power_Cons.postUpdate(pcons)
+if (pcons!=null) Power_Cons.postUpdate(pcons)
 end
 
 rule "Power calcMN"
@@ -36,12 +25,12 @@ rule "Power calcMN"
 		Time cron "0 0/1 * * * ?"
 	then
 val Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
-Power_ConsMN.postUpdate(pconsmn)
+if (pconsmn!=null) Power_ConsMN.postUpdate(pconsmn)
 end
 
 rule "Send counters"
 	when 
-		Time cron "0 15 9 1 * ?"
+		Time cron "0 45 9 1 * ?"
 	then
 		val first = new DateTime(now.withTimeAtStartOfDay.withDayOfMonth(1));
 		val second = new DateTime(now.withTimeAtStartOfDay.minusMonths(1).withDayOfMonth(1));
@@ -72,23 +61,8 @@ then
 	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", TmpString.state.toString)
 	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", TmpString.state.toString)
 
-	RoomCO2.postUpdate(newco2)
-	RoomHum.postUpdate(newhum)
-	RoomTemp.postUpdate(newtemp)
-	// WB_RoomCO2.postUpdate(newco2)
-	sendCommand(WB_RoomCO2, newco2)
-	sendCommand(WB_RoomHum, newhum)
+	if (newco2!=null) RoomCO2.postUpdate(newco2)
+	if (newhum!=null) RoomHum.postUpdate(newhum)
+	if (newtemp!=null) RoomTemp.postUpdate(newtemp)
 
 end
-
-
-// rule "Publish item changes"
-// when
-// Item RoomCO2 changed
-// then
-// WB_RoomCO2.postUpdate(RoomCO2.state.toString)
-// val actions = getActions("mqtt","mqtt:broker:8f67b874")
-// actions.publishMQTT("devices/ventilation_switcher/controls/CO2/on", "800")
-// logInfo("log", "publish:  mqtt:topic:cf2b98f3:WBCO2 ")
-
-// end

@@ -4,5 +4,6 @@
     // on read: the polled number as string
     // on write: openHAB command as string
     var DIVIDE_BY = 100;
-    return parseFloat(inputData) / DIVIDE_BY;
+    res = parseFloat(inputData) / DIVIDE_BY;
+    return res;
 })(input)
