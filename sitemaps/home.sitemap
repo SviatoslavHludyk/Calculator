@@ -153,7 +153,7 @@ sitemap home label="Main menu"
 
 		}
 
-		Group item=Heating label="Опалення" icon="heating" {
+		Group item=Heaters label="Опалення" icon="heating" {
 			Frame  {
    				Text item=WB_ManifIn valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
 				Text item=WB_ManifOut valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
