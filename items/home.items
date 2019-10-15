@@ -75,7 +75,7 @@ Number WB_AirAfterRecuperator	"After Recuperator [%.1f °C]" <temperature>	(Vent
 Number WB_AirDefrostsensor	"Defrost sensor [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:Defrostsensor" }
 Number WB_AirExhaust	"Exhaust Air [%.1f °C]" <temperature>	(Vent, Vent_Temp_Chart, Temp){ channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
-Number WB_SFanSpeed	"Fans speed [%.1f %%]" <fan>	(Vent, Vent_FanSpeed_Chart){ channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+Number WB_SFanSpeed	"Fans speed [%.1f %%]" <fan>	(Sensors, Vent, Vent_FanSpeed_Chart){ channel="mqtt:topic:cf2b98f3:SFanSpeed" }
 Switch WB_VentDampers	"Air Dampers" <rollershutter>	(Vent){ channel="mqtt:topic:cf2b98f3:AirDampers" }
 Switch WB_VentRecuperator	"Recuperator" <fan>	(Vent){ channel="mqtt:topic:cf2b98f3:Recuperator" }
 Switch WB_VentCompressor	"Compressor" <pump>	(Vent){ channel="mqtt:topic:cf2b98f3:Compressor" }
@@ -100,7 +100,7 @@ Number Weather_Temp_Chart_Period		"Період"
 
 DateTime		Date			"Дата [%1$tA, %1$td.%1$tm.%1$tY]"	<calendar>	{ channel="ntp:ntp:local:dateTime"}
 
-Number WB_Pressure	"Тиск [%.2f ppi]" <pressure>	(Sensors, Water_Press_Chart){ channel="mqtt:topic:cf2b98f3:water_pressure" }
+Number WB_Pressure	"Тиск [%.2f ppi]" <pressure>	(Sensors, Water, Water_Press_Chart){ channel="mqtt:topic:cf2b98f3:water_pressure" }
 Switch WB_Valve	"Кран" <water>	(Water){ channel="mqtt:topic:cf2b98f3:water_valve" }
 Switch WB_RPump	"Рециркуляція" <pump>	(Water){ channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
