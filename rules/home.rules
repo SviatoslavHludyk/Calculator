@@ -6,7 +6,7 @@ rule "Gas calc"
 		val Number gcons_today = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay())
 		val Number gcons_yest = ((WB_GasCounter.historicState(now.withTimeAtStartOfDay(),"rrd4j")).state as DecimalType).floatValue - ((WB_GasCounter.historicState(now.withTimeAtStartOfDay().minusDays(1),"rrd4j")).state as DecimalType).floatValue;
 
-		if (gcons!=null) Gas_Cons.postUpdate(gcons)
+		if (gcons!=null) Gas_Cons.postUpdate(gcons*60)
 		if (gcons_today!=null) Gas_ConsMN.postUpdate(gcons_today)
 		if (gcons_yest!=null) Gas_ConsD.postUpdate(gcons_yest)
 
