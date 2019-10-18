@@ -109,6 +109,7 @@ sitemap home label="Main menu"
 				Chart item=Water_Press_Chart period=D refresh=3600 visibility=[Water_Press_Chart_Period==1]
 				Chart item=Water_Press_Chart period=W refresh=3600 visibility=[Water_Press_Chart_Period==2]
 				Chart item=Water_Press_Chart period=M refresh=3600 visibility=[Water_Press_Chart_Period==3]
+				Chart item=Water_Press_Chart period=Y refresh=3600 visibility=[Water_Press_Chart_Period==4]
 			}
             Frame {
 				Switch item=Boiler_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
