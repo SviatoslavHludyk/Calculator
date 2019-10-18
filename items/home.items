@@ -20,6 +20,7 @@ Group                   Sensors_TempCO_Chart                                    
 Group                   Sensors_COlev_Chart                                                                                                     (Sensors)                               
 Group                   Sensors_HumCO_Chart                                                                                                     (Sensors)                               
 Group                   Heater_Temp_Chart                                                                                                       (Sensors, Temp)                         
+Group                   Boiler_Temp_Chart                                                                                                       (Sensors, Temp)                         
 Group                   Gas_Cons_Chart                                                                                                          (Gas)                                   
 Group                   Gas_ConsD_Chart                                                                                                         (Gas)                                   
 Group                   Power_ConsD_Chart                                                                                                       (Power)                                 
@@ -59,7 +60,9 @@ Number                  WB_Cabinet                              "Кабінет 
 Number                  WB_Hall                                 "Вітальня [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
 Number                  WB_Entrance                             "Передпокій [%.2f °C]"                                          <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
 
-Number                  WB_Boiler                               "Бойлер [%.2f °C]"                                              <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:Boiler" }
+Number                  WB_Boiler                               "Бойлер [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:Boiler" }
+Number                  WB_RCPump                               "Рециркуляція [%.2f °C]"                                        <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:RCPump" }
+Number                  WB_HotWater                             "Гаряча вода [%.2f °C]"                                         <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
 Number                  WB_ManifIn                              "Гребінка Вх [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
 Number                  WB_ManifOut                             "Гребінка Вих [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
 
@@ -92,6 +95,7 @@ Number                  Sensors_COlev_Chart_Period              "Період"
 Number                  Sensors_HumCO_Chart_Period              "Період"                                                                                                                
 Number                  Sensors_TempCO_Chart_Period             "Період"                                                                                                                
 Number                  Heater_Temp_Chart_Period                "Період"                                                                                                                
+Number                  Boiler_Temp_Chart_Period                "Період"                                                                                                                
 Number                  Sensors_TempServ_Chart_Period           "Період"                                                                                                                
 Number                  Vent_Temp_Chart_Period                  "Період"                                                                                                                
 Number                  Vent_FanSpeed_Chart_Period              "Період"                                                                                                                
