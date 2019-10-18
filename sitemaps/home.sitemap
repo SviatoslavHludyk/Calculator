@@ -104,7 +104,7 @@ sitemap home label="Main menu"
             }
 
 			Frame {
-				Switch item=Water_Press_Chart_Period label="Тиск, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Water_Press_Chart_Period label="Тиск, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
 				Chart item=Water_Press_Chart period=h refresh=600 visibility=[Water_Press_Chart_Period==0, Water_Press_Chart_Period=="Uninitialized"]
 				Chart item=Water_Press_Chart period=D refresh=3600 visibility=[Water_Press_Chart_Period==1]
 				Chart item=Water_Press_Chart period=W refresh=3600 visibility=[Water_Press_Chart_Period==2]
