@@ -38,24 +38,27 @@ sitemap home label="Main menu"
 
 		}
 		Group item=Vent label="Вентиляція" icon="fan" {
-			Frame  {
+			Frame label="Налаштування" {
                 Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.5
                 Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]
                 Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
 				Switch item=WB_EcoMode
+			}
+			Frame label="Температура, °C" {
    				Text item=WB_AirOutdoor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirSupply valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirAfterRecuperator valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirDefrostsensor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirExhaust valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_SFanSpeed valuecolor=[>75="red",>45="orange",>35="green",>15="blue"]
+			}
+			Frame label="Статус" {
    				Text item=WB_VentDampers
    				Text item=WB_VentRecuperator
    				Text item=WB_VentCompressor
    				Text item=WB_VentHeater
-
 			}
-			Frame {
+			Frame label="Графік температур" {
 				Switch item=Vent_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
 				Chart item=Vent_Temp_Chart period=h refresh=600 visibility=[Vent_Temp_Chart_Period==0, Vent_Temp_Chart_Period=="Uninitialized"]
 				Chart item=Vent_Temp_Chart period=D refresh=3600 visibility=[Vent_Temp_Chart_Period==1]
@@ -63,7 +66,7 @@ sitemap home label="Main menu"
 				Chart item=Vent_Temp_Chart period=M refresh=3600 visibility=[Vent_Temp_Chart_Period==3]
                 Chart item=Vent_Temp_Chart period=Y refresh=3600 visibility=[Vent_Temp_Chart_Period==4]
 			}
-            Frame {
+			Frame label="Графік швидкості вентиляторів" {
 				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Год.", 1="День", 2="Тиж."]
 				Chart item=Vent_FanSpeed_Chart period=h refresh=600 visibility=[Vent_FanSpeed_Chart_Period==0, Vent_FanSpeed_Chart_Period=="Uninitialized"]
 				Chart item=Vent_FanSpeed_Chart period=D refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==1]
@@ -95,9 +98,11 @@ sitemap home label="Main menu"
 
 		Group item=Water label="Вода" icon="water" {
 			Frame  {
-				Text item=WB_Pressure
 				Switch item=WB_Valve
 				Switch item=WB_RPump
+			}
+			Frame  {
+				Text item=WB_Pressure
    				Text item=WB_Boiler valuecolor=[>60="red",>50="orange",>35="green",>20="blue"]
    				Text item=WB_HotWater valuecolor=[>60="red",>50="orange",>35="green",>20="blue"]
    				Text item=WB_RCPump valuecolor=[>60="red",>50="orange",>35="green",>20="blue"]
@@ -309,11 +314,14 @@ sitemap home label="Main menu"
 			}
 }
 		Group item=Config label="Налаштування" icon="settings" {
-			Frame  {
+		    Frame label="Ventilation" {
                 Setpoint item=WB_FanSpeed1 label="Fans speed 1 [%d %%]" minValue=10 maxValue=50 step=1
                 Setpoint item=WB_FanSpeed2 label="Fans speed 2 [%d %%]" minValue=30 maxValue=80 step=1
                 Setpoint item=WB_FanSpeed3 label="Fans speed 3 [%d %%]" minValue=50 maxValue=100 step=1
-
+			}
+		    Frame label="Hot Water Recirculation" {
+                Setpoint item=WB_RCPumpTemp label="Pump On temperature [%d °C]" minValue=20 maxValue=60 step=1
+                Setpoint item=WB_RCPumpTimer label="Pump Off timer [%d s]" minValue=0 maxValue=900 step=60
 			}
         }
 
