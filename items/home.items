@@ -88,8 +88,11 @@ Switch                  WB_VentHeater                           "Electric Heater
 Number                  WB_FanSpeed1                            "Fans speed 1 [%d %%]"                                          <fan>           (Vent, Config)                          { channel="mqtt:topic:cf2b98f3:FanS1" }
 Number                  WB_FanSpeed2                            "Fans speed 2 [%d %%]"                                          <fan>           (Vent, Config)                          { channel="mqtt:topic:cf2b98f3:FanS2" }
 Number                  WB_FanSpeed3                            "Fans speed 3 [%d %%]"                                          <fan>           (Vent, Config)                          { channel="mqtt:topic:cf2b98f3:FanS3" }
-Number                  WB_RCPumpTemp                           "RC Off Temp [%d °C]"                                           <fan>           (Config)                                { channel="mqtt:topic:cf2b98f3:RCPumpTemp" }
-Number                  WB_RCPumpTimer                          "RC Off Timer [%d s]"                                           <fan>           (Config)                                { channel="mqtt:topic:cf2b98f3:RCPumpTimer" }
+Number                  WB_FanEcoSpeed                          "Fans eco speed [%d %%]"                                        <fan>           (Vent, Config)                          { channel="mqtt:topic:cf2b98f3:VentEcoSpeed" }
+Number                  WB_FanLowSpeed                          "Fans low speed [%d %%]"                                        <fan>           (Vent, Config)                          { channel="mqtt:topic:cf2b98f3:VentLowSpeed" }
+Number                  WB_RCPumpTemp                           "RC On Min Temp [%d °C]"                                        <temperature>   (Config)                                { channel="mqtt:topic:cf2b98f3:RCPumpTemp" }
+Number                  WB_RCBoilerTemp                         "Boiler Min Temp [%d °C]"                                       <temperature>   (Config)                                { channel="mqtt:topic:cf2b98f3:RCBoilerTemp" }
+Number                  WB_RCPumpTimer                          "RC Off Timer [%d s]"                                           <time>          (Config)                                { channel="mqtt:topic:cf2b98f3:RCPumpTimer" }
 
 
 
