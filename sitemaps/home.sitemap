@@ -67,10 +67,11 @@ sitemap home label="Main menu"
                 Chart item=Vent_Temp_Chart period=Y refresh=3600 visibility=[Vent_Temp_Chart_Period==4]
 			}
 			Frame label="Графік швидкості вентиляторів" {
-				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Год.", 1="День", 2="Тиж."]
+				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Vent_FanSpeed_Chart period=h refresh=600 visibility=[Vent_FanSpeed_Chart_Period==0, Vent_FanSpeed_Chart_Period=="Uninitialized"]
 				Chart item=Vent_FanSpeed_Chart period=D refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==1]
 				Chart item=Vent_FanSpeed_Chart period=W refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==2]
+				Chart item=Vent_FanSpeed_Chart period=M refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==3]
 			}
         }
 		Group item=Gas label="Газ" icon="gas" {
@@ -154,10 +155,11 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж."]
+				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
 				Chart item=Power_Wt_Sens_Chart period=h refresh=600 visibility=[Power_Wt_Sens_Chart_Period==0, Power_Wt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Wt_Sens_Chart period=D refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==1]
 				Chart item=Power_Wt_Sens_Chart period=W refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==2]
+				Chart item=Power_Wt_Sens_Chart period=M refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==3]
 			}
             
             Frame {
