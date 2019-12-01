@@ -65,6 +65,11 @@ Number                  WB_RCPump                               "Рецирку�
 Number                  WB_HotWater                             "Гаряча вода [%.2f °C]"                                         <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
 Number                  WB_ManifIn                              "Гребінка Вх [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
 Number                  WB_ManifOut                             "Гребінка Вих [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
+Number                  WB_Heater                               "Котел [%.2f °C]"                                               <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
+Switch                  WB_DHW_En                               "Підігрів води"                                                 <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
+Switch                  WB_Flame                                "Пальник"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
+Switch                  WB_CH_On                                "Опалення"                                                      <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
+Switch                  WB_DHW_On                               "Підігрів води"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
 
 String                  TmpString                               "[%s]"                                                                                                                  { channel="exec:command:data8266:output" }
 

@@ -100,6 +100,7 @@ sitemap home label="Main menu"
 		Group item=Water label="Вода" icon="water" {
 			Frame  {
 				Switch item=WB_Valve
+				Switch item=WB_DHW_En
 				Switch item=WB_RPump
 			}
 			Frame  {
@@ -172,7 +173,13 @@ sitemap home label="Main menu"
 		}
 
 		Group item=Heaters label="Опалення" icon="heating" {
+		    Frame label="Статус" {
+   				Text item=WB_CH_On
+   				Text item=WB_DHW_On
+   				Text item=WB_Flame
+			}			
 			Frame  {
+   				Text item=WB_Heater valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
    				Text item=WB_ManifIn valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
 				Text item=WB_ManifOut valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
 			}
