@@ -66,10 +66,15 @@ Number                  WB_HotWater                             "Гаряча в
 Number                  WB_ManifIn                              "Гребінка Вх [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
 Number                  WB_ManifOut                             "Гребінка Вих [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
 Number                  WB_Heater                               "Котел [%.2f °C]"                                               <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
+Number                  WB_TDHW                                 "Гаряча вода [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:DHWTemperature" }
+
 Switch                  WB_DHW_En                               "Підігрів води"                                                 <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
 Switch                  WB_Flame                                "Пальник"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
 Switch                  WB_CH_On                                "Опалення"                                                      <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
 Switch                  WB_DHW_On                               "Підігрів води"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
+Number                  WB_DHW_SPT                              "Т-ра води [%.1f °C]"                                           <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
+Number                  WB_CH_SPT                               "Т-ра опалення [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
+Number                  WB_Modulation                           "Модуляція горілки [%.1f %%]"                                   <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
 
 String                  TmpString                               "[%s]"                                                                                                                  { channel="exec:command:data8266:output" }
 

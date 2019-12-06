@@ -182,6 +182,8 @@ sitemap home label="Main menu"
    				Text item=WB_Heater valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
    				Text item=WB_ManifIn valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
 				Text item=WB_ManifOut valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
+				Text item=WB_Modulation valuecolor=[>80="red",>60="orange",>40="green",>20="blue"]
+
 			}
             Frame {
 				Switch item=Heater_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
@@ -323,17 +325,22 @@ sitemap home label="Main menu"
 			}
 }
 		Group item=Config label="Налаштування" icon="settings" {
+
+			Frame label="Boiler" {
+                Setpoint item=WB_CH_SPT label="CH Setpoint [%d °C]" minValue=10 maxValue=80 step=1
+                Setpoint item=WB_DHW_SPT label="DHW Setpoint [%d °C]" minValue=20 maxValue=80 step=1
+			}
+		    Frame label="Hot Water Recirculation" {
+                Setpoint item=WB_RCPumpTemp label="RC Pump On min temp [%d °C]" minValue=20 maxValue=60 step=1
+                Setpoint item=WB_RCBoilerTemp label="Boiler Pump On min temp [%d °C]" minValue=20 maxValue=70 step=1
+                Setpoint item=WB_RCPumpTimer label="Pump Off timer [%d s]" minValue=0 maxValue=900 step=60
+			}
 		    Frame label="Ventilation" {
                 Setpoint item=WB_FanEcoSpeed label="Fans eco speed [%d %%]" minValue=5 maxValue=35 step=1
                 Setpoint item=WB_FanLowSpeed label="Fans low speed [%d %%]" minValue=20 maxValue=50 step=1
                 Setpoint item=WB_FanSpeed1 label="Fans speed 1 [%d %%]" minValue=10 maxValue=50 step=1
                 Setpoint item=WB_FanSpeed2 label="Fans speed 2 [%d %%]" minValue=30 maxValue=80 step=1
                 Setpoint item=WB_FanSpeed3 label="Fans speed 3 [%d %%]" minValue=50 maxValue=100 step=1
-			}
-		    Frame label="Hot Water Recirculation" {
-                Setpoint item=WB_RCPumpTemp label="RC Pump On min temp [%d °C]" minValue=20 maxValue=60 step=1
-                Setpoint item=WB_RCBoilerTemp label="Boiler Pump On min temp [%d °C]" minValue=20 maxValue=70 step=1
-                Setpoint item=WB_RCPumpTimer label="Pump Off timer [%d s]" minValue=0 maxValue=900 step=60
 			}
         }
 

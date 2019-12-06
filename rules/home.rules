@@ -62,8 +62,8 @@ then
 	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", TmpString.state.toString)
 	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", TmpString.state.toString)
 
-	if (newco2!=null) RoomCO2.postUpdate(newco2)
-	if (newhum!=null) RoomHum.postUpdate(newhum)
-	if (newtemp!=null) RoomTemp.postUpdate(newtemp)
+	if (newco2!==null) RoomCO2.postUpdate(newco2)
+	if (newhum!==null) RoomHum.postUpdate(newhum)
+	if (newtemp!==null) RoomTemp.postUpdate(newtemp)
 
 end
