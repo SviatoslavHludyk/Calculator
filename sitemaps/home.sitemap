@@ -327,8 +327,8 @@ sitemap home label="Main menu"
 		Group item=Config label="Налаштування" icon="settings" {
 
 			Frame label="Boiler" {
-                Setpoint item=WB_CH_SPT label="CH Setpoint [%d °C]" minValue=10 maxValue=80 step=1
-                Setpoint item=WB_DHW_SPT label="DHW Setpoint [%d °C]" minValue=20 maxValue=80 step=1
+                Setpoint item=WB_CH_Spt label="CH Setpoint [%d °C]" minValue=10 maxValue=80 step=1
+                Setpoint item=WB_DHW_Spt label="DHW Setpoint [%d °C]" minValue=20 maxValue=80 step=1
 			}
 		    Frame label="Hot Water Recirculation" {
                 Setpoint item=WB_RCPumpTemp label="RC Pump On min temp [%d °C]" minValue=20 maxValue=60 step=1
