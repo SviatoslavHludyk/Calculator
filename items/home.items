@@ -77,8 +77,6 @@ Number                  WB_DHW_Spt                              "Т-ра вод�
 Number                  WB_CH_Spt                               "Т-ра опалення [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
 Number                  WB_Modulation                           "Модуляція горілки [%d %%]"                                     <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
 
-String                  TmpString                               "[%s]"                                                                                                                  { channel="exec:command:data8266:output" }
-
 Number                  WB_AirSetpoint                          "Setpoint [%.1f °C]"                                            <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Setpoint" }
 Number                  WB_VentMode                             "Режим"                                                         <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Mode" }
 Number                  WB_FanSpeed                             "Швидкість"                                                     <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:FanSpeed" }

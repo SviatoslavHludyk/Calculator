@@ -52,16 +52,31 @@ rule "Send counters"
 		
 end
 
-rule "get_8266_data"
+// rule "get_8266_data"
+// when
+// 	Item TmpString changed
+// then
+// 	val newtemp = transform("REGEX", ".*?ppm:T(.*?)C:H.*", TmpString.state.toString)
+// 	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", TmpString.state.toString)
+// 	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", TmpString.state.toString)
+
+// 	if (newco2!==null) RoomCO2.postUpdate(newco2)
+// 	if (newhum!==null) RoomHum.postUpdate(newhum)
+// 	if (newtemp!==null) RoomTemp.postUpdate(newtemp)
+
+// end
+
+rule "get_8266_data222"
 when
-	Item TmpString changed
+		Time cron "0 0/1 * * * ?"
 then
-	val newtemp = transform("REGEX", ".*?ppm:T(.*?)C:H.*", TmpString.state.toString)
-	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", TmpString.state.toString)
-	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", TmpString.state.toString)
+  var String espinfo
+  espinfo = executeCommandLine("/var/opt/getclim.sh",60000)
+	val newtemp = transform("REGEX", ".*?ppm:T(.*?)C:H.*", espinfo)
+	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", espinfo)
+	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", espinfo)
 
 	if (newco2!==null) RoomCO2.postUpdate(newco2)
 	if (newhum!==null) RoomHum.postUpdate(newhum)
 	if (newtemp!==null) RoomTemp.postUpdate(newtemp)
-
 end
