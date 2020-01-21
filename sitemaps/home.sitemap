@@ -7,7 +7,7 @@ sitemap home label="Main menu"
 				Text item=RoomTemp valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_KidsRoom valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Corridor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
-                Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
+                // Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Hall valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 				Text item=WB_Entrance valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 			}
@@ -75,11 +75,14 @@ sitemap home label="Main menu"
 			}
         }
 		Group item=Gas label="Газ" icon="gas" {
-			Frame  {
+			Frame {
 				Text item=WB_GasCounter
+			}
+			Frame label="Споживання" {			
 				Text item=Gas_Cons
 				Text item=Gas_ConsD
 				Text item=Gas_ConsMN
+				Text item=Gas_ConsM
             }
 
 			Frame {
@@ -132,11 +135,16 @@ sitemap home label="Main menu"
 		Group item=Power label="Електроенергія" icon="energy" {
 			Frame  {
 				Text item=Power_Energy
+			}
+			Frame  {
 				Text item=Power_Voltage
 				Text item=Power_Current
 				Text item=Power_PowerH
+			}
+			Frame label="Споживання" {
 				Text item=Power_Cons
 				Text item=Power_ConsMN
+				Text item=Power_ConsM
 			}
 
 			Frame {
@@ -177,12 +185,12 @@ sitemap home label="Main menu"
    				Text item=WB_CH_On
    				Text item=WB_DHW_On
    				Text item=WB_Flame
+   				Text item=WB_Modulation
 			}			
 			Frame  {
    				Text item=WB_Heater valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
    				Text item=WB_ManifIn valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
 				Text item=WB_ManifOut valuecolor=[>60="red",>40="orange",>20="green",>5="blue"]
-				Text item=WB_Modulation valuecolor=[>80="red",>60="orange",>40="green",>20="blue"]
 
 			}
             Frame {

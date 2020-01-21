@@ -5,28 +5,26 @@ rule "Gas calc"
 		val Number gcons = WB_GasCounter.deltaSince(now.minusMinutes(1))
 		val Number gcons_today = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay())
 		val Number gcons_yest = ((WB_GasCounter.historicState(now.withTimeAtStartOfDay(),"rrd4j")).state as DecimalType).floatValue - ((WB_GasCounter.historicState(now.withTimeAtStartOfDay().minusDays(1),"rrd4j")).state as DecimalType).floatValue;
+		val Number gcons_month = ((WB_GasCounter.historicState(now.withTimeAtStartOfDay(),"rrd4j")).state as DecimalType).floatValue - ((WB_GasCounter.historicState(now.withTimeAtStartOfDay().withDayOfMonth(1),"rrd4j")).state as DecimalType).floatValue;
 
 		if (gcons > 0) Gas_Cons.postUpdate(gcons*60)
 		else Gas_Cons.postUpdate(0)
 		if (gcons_today > 0) Gas_ConsMN.postUpdate(gcons_today)
 		if (gcons_yest > 0) Gas_ConsD.postUpdate(gcons_yest)
+		if (gcons_month > 0) Gas_ConsM.postUpdate(gcons_month)
 
 end
 
 rule "Power calc"
 	when 
-		Time cron "0 0 0 * * ?"
+		Time cron "0 0/5 * * * ?"
 	then
 val Number pcons = Power_Energy.deltaSince(now.minusDays(1))
 if (pcons!=null) Power_Cons.postUpdate(pcons)
-end
-
-rule "Power calcMN"
-	when 
-		Time cron "0 0/1 * * * ?"
-	then
 val Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
 if (pconsmn!=null) Power_ConsMN.postUpdate(pconsmn)
+val Number pconsm = Power_Energy.deltaSince(now.withTimeAtStartOfDay().withDayOfMonth(1))
+if (pconsm!=null) Power_ConsM.postUpdate(pconsm)
 end
 
 rule "Send counters"

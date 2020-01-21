@@ -42,12 +42,14 @@ Number                  Power_ConsD_Chart_Period                "Період"
 
 Number                  Power_Cons                              "Спожито за вчора [%.3f kWh]"                                   <energy>        (Power, Power_ConsD_Chart)              
 Number                  Power_ConsMN                            "Спожито за сьогодні [%.3f kWh]"                                <energy>        (Power)                                 
+Number                  Power_ConsM                             "Спожито з поч. міс. [%.3f kWh]"                                <energy>        (Power)                                 
 
 
 Number                  WB_GasCounter                           "Лічильник [%.2f m3]"                                           <gas>           (Gas)                                   { channel="mqtt:topic:cf2b98f3:GazCounter" }
 Number                  Gas_Cons                                "Розхід [%.2f m3/h]"                                            <gas>           (Gas, Gas_Cons_Chart)                   
 Number                  Gas_ConsD                               "Спожито за вчора [%.2f m3]"                                    <gas>           (Gas, Gas_ConsD_Chart)                  
 Number                  Gas_ConsMN                              "Спожито за сьогодні [%.2f m3]"                                 <gas>           (Gas)                                   
+Number                  Gas_ConsM                               "Спожито з поч. міс. [%.2f m3]"                                 <gas>           (Gas)                                   
 Number                  Gas_Cons_Chart_Period                   "Період"                                                                                                                
 Number                  Gas_ConsD_Chart_Period                  "Період"                                                                                                                
 
@@ -56,7 +58,7 @@ Number                  RoomHum                                 "Вологіс�
 Number                  RoomTemp                                "Спальня [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       
 Number                  WB_KidsRoom                             "Дитяча [%.2f °C]"                                              <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:KidsRoom" }
 Number                  WB_Corridor                             "Коридор [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Corridor" }
-Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
+//Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
 Number                  WB_Hall                                 "Вітальня [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
 Number                  WB_Entrance                             "Передпокій [%.2f °C]"                                          <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
 
@@ -73,7 +75,7 @@ Switch                  WB_CH_On                                "Опаленн�
 Switch                  WB_DHW_On                               "Підігрів води"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
 Number                  WB_DHW_Spt                              "Т-ра води [%.1f °C]"                                           <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
 Number                  WB_CH_Spt                               "Т-ра опалення [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
-Number                  WB_Modulation                           "Модуляція горілки [%.1f %%]"                                   <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
+Number                  WB_Modulation                           "Модуляція горілки [%d %%]"                                     <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
 
 String                  TmpString                               "[%s]"                                                                                                                  { channel="exec:command:data8266:output" }
 
@@ -87,7 +89,7 @@ Number                  WB_AirAfterRecuperator                  "After Recuperat
 Number                  WB_AirDefrostsensor                     "Defrost sensor [%.1f °C]"                                      <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Defrostsensor" }
 Number                  WB_AirExhaust                           "Exhaust Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
-Number                  WB_SFanSpeed                            "Fans speed [%.1f %%]"                                          <fan>           (Sensors, Vent, Vent_FanSpeed_Chart)    { channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+Number                  WB_SFanSpeed                            "Fans speed [%d %%]"                                          <fan>           (Sensors, Vent, Vent_FanSpeed_Chart)    { channel="mqtt:topic:cf2b98f3:SFanSpeed" }
 Switch                  WB_VentDampers                          "Air Dampers"                                                   <rollershutter> (Vent)                                  { channel="mqtt:topic:cf2b98f3:AirDampers" }
 Switch                  WB_VentRecuperator                      "Recuperator"                                                   <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Recuperator" }
 Switch                  WB_VentCompressor                       "Compressor"                                                    <pump>          (Vent)                                  { channel="mqtt:topic:cf2b98f3:Compressor" }
