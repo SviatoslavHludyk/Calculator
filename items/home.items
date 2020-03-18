@@ -30,56 +30,57 @@ Group                   Vent_FanSpeed_Chart                                     
 Group                   Weather_Temp_Chart                                                                                                      (Weather, Temp)                         
 
 
-Number                  Power_Energy                            "Енергія [%.3f kWh]"                                            <energy>        (Power)                                 { channel="modbus:data:312f4244:number" }
-Number                  Power_Voltage                           "Напруга [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)          { channel="modbus:data:5bf2516b:number" }
-Number                  Power_Current                           "Струм [%.1f A]"                                                <energy>        (Power, Power_Curr_Sens_Chart)          { channel="modbus:data:ef0ab11d:number" }
-Number                  Power_PowerH                            "Потужність [%d W]"                                             <energy>        (Power, Power_Wt_Sens_Chart)            { channel="modbus:data:1fd5096a:number" }
+Number                  Power_Energy                            "Energy [%.3f kWh]"                                            <energy>        (Power)                                 { channel="modbus:data:312f4244:number" }
+Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)          { channel="modbus:data:5bf2516b:number" }
+Number                  Power_Current                           "Current [%.1f A]"                                                <energy>        (Power, Power_Curr_Sens_Chart)          { channel="modbus:data:ef0ab11d:number" }
+Number                  Power_PowerH                            "Power [%d W]"                                             <energy>        (Power, Power_Wt_Sens_Chart)            { channel="modbus:data:1fd5096a:number" }
 
-Number                  Power_Volt_Sens_Chart_Period            "Період"                                                                                                                
-Number                  Power_Curr_Sens_Chart_Period            "Період"                                                                                                                
-Number                  Power_Wt_Sens_Chart_Period              "Період"                                                                                                                
-Number                  Power_ConsD_Chart_Period                "Період"                                                                                                                
+Number                  Power_Volt_Sens_Chart_Period            "Period"                                                                                                                
+Number                  Power_Curr_Sens_Chart_Period            "Period"                                                                                                                
+Number                  Power_Wt_Sens_Chart_Period              "Period"                                                                                                                
+Number                  Power_ConsD_Chart_Period                "Period"                                                                                                                
 
-Number                  Power_Cons                              "Спожито за вчора [%.3f kWh]"                                   <energy>        (Power, Power_ConsD_Chart)              
-Number                  Power_ConsMN                            "Спожито за сьогодні [%.3f kWh]"                                <energy>        (Power)                                 
-Number                  Power_ConsM                             "Спожито з поч. міс. [%.3f kWh]"                                <energy>        (Power)                                 
+Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                   <energy>        (Power, Power_ConsD_Chart)              
+Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                <energy>        (Power)                                 
+Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                <energy>        (Power)                                 
 
 
-Number                  WB_GasCounter                           "Лічильник [%.2f m3]"                                           <gas>           (Gas)                                   { channel="mqtt:topic:cf2b98f3:GazCounter" }
-Number                  Gas_Cons                                "Розхід [%.2f m3/h]"                                            <gas>           (Gas, Gas_Cons_Chart)                   
-Number                  Gas_ConsD                               "Спожито за вчора [%.2f m3]"                                    <gas>           (Gas, Gas_ConsD_Chart)                  
-Number                  Gas_ConsMN                              "Спожито за сьогодні [%.2f m3]"                                 <gas>           (Gas)                                   
-Number                  Gas_ConsM                               "Спожито з поч. міс. [%.2f m3]"                                 <gas>           (Gas)                                   
-Number                  Gas_Cons_Chart_Period                   "Період"                                                                                                                
-Number                  Gas_ConsD_Chart_Period                  "Період"                                                                                                                
+Number                  WB_GasCounter                           "Counter [%.2f m3]"                                           <gas>           (Gas)                                   { channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number                  Gas_Cons                                "Consumption [%.2f m3/h]"                                            <gas>           (Gas, Gas_Cons_Chart)                   
+Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                    <gas>           (Gas, Gas_ConsD_Chart)                  
+Number                  Gas_ConsDDHW                            "Cons. incl. DHW [%.2f m3]"                                  <gas>           (Gas, Gas_ConsD_Chart)                  { channel="mqtt:topic:cf2b98f3:GasDHW" }
+Number                  Gas_ConsMN                              "Cons. today [%.2f m3]"                                 <gas>           (Gas)                                   
+Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                 <gas>           (Gas)                                   
+Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                
+Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                
 
-Number                  RoomCO2                                 "Рівень СО2 [%d ppm]"                                           <carbondioxide> (Sensors, Sensors_COlev_Chart)          
-Number                  RoomHum                                 "Вологість [%.1f %%]"                                           <humidity>      (Sensors, Sensors_HumCO_Chart)          
-Number                  RoomTemp                                "Спальня [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       
-Number                  WB_KidsRoom                             "Дитяча [%.2f °C]"                                              <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:KidsRoom" }
-Number                  WB_Corridor                             "Коридор [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Corridor" }
+Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                           <carbondioxide> (Sensors, Sensors_COlev_Chart)          
+Number                  RoomHum                                 "Humidity [%.1f %%]"                                           <humidity>      (Sensors, Sensors_HumCO_Chart)          
+Number                  RoomTemp                                "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       
+Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                              <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number                  WB_Corridor                             "Corridor [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Corridor" }
 //Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
-Number                  WB_Hall                                 "Вітальня [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
-Number                  WB_Entrance                             "Передпокій [%.2f °C]"                                          <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
+Number                  WB_Hall                                 "Hall [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
+Number                  WB_Entrance                             "Entrance [%.2f °C]"                                          <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
 
-Number                  WB_Boiler                               "Бойлер [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:Boiler" }
-Number                  WB_RCPump                               "Рециркуляція [%.2f °C]"                                        <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:RCPump" }
-Number                  WB_HotWater                             "Гаряча вода [%.2f °C]"                                         <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
-Number                  WB_ManifIn                              "Гребінка Вх [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
-Number                  WB_ManifOut                             "Гребінка Вих [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
-Number                  WB_Heater                               "Котел [%.2f °C]"                                               <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
+Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:Boiler" }
+Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                        <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:RCPump" }
+Number                  WB_HotWater                             "Hot water [%.2f °C]"                                         <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
+Number                  WB_ManifIn                              "Manifold in [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
+Number                  WB_ManifOut                             "Manifold out [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
+Number                  WB_Heater                               "Heater [%.2f °C]"                                               <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
 
-Switch                  WB_DHW_En                               "Підігрів води"                                                 <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
-Switch                  WB_Flame                                "Пальник"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
-Switch                  WB_CH_On                                "Опалення"                                                      <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
-Switch                  WB_DHW_On                               "Підігрів води"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
-Number                  WB_DHW_Spt                              "Т-ра води [%.1f °C]"                                           <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
-Number                  WB_CH_Spt                               "Т-ра опалення [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
-Number                  WB_Modulation                           "Модуляція горілки [%d %%]"                                     <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
+Switch                  WB_DHW_En                               "Hot water enabled"                                                 <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
+Switch                  WB_Flame                                "Flame"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
+Switch                  WB_CH_On                                "Heating"                                                      <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
+Switch                  WB_DHW_On                               "Hot water on"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
+Number                  WB_DHW_Spt                              "Temp. water [%.1f °C]"                                           <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
+Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
+Number                  WB_Modulation                           "Modulation [%d %%]"                                     <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
 
-Number                  WB_AirSetpoint                          "Setpoint [%.1f °C]"                                            <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Setpoint" }
-Number                  WB_VentMode                             "Режим"                                                         <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Mode" }
-Number                  WB_FanSpeed                             "Швидкість"                                                     <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:FanSpeed" }
+Number                  WB_AirSetpoint                          "Setpoint [%d °C]"                                            <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Setpoint" }
+Number                  WB_VentMode                             "Mode"                                                         <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Mode" }
+Number                  WB_FanSpeed                             "Fan speed"                                                     <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:FanSpeed" }
 Switch                  WB_EcoMode                              "Eco Mode"                                                      <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:EcoMode" }
 Number                  WB_AirOutdoor                           "Outdoor Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:OutdoorAir" }
 Number                  WB_AirSupply                            "Supply Air [%.1f °C]"                                          <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:SupplyAir" }
@@ -105,24 +106,24 @@ Number                  WB_RCPumpTimer                          "RC Off Timer [%
 
 
 
-Number                  Sensors_COlev_Chart_Period              "Період"                                                                                                                
-Number                  Sensors_HumCO_Chart_Period              "Період"                                                                                                                
-Number                  Sensors_TempCO_Chart_Period             "Період"                                                                                                                
-Number                  Heater_Temp_Chart_Period                "Період"                                                                                                                
-Number                  Boiler_Temp_Chart_Period                "Період"                                                                                                                
-Number                  Sensors_TempServ_Chart_Period           "Період"                                                                                                                
-Number                  Vent_Temp_Chart_Period                  "Період"                                                                                                                
-Number                  Vent_FanSpeed_Chart_Period              "Період"                                                                                                                
+Number                  Sensors_COlev_Chart_Period              "Period"                                                                                                                
+Number                  Sensors_HumCO_Chart_Period              "Period"                                                                                                                
+Number                  Sensors_TempCO_Chart_Period             "Period"                                                                                                                
+Number                  Heater_Temp_Chart_Period                "Period"                                                                                                                
+Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                
+Number                  Sensors_TempServ_Chart_Period           "Period"                                                                                                                
+Number                  Vent_Temp_Chart_Period                  "Period"                                                                                                                
+Number                  Vent_FanSpeed_Chart_Period              "Period"                                                                                                                
 
-Number                  Weather_Temp_Chart_Period               "Період"                                                                                                                
+Number                  Weather_Temp_Chart_Period               "Period"                                                                                                                
 
-DateTime                Date                                    "Дата [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                              { channel="ntp:ntp:local:dateTime"}
+DateTime                Date                                    "Date [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                              { channel="ntp:ntp:local:dateTime"}
 
-Number                  WB_Pressure                             "Тиск [%.2f ppi]"                                               <pressure>      (Sensors, Water, Water_Press_Chart)     { channel="mqtt:topic:cf2b98f3:water_pressure" }
-Switch                  WB_Valve                                "Кран"                                                          <water>         (Water)                                 { channel="mqtt:topic:cf2b98f3:water_valve" }
-Switch                  WB_RPump                                "Рециркуляція"                                                  <pump>          (Water)                                 { channel="mqtt:topic:cf2b98f3:recirc_pump" }
+Number                  WB_Pressure                             "Pressure [%.2f ppi]"                                               <pressure>      (Sensors, Water, Water_Press_Chart)     { channel="mqtt:topic:cf2b98f3:water_pressure" }
+Switch                  WB_Valve                                "Main Valve"                                                          <water>         (Water)                                 { channel="mqtt:topic:cf2b98f3:water_valve" }
+Switch                  WB_RPump                                "Recirculation"                                                  <pump>          (Water)                                 { channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
-Number                  Water_Press_Chart_Period                "Період"                                                                                                                
+Number                  Water_Press_Chart_Period                "Period"                                                                                                                
 
 
 DateTime                localLastMeasurement                    "Timestamp of last measurement [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:current#time-stamp" }

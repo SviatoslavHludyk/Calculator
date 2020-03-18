@@ -1,6 +1,6 @@
 sitemap home label="Main menu"
 {
-		Group item=Sensors label="Клімат" icon="climate" {
+		Group item=Sensors label="Climate" icon="climate" {
 			Frame  {
 				Text item=RoomCO2 valuecolor=[>3000="red",>2500="orange",>1500="green",>500="blue"]
 				Text item=RoomHum
@@ -12,7 +12,7 @@ sitemap home label="Main menu"
 				Text item=WB_Entrance valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
 			}
 			Frame {
-				Switch item=Sensors_COlev_Chart_Period label="CO2, ppm" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Sensors_COlev_Chart_Period label="CO2, ppm" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Sensors_COlev_Chart period=h refresh=600 visibility=[Sensors_COlev_Chart_Period==0, Sensors_COlev_Chart_Period=="Uninitialized"]
 				Chart item=Sensors_COlev_Chart period=D refresh=3600 visibility=[Sensors_COlev_Chart_Period==1]
 				Chart item=Sensors_COlev_Chart period=W refresh=3600 visibility=[Sensors_COlev_Chart_Period==2]
@@ -20,7 +20,7 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Sensors_HumCO_Chart_Period label="Вологість, %" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Sensors_HumCO_Chart_Period label="Hum, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Sensors_HumCO_Chart period=h refresh=600 visibility=[Sensors_HumCO_Chart_Period==0, Sensors_HumCO_Chart_Period=="Uninitialized"]
 				Chart item=Sensors_HumCO_Chart period=D refresh=3600 visibility=[Sensors_HumCO_Chart_Period==1]
 				Chart item=Sensors_HumCO_Chart period=W refresh=3600 visibility=[Sensors_HumCO_Chart_Period==2]
@@ -28,7 +28,7 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Sensors_TempServ_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Switch item=Sensors_TempServ_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Sensors_TempServ_Chart period=h refresh=600 visibility=[Sensors_TempServ_Chart_Period==0, Sensors_TempServ_Chart_Period=="Uninitialized"]
 				Chart item=Sensors_TempServ_Chart period=D refresh=3600 visibility=[Sensors_TempServ_Chart_Period==1]
 				Chart item=Sensors_TempServ_Chart period=W refresh=3600 visibility=[Sensors_TempServ_Chart_Period==2]
@@ -37,14 +37,14 @@ sitemap home label="Main menu"
 			}
 
 		}
-		Group item=Vent label="Вентиляція" icon="fan" {
-			Frame label="Налаштування" {
-                Setpoint item=WB_AirSetpoint label="Setpoint [%.1f °C]" minValue=15.0 maxValue=30 step=0.5
+		Group item=Vent label="Ventilation" icon="fan" {
+			Frame label="Settings" {
+                Setpoint item=WB_AirSetpoint label="Setpoint [%d °C]" minValue=15 maxValue=30 step=1
                 Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]
                 Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
 				Switch item=WB_EcoMode
 			}
-			Frame label="Температура, °C" {
+			Frame label="Temp, °C" {
    				Text item=WB_AirOutdoor valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirSupply valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_AirAfterRecuperator valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
@@ -52,55 +52,56 @@ sitemap home label="Main menu"
    				Text item=WB_AirExhaust valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
    				Text item=WB_SFanSpeed valuecolor=[>75="red",>45="orange",>35="green",>15="blue"]
 			}
-			Frame label="Статус" {
+			Frame label="Status" {
    				Text item=WB_VentDampers
    				Text item=WB_VentRecuperator
    				Text item=WB_VentCompressor
    				Text item=WB_VentHeater
 			}
-			Frame label="Графік температур" {
-				Switch item=Vent_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+			Frame label="Temps" {
+				Switch item=Vent_Temp_Chart_Period label="Температура, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Vent_Temp_Chart period=h refresh=600 visibility=[Vent_Temp_Chart_Period==0, Vent_Temp_Chart_Period=="Uninitialized"]
 				Chart item=Vent_Temp_Chart period=D refresh=3600 visibility=[Vent_Temp_Chart_Period==1]
 				Chart item=Vent_Temp_Chart period=W refresh=3600 visibility=[Vent_Temp_Chart_Period==2]
 				Chart item=Vent_Temp_Chart period=M refresh=3600 visibility=[Vent_Temp_Chart_Period==3]
                 Chart item=Vent_Temp_Chart period=Y refresh=3600 visibility=[Vent_Temp_Chart_Period==4]
 			}
-			Frame label="Графік швидкості вентиляторів" {
-				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+			Frame label="Fan speed" {
+				Switch item=Vent_FanSpeed_Chart_Period label="Fan speed, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Vent_FanSpeed_Chart period=h refresh=600 visibility=[Vent_FanSpeed_Chart_Period==0, Vent_FanSpeed_Chart_Period=="Uninitialized"]
 				Chart item=Vent_FanSpeed_Chart period=D refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==1]
 				Chart item=Vent_FanSpeed_Chart period=W refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==2]
 				Chart item=Vent_FanSpeed_Chart period=M refresh=3600 visibility=[Vent_FanSpeed_Chart_Period==3]
 			}
         }
-		Group item=Gas label="Газ" icon="gas" {
+		Group item=Gas label="Gas" icon="gas" {
 			Frame {
 				Text item=WB_GasCounter
 			}
-			Frame label="Споживання" {			
+			Frame label="Consumption" {			
 				Text item=Gas_Cons
 				Text item=Gas_ConsD
+				Text item=Gas_ConsDDHW
 				Text item=Gas_ConsMN
 				Text item=Gas_ConsM
             }
 
 			Frame {
-                Switch item=Gas_Cons_Chart_Period label="Споживання, m3/h" mappings=[0="Год.", 1="День", 2="Тиж."]
+                Switch item=Gas_Cons_Chart_Period label="Consumption, m3/h" mappings=[0="Hour", 1="Day", 2="Week"]
 				Chart item=Gas_Cons_Chart period=h refresh=600 visibility=[Gas_Cons_Chart_Period==0, Gas_Cons_Chart_Period=="Uninitialized"]
 				Chart item=Gas_Cons_Chart period=D refresh=3600 visibility=[Gas_Cons_Chart_Period==1]
 				Chart item=Gas_Cons_Chart period=W refresh=3600 visibility=[Gas_Cons_Chart_Period==2]
 			}
 
             Frame {
-                Switch item=Gas_ConsD_Chart_Period label="Споживання, m3/h" mappings=[0="Тиж.", 1="Міс.", 2="Рік"]
+                Switch item=Gas_ConsD_Chart_Period label="Consumption, m3/h" mappings=[0="Week", 1="Month", 2="Year"]
 				Chart item=Gas_ConsD_Chart period=W refresh=3600 visibility=[Gas_ConsD_Chart_Period==0, Gas_ConsD_Chart_Period=="Uninitialized"]
 				Chart item=Gas_ConsD_Chart period=M refresh=3600 visibility=[Gas_ConsD_Chart_Period==1]
 				Chart item=Gas_ConsD_Chart period=Y refresh=3600 visibility=[Gas_ConsD_Chart_Period==2]
 			}
 		}
 
-		Group item=Water label="Вода" icon="water" {
+		Group item=Water label="Water" icon="water" {
 			Frame  {
 				Switch item=WB_Valve
 				Switch item=WB_DHW_En
@@ -114,7 +115,7 @@ sitemap home label="Main menu"
             }
 
 			Frame {
-				Switch item=Water_Press_Chart_Period label="Тиск, ppi" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Switch item=Water_Press_Chart_Period label="Pressure, ppi" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Water_Press_Chart period=h refresh=600 visibility=[Water_Press_Chart_Period==0, Water_Press_Chart_Period=="Uninitialized"]
 				Chart item=Water_Press_Chart period=D refresh=3600 visibility=[Water_Press_Chart_Period==1]
 				Chart item=Water_Press_Chart period=W refresh=3600 visibility=[Water_Press_Chart_Period==2]
@@ -122,7 +123,7 @@ sitemap home label="Main menu"
 				Chart item=Water_Press_Chart period=Y refresh=3600 visibility=[Water_Press_Chart_Period==4]
 			}
             Frame {
-				Switch item=Boiler_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Switch item=Boiler_Temp_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Boiler_Temp_Chart period=h refresh=600 visibility=[Boiler_Temp_Chart_Period==0, Boiler_Temp_Chart_Period=="Uninitialized"]
 				Chart item=Boiler_Temp_Chart period=D refresh=3600 visibility=[Boiler_Temp_Chart_Period==1]
 				Chart item=Boiler_Temp_Chart period=W refresh=3600 visibility=[Boiler_Temp_Chart_Period==2]
@@ -132,7 +133,7 @@ sitemap home label="Main menu"
 
 		}
 
-		Group item=Power label="Електроенергія" icon="energy" {
+		Group item=Power label="Electricity" icon="energy" {
 			Frame  {
 				Text item=Power_Energy
 			}
@@ -141,14 +142,14 @@ sitemap home label="Main menu"
 				Text item=Power_Current
 				Text item=Power_PowerH
 			}
-			Frame label="Споживання" {
+			Frame label="Consumption" {
 				Text item=Power_Cons
 				Text item=Power_ConsMN
 				Text item=Power_ConsM
 			}
 
 			Frame {
-				Switch item=Power_Volt_Sens_Chart_Period label="Напруга, V" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Volt_Sens_Chart_Period label="Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Power_Volt_Sens_Chart period=h refresh=600 visibility=[Power_Volt_Sens_Chart_Period==0, Power_Volt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Volt_Sens_Chart period=D refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==1]
 				Chart item=Power_Volt_Sens_Chart period=W refresh=3600 visibility=[Power_Volt_Sens_Chart_Period==2]
@@ -156,7 +157,7 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Power_Curr_Sens_Chart_Period label="Струм, A" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Curr_Sens_Chart_Period label="Current, A" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Power_Curr_Sens_Chart period=h refresh=600 visibility=[Power_Curr_Sens_Chart_Period==0, Power_Curr_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Curr_Sens_Chart period=D refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==1]
 				Chart item=Power_Curr_Sens_Chart period=W refresh=3600 visibility=[Power_Curr_Sens_Chart_Period==2]
@@ -164,7 +165,7 @@ sitemap home label="Main menu"
 			}
 
 			Frame {
-				Switch item=Power_Wt_Sens_Chart_Period label="Потужність, W" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс."]
+				Switch item=Power_Wt_Sens_Chart_Period label="Power, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Power_Wt_Sens_Chart period=h refresh=600 visibility=[Power_Wt_Sens_Chart_Period==0, Power_Wt_Sens_Chart_Period=="Uninitialized"]
 				Chart item=Power_Wt_Sens_Chart period=D refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==1]
 				Chart item=Power_Wt_Sens_Chart period=W refresh=3600 visibility=[Power_Wt_Sens_Chart_Period==2]
@@ -172,7 +173,7 @@ sitemap home label="Main menu"
 			}
             
             Frame {
-                Switch item=Power_ConsD_Chart_Period label="Споживання, kWh" mappings=[0="Тиж.", 1="Міс.", 2="Рік"]
+                Switch item=Power_ConsD_Chart_Period label="Consumption, kWh" mappings=[0="Week", 1="Month", 2="Year"]
 				Chart item=Power_ConsD_Chart period=W refresh=600 visibility=[Power_ConsD_Chart_Period==0, Power_ConsD_Chart_Period=="Uninitialized"]
 				Chart item=Power_ConsD_Chart period=M refresh=3600 visibility=[Power_ConsD_Chart_Period==1]
 				Chart item=Power_ConsD_Chart period=Y refresh=3600 visibility=[Power_ConsD_Chart_Period==2]
@@ -180,8 +181,8 @@ sitemap home label="Main menu"
 
 		}
 
-		Group item=Heaters label="Опалення" icon="heating" {
-		    Frame label="Статус" {
+		Group item=Heaters label="Heating" icon="heating" {
+		    Frame label="Status" {
    				Text item=WB_CH_On
    				Text item=WB_DHW_On
    				Text item=WB_Flame
@@ -194,7 +195,7 @@ sitemap home label="Main menu"
 
 			}
             Frame {
-				Switch item=Heater_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Switch item=Heater_Temp_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Heater_Temp_Chart period=h refresh=600 visibility=[Heater_Temp_Chart_Period==0, Heater_Temp_Chart_Period=="Uninitialized"]
 				Chart item=Heater_Temp_Chart period=D refresh=3600 visibility=[Heater_Temp_Chart_Period==1]
 				Chart item=Heater_Temp_Chart period=W refresh=3600 visibility=[Heater_Temp_Chart_Period==2]
@@ -203,7 +204,7 @@ sitemap home label="Main menu"
 			}
 		}
 
-		Group item=Weather label="Погода" icon="sun_clouds" {
+		Group item=Weather label="Weather" icon="sun_clouds" {
 
     Frame label="Current local weather" {
         Text item=localLastMeasurement
@@ -324,7 +325,7 @@ sitemap home label="Main menu"
         Text item=localDailyforecastHours24SnowVolume
     }
             Frame {
-				Switch item=Weather_Temp_Chart_Period label="Температура, °C" mappings=[0="Год.", 1="День", 2="Тиж.", 3="Міс.", 4="Рік"]
+				Switch item=Weather_Temp_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 				Chart item=Weather_Temp_Chart period=h refresh=600 visibility=[Weather_Temp_Chart_Period==0, Weather_Temp_Chart_Period=="Uninitialized"]
 				Chart item=Weather_Temp_Chart period=D refresh=3600 visibility=[Weather_Temp_Chart_Period==1]
 				Chart item=Weather_Temp_Chart period=W refresh=3600 visibility=[Weather_Temp_Chart_Period==2]
@@ -332,7 +333,7 @@ sitemap home label="Main menu"
                 Chart item=Weather_Temp_Chart period=Y refresh=3600 visibility=[Weather_Temp_Chart_Period==4]
 			}
 }
-		Group item=Config label="Налаштування" icon="settings" {
+		Group item=Config label="Settings" icon="settings" {
 
 			Frame label="Boiler" {
                 Setpoint item=WB_CH_Spt label="CH Setpoint [%d °C]" minValue=10 maxValue=80 step=1
