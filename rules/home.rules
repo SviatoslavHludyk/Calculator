@@ -7,24 +7,11 @@ rule "Gas calc minute"
 		else Gas_Cons.postUpdate(0)
 end
 
-rule "Gas calc"
-	when 
-		Time cron "0 0/15 * * * ?"
-	then
-		val Number gcons_today = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay(),"rrd4j")
-
-		if (gcons_today !== null) Gas_ConsMN.postUpdate(gcons_today)
-
-end
-
 rule "Gas calc yest"
 	when 
 		Time cron "0 0 0 * * ?"
 	then
-		val Number gcons_yest = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay().minusDays(1),"rrd4j");
 		val Number gcons_month = WB_GasCounter.deltaSince(now.withTimeAtStartOfDay().withDayOfMonth(1),"rrd4j")
-
-		if (gcons_yest !== null) Gas_ConsD.postUpdate(gcons_yest)
 		if (gcons_month !== null) Gas_ConsM.postUpdate(gcons_month)
 
 end

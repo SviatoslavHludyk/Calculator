@@ -30,56 +30,55 @@ Group                   Vent_FanSpeed_Chart                                     
 Group                   Weather_Temp_Chart                                                                                                      (Weather, Temp)                         
 
 
-Number                  Power_Energy                            "Energy [%.3f kWh]"                                            <energy>        (Power)                                 { channel="modbus:data:312f4244:number" }
+Number                  Power_Energy                            "Energy [%.3f kWh]"                                             <energy>        (Power)                                 { channel="modbus:data:312f4244:number" }
 Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)          { channel="modbus:data:5bf2516b:number" }
-Number                  Power_Current                           "Current [%.1f A]"                                                <energy>        (Power, Power_Curr_Sens_Chart)          { channel="modbus:data:ef0ab11d:number" }
-Number                  Power_PowerH                            "Power [%d W]"                                             <energy>        (Power, Power_Wt_Sens_Chart)            { channel="modbus:data:1fd5096a:number" }
+Number                  Power_Current                           "Current [%.1f A]"                                              <energy>        (Power, Power_Curr_Sens_Chart)          { channel="modbus:data:ef0ab11d:number" }
+Number                  Power_PowerH                            "Power [%d W]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)            { channel="modbus:data:1fd5096a:number" }
 
 Number                  Power_Volt_Sens_Chart_Period            "Period"                                                                                                                
 Number                  Power_Curr_Sens_Chart_Period            "Period"                                                                                                                
 Number                  Power_Wt_Sens_Chart_Period              "Period"                                                                                                                
 Number                  Power_ConsD_Chart_Period                "Period"                                                                                                                
 
-Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                   <energy>        (Power, Power_ConsD_Chart)              
-Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                <energy>        (Power)                                 
-Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                <energy>        (Power)                                 
+Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                    <energy>        (Power, Power_ConsD_Chart)              
+Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                        <energy>        (Power)                                 
+Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                        <energy>        (Power)                                 
 
 
-Number                  WB_GasCounter                           "Counter [%.2f m3]"                                           <gas>           (Gas)                                   { channel="mqtt:topic:cf2b98f3:GazCounter" }
-Number                  Gas_Cons                                "Consumption [%.2f m3/h]"                                            <gas>           (Gas, Gas_Cons_Chart)                   
-Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                    <gas>           (Gas, Gas_ConsD_Chart)                  
-Number                  Gas_ConsDDHW                            "Cons. for DHW [%.2f m3]"                                  <gas>           (Gas, Gas_ConsD_Chart)                  { channel="mqtt:topic:cf2b98f3:GasDHW" }
-Number                  Gas_ConsMN                              "Cons. today [%.2f m3]"                                 <gas>           (Gas)                                   
-Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                 <gas>           (Gas)                                   
+Number                  WB_GasCounter                           "Counter [%.2f m3]"                                             <gas>           (Gas)                                   { channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number                  Gas_Cons                                "Consumption [%.2f m3/h]"                                       <gas>           (Gas, Gas_Cons_Chart)                   
+Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                     <gas>           (Gas, Gas_ConsD_Chart)                  { channel="mqtt:topic:cf2b98f3:GasConsYest" }
+Number                  Gas_ConsDDHW                            "Cons. for DHW [%.2f m3]"                                       <gas>           (Gas, Gas_ConsD_Chart)                  { channel="mqtt:topic:cf2b98f3:GasDHW" }
+Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                         <gas>           (Gas)                                   
 Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                
 Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                
 
-Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                           <carbondioxide> (Sensors, Sensors_COlev_Chart)          
-Number                  RoomHum                                 "Humidity [%.1f %%]"                                           <humidity>      (Sensors, Sensors_HumCO_Chart)          
+Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart)          
+Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart)          
 Number                  RoomTemp                                "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       
-Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                              <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:KidsRoom" }
-Number                  WB_Corridor                             "Corridor [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Corridor" }
+Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number                  WB_Corridor                             "Corridor [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Corridor" }
 //Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
-Number                  WB_Hall                                 "Hall [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
-Number                  WB_Entrance                             "Entrance [%.2f °C]"                                          <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
+Number                  WB_Hall                                 "Hall [%.2f °C]"                                                <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Hall" }
+Number                  WB_Entrance                             "Entrance [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Entrance" }
 
 Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:Boiler" }
-Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                        <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:RCPump" }
-Number                  WB_HotWater                             "Hot water [%.2f °C]"                                         <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
+Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                       <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:RCPump" }
+Number                  WB_HotWater                             "Hot water [%.2f °C]"                                           <temperature>   (Sensors, Boiler_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:HotWater" }
 Number                  WB_ManifIn                              "Manifold in [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifIn" }
 Number                  WB_ManifOut                             "Manifold out [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:ManifOut" }
-Number                  WB_Heater                               "Heater [%.2f °C]"                                               <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
+Number                  WB_Heater                               "Heater [%.2f °C]"                                              <temperature>   (Sensors, Heater_Temp_Chart)            { channel="mqtt:topic:cf2b98f3:CHTemperature" }
 
-Switch                  WB_DHW_En                               "Hot water enabled"                                                 <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
-Switch                  WB_Flame                                "Flame"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
-Switch                  WB_CH_On                                "Heating"                                                      <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
-Switch                  WB_DHW_On                               "Hot water on"                                                 <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
-Number                  WB_DHW_Spt                              "Temp. water [%.1f °C]"                                           <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
+Switch                  WB_DHW_En                               "Hot water enabled"                                             <water>         (Water, Heaters)                        { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
+Switch                  WB_Flame                                "Flame"                                                         <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:Flame_On" }
+Switch                  WB_CH_On                                "Heating"                                                       <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:CH_ON" }
+Switch                  WB_DHW_On                               "Hot water on"                                                  <fire>          (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHW_ON" }
+Number                  WB_DHW_Spt                              "Temp. water [%.1f °C]"                                         <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
 Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                               { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
-Number                  WB_Modulation                           "Modulation [%d %%]"                                     <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
+Number                  WB_Modulation                           "Modulation [%d %%]"                                            <heating>       (Heaters)                               { channel="mqtt:topic:cf2b98f3:Modulation" }
 
-Number                  WB_AirSetpoint                          "Setpoint [%d °C]"                                            <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Setpoint" }
-Number                  WB_VentMode                             "Mode"                                                         <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Mode" }
+Number                  WB_AirSetpoint                          "Setpoint [%d °C]"                                              <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Setpoint" }
+Number                  WB_VentMode                             "Mode"                                                          <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Mode" }
 Number                  WB_FanSpeed                             "Fan speed"                                                     <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:FanSpeed" }
 Switch                  WB_EcoMode                              "Eco Mode"                                                      <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:EcoMode" }
 Number                  WB_AirOutdoor                           "Outdoor Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:OutdoorAir" }
@@ -88,7 +87,7 @@ Number                  WB_AirAfterRecuperator                  "After Recuperat
 Number                  WB_AirDefrostsensor                     "Defrost sensor [%.1f °C]"                                      <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:Defrostsensor" }
 Number                  WB_AirExhaust                           "Exhaust Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)           { channel="mqtt:topic:cf2b98f3:ExhaustAir" }
 
-Number                  WB_SFanSpeed                            "Fans speed [%d %%]"                                          <fan>           (Sensors, Vent, Vent_FanSpeed_Chart)    { channel="mqtt:topic:cf2b98f3:SFanSpeed" }
+Number                  WB_SFanSpeed                            "Fans speed [%d %%]"                                            <fan>           (Sensors, Vent, Vent_FanSpeed_Chart)    { channel="mqtt:topic:cf2b98f3:SFanSpeed" }
 Switch                  WB_VentDampers                          "Air Dampers"                                                   <rollershutter> (Vent)                                  { channel="mqtt:topic:cf2b98f3:AirDampers" }
 Switch                  WB_VentRecuperator                      "Recuperator"                                                   <fan>           (Vent)                                  { channel="mqtt:topic:cf2b98f3:Recuperator" }
 Switch                  WB_VentCompressor                       "Compressor"                                                    <pump>          (Vent)                                  { channel="mqtt:topic:cf2b98f3:Compressor" }
@@ -119,11 +118,51 @@ Number                  Weather_Temp_Chart_Period               "Period"
 
 DateTime                Date                                    "Date [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                              { channel="ntp:ntp:local:dateTime"}
 
-Number                  WB_Pressure                             "Pressure [%.2f ppi]"                                               <pressure>      (Sensors, Water, Water_Press_Chart)     { channel="mqtt:topic:cf2b98f3:water_pressure" }
-Switch                  WB_Valve                                "Main Valve"                                                          <water>         (Water)                                 { channel="mqtt:topic:cf2b98f3:water_valve" }
-Switch                  WB_RPump                                "Recirculation"                                                  <pump>          (Water)                                 { channel="mqtt:topic:cf2b98f3:recirc_pump" }
+Number                  WB_Pressure                             "Pressure [%.2f ppi]"                                           <pressure>      (Sensors, Water, Water_Press_Chart)     { channel="mqtt:topic:cf2b98f3:water_pressure" }
+Switch                  WB_Valve                                "Main Valve"                                                    <water>         (Water)                                 { channel="mqtt:topic:cf2b98f3:water_valve" }
+Switch                  WB_RPump                                "Recirculation"                                                 <pump>          (Water)                                 { channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
 Number                  Water_Press_Chart_Period                "Period"                                                                                                                
+
+
+Switch                  HallAirconPower                                                                                                                                                 { channel="greeair:greeairthing:fb747a55:powerchannel" }
+Number                  HallAirconMode                                                                                                                                                  { channel="greeair:greeairthing:fb747a55:modechannel" }
+Switch                  HallAirconTurbo                                                                                                                                                 { channel="greeair:greeairthing:fb747a55:turbochannel" }
+Switch                  HallAirconLight                                                                                                                                                 { channel="greeair:greeairthing:fb747a55:lightchannel" }
+Number                  HallAirconTemp                          "Temperature [%d °C]"                                                                                                   {channel="greeair:greeairthing:fb747a55:tempchannel" }
+// Number HallAirconTempSet             	      { channel="greeair:greeairthing:fb747a55:tempchannel" }
+Number                  HallAirconSwingVertical                                                                                                                                         { channel="greeair:greeairthing:fb747a55:swingverticalchannel" }
+Number                  HallAirconFanSpeed                                                                                                                                              { channel="greeair:greeairthing:fb747a55:windspeedchannel" }
+Switch                  HallAirconAir                                                                                                                                                   { channel="greeair:greeairthing:fb747a55:airchannel" }
+Switch                  HallAirconDry                                                                                                                                                   { channel="greeair:greeairthing:fb747a55:drychannel" }
+Switch                  HallAirconHealth                                                                                                                                                { channel="greeair:greeairthing:fb747a55:healthchannel" }
+Switch                  HallAirconPowerSaving                                                                                                                                           { channel="greeair:greeairthing:fb747a55:pwrsavchannel" }
+
+Switch                  BedroomAirconPower                                                                                                                                              { channel="greeair:greeairthing:d14914d4:powerchannel" }
+Number                  BedroomAirconMode                                                                                                                                               { channel="greeair:greeairthing:d14914d4:modechannel" }
+Switch                  BedroomAirconTurbo                                                                                                                                              { channel="greeair:greeairthing:d14914d4:turbochannel" }
+Switch                  BedroomAirconLight                                                                                                                                              { channel="greeair:greeairthing:d14914d4:lightchannel" }
+Number                  BedroomAirconTemp                       "Temperature [%d °C]"                                                                                                   {channel="greeair:greeairthing:d14914d4:tempchannel" }
+// Number BedroomAirconTempSet             	      { channel="greeair:greeairthing:d14914d4:tempchannel" }
+Number                  BedroomAirconSwingVertical                                                                                                                                      { channel="greeair:greeairthing:d14914d4:swingverticalchannel" }
+Number                  BedroomAirconFanSpeed                                                                                                                                           { channel="greeair:greeairthing:d14914d4:windspeedchannel" }
+Switch                  BedroomAirconAir                                                                                                                                                { channel="greeair:greeairthing:d14914d4:airchannel" }
+Switch                  BedroomAirconDry                                                                                                                                                { channel="greeair:greeairthing:d14914d4:drychannel" }
+Switch                  BedroomAirconHealth                                                                                                                                             { channel="greeair:greeairthing:d14914d4:healthchannel" }
+Switch                  BedroomAirconPowerSaving                                                                                                                                        { channel="greeair:greeairthing:d14914d4:pwrsavchannel" }
+
+Switch                  KidsroomAirconPower                                                                                                                                             { channel="greeair:greeairthing:5fce3169:powerchannel" }
+Number                  KidsroomAirconMode                                                                                                                                              { channel="greeair:greeairthing:5fce3169:modechannel" }
+Switch                  KidsroomAirconTurbo                                                                                                                                             { channel="greeair:greeairthing:5fce3169:turbochannel" }
+Switch                  KidsroomAirconLight                                                                                                                                             { channel="greeair:greeairthing:5fce3169:lightchannel" }
+Number                  KidsroomAirconTemp                      "Temperature [%d °C]"                                                                                                   {channel="greeair:greeairthing:5fce3169:tempchannel" }
+// Number KidsroomAirconTempSet             	      { channel="greeair:greeairthing:5fce3169:tempchannel" }
+Number                  KidsroomAirconSwingVertical                                                                                                                                     { channel="greeair:greeairthing:5fce3169:swingverticalchannel" }
+Number                  KidsroomAirconFanSpeed                                                                                                                                          { channel="greeair:greeairthing:5fce3169:windspeedchannel" }
+Switch                  KidsroomAirconAir                                                                                                                                               { channel="greeair:greeairthing:5fce3169:airchannel" }
+Switch                  KidsroomAirconDry                                                                                                                                               { channel="greeair:greeairthing:5fce3169:drychannel" }
+Switch                  KidsroomAirconHealth                                                                                                                                            { channel="greeair:greeairthing:5fce3169:healthchannel" }
+Switch                  KidsroomAirconPowerSaving                                                                                                                                       { channel="greeair:greeairthing:5fce3169:pwrsavchannel" }
 
 
 DateTime                localLastMeasurement                    "Timestamp of last measurement [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:current#time-stamp" }
