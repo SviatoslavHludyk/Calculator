@@ -41,18 +41,18 @@ sitemap home label="Main menu"{
 
 	Group item=Vent label="Ventilation" icon="fan" {
 		Frame label="Settings" {
+			Switch item=WB_VentMode label="Mode" mappings=[0="Off", 4="Auto"]
 			Setpoint item=WB_AirSetpoint label="Setpoint [%d °C]" minValue=15 maxValue=30 step=1
-				Selection item=WB_VentMode label="Mode" mappings=[0="Off", 1="Fan", 2="Heating", 3="Cooling", 4="Auto", 5="Schedule"]
-				Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
-				Switch item=WB_EcoMode
+			Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
+			Switch item=WB_EcoMode
 		}
 		Frame label="Temp, °C" {
 			Text item=WB_AirOutdoor valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=WB_AirSupply valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=WB_AirAfterRecuperator valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=WB_AirDefrostsensor valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=WB_AirExhaust valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=WB_SFanSpeed valuecolor=[ > 75="red",  > 45="orange",  > 35="green",  > 15="blue"]
+			Text item=WB_AirSupply valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+			Text item=WB_AirAfterRecuperator valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+			Text item=WB_AirDefrostsensor valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+			Text item=WB_AirExhaust valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+			Text item=WB_SFanSpeed valuecolor=[ > 75="red",  > 45="orange",  > 35="green",  > 15="blue"]
 		}
 		Frame label="Status" {
 			Text item=WB_VentDampers
@@ -76,6 +76,7 @@ sitemap home label="Main menu"{
 				Chart item=Vent_FanSpeed_Chart period=M refresh=3600 visibility=[Vent_FanSpeed_Chart_Period == 3]
 		}
 	}
+
 		Group item=Hall label="Air Conditioning Hall" icon="flow" {
 
 			Frame label="Controls"{

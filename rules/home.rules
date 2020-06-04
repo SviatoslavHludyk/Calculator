@@ -85,7 +85,7 @@ end
 
 rule "BRC_On_OH_Update"
 when
-	Item BRC_On received command
+	Item WB_BRC_On received command
 then
 	if(BedroomAirconPower.state != receivedCommand) BedroomAirconPower.sendCommand(receivedCommand)
 		logInfo("BRC", "BRC_On received command: " + receivedCommand.toString)
@@ -93,15 +93,15 @@ end
 
 rule "BRC_On_WB_Update"
 when
-	Item BedroomAirconPower received update
+	Item BedroomAirconPower received command
 then
-    if(BRC_On.state != BedroomAirconPower.state) BRC_On.postUpdate(BedroomAirconPower.state)
-	logInfo("BRC", "BedroomAirconPower received update: " + BedroomAirconPower.state.toString)
+    if(WB_BRC_On.state != receivedCommand) WB_BRC_On.sendCommand(receivedCommand)
+	logInfo("BRC", "BedroomAirconPower received update: " + receivedCommand.toString)
 end
 
 rule "BRC_Mode_OH_Update"
 when
-	Item BRC_Mode received command
+	Item WB_BRC_Mode received command
 then
 	if(BedroomAirconMode.state != receivedCommand) BedroomAirconMode.sendCommand(receivedCommand)
 	logInfo("BRC", "BRC_Mode received command: " + receivedCommand.toString)
@@ -109,15 +109,15 @@ end
 
 rule "BRC_Mode_WB_Update"
 when
-	Item BedroomAirconMode received update
+	Item BedroomAirconMode received command
 then
-    if(BRC_Mode.state != BedroomAirconMode.state) BRC_Mode.postUpdate(BedroomAirconMode.state)
-	logInfo("BRC", "BedroomAirconMode received update: " + BedroomAirconMode.state.toString)
+    if(WB_BRC_Mode.state != receivedCommand) WB_BRC_Mode.sendCommand(receivedCommand)
+	logInfo("BRC", "BedroomAirconMode received update: " + receivedCommand.toString)
 end
 
 rule "BRC_Temp_OH_Update"
 when
-	Item BRC_Temp received command
+	Item WB_BRC_Temp received command
 then
 	if(BedroomAirconTemp.state != receivedCommand) BedroomAirconTemp.sendCommand(receivedCommand)
 	logInfo("BRC", "BRC_Temp received command: " + receivedCommand.toString)
@@ -125,15 +125,15 @@ end
 
 rule "BRC_Temp_WB_Update"
 when
-	Item BedroomAirconTemp received update
+	Item BedroomAirconTemp received command
 then
-    if(BRC_Temp.state != BedroomAirconTemp.state) BRC_Temp.postUpdate(BedroomAirconTemp.state)
-	logInfo("BRC", "BedroomAirconTemp received update: " + BedroomAirconTemp.state.toString)
+    if(WB_BRC_Temp.state != receivedCommand) WB_BRC_Temp.sendCommand(receivedCommand)
+	logInfo("BRC", "BedroomAirconTemp received update: " + receivedCommand.toString)
 end
 
 rule "BRC_Speed_OH_Update"
 when
-	Item BRC_Speed  received command
+	Item WB_BRC_Speed  received command
 then
 	if(BedroomAirconFanSpeed.state != receivedCommand) BedroomAirconFanSpeed.sendCommand(receivedCommand)
 	logInfo("BRC", "BRC_Speed received command: " + receivedCommand.toString)
@@ -141,8 +141,8 @@ end
 
 rule "BRC_Speed_WB_Update"
 when
-	Item BedroomAirconFanSpeed received update
+	Item BedroomAirconFanSpeed received command
 then
-    if(BRC_Speed.state != BedroomAirconFanSpeed.state) BRC_Speed.postUpdate(BedroomAirconFanSpeed.state)
-	logInfo("BRC", "BedroomAirconFanSpeed received update: " + BedroomAirconFanSpeed.state.toString)
+    if(WB_BRC_Speed.state != receivedCommand) WB_BRC_Speed.sendCommand(receivedCommand)
+	logInfo("BRC", "BedroomAirconFanSpeed received update: " + receivedCommand.toString)
 end
