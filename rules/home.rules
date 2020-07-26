@@ -20,10 +20,11 @@ rule "Power calc"
 	when 
 		Time cron "0 0/5 * * * ?"
 	then
-val Number pcons = Power_Energy.deltaSince(now.minusDays(1))
-if (pcons !== null) Power_Cons.postUpdate(pcons)
+
 val Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
 if (pconsmn !== null) Power_ConsMN.postUpdate(pconsmn)
+val Number pcons = Power_Energy.deltaSince(now.minusDays(1).withTimeAtStartOfDay())
+if (pcons !== null) Power_Cons.postUpdate(pcons - pconsmn)
 val Number pconsm = Power_Energy.deltaSince(now.withTimeAtStartOfDay().withDayOfMonth(1))
 if (pconsm !== null) Power_ConsM.postUpdate(pconsm)
 end
