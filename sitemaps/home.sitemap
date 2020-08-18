@@ -99,6 +99,7 @@ sitemap home label="Main menu"{
 	Group item=Kidsroom label="Air Conditioning Kidsroom" icon="flow" {
 
 		Frame label="Controls"{
+					Switch item=WB_KRC_Auto label="Auto" icon=switch
 			Switch item=KidsroomAirconPower label="Power" icon=switch
 			Selection item=KidsroomAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
 			Setpoint item=KidsroomAirconTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
@@ -118,6 +119,7 @@ sitemap home label="Main menu"{
 Group item=Bedroom label="Air Conditioning Bedroom" icon="flow" {
 
 	Frame label="Controls"{
+		Switch item=WB_BRC_Auto label="Auto" icon=switch
 		Switch item=BedroomAirconPower label="Power" icon=switch
 		Selection item=BedroomAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
 		Setpoint item=BedroomAirconTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1

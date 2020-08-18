@@ -24,7 +24,7 @@ rule "Power calc"
 val Number pconsmn = Power_Energy.deltaSince(now.withTimeAtStartOfDay())
 if (pconsmn !== null) Power_ConsMN.postUpdate(pconsmn)
 val Number pcons = Power_Energy.deltaSince(now.minusDays(1).withTimeAtStartOfDay())
-if (pcons !== null) Power_Cons.postUpdate(pcons - pconsmn)
+if (pcons !== null && pconsmn !== null) Power_Cons.postUpdate(pcons - pconsmn)
 val Number pconsm = Power_Energy.deltaSince(now.withTimeAtStartOfDay().withDayOfMonth(1))
 if (pconsm !== null) Power_ConsM.postUpdate(pconsm)
 end
@@ -146,4 +146,75 @@ when
 then
     if(WB_BRC_Speed.state != receivedCommand) WB_BRC_Speed.sendCommand(receivedCommand)
 	logInfo("BRC", "BedroomAirconFanSpeed received update: " + receivedCommand.toString)
+end
+
+
+
+
+
+
+
+
+rule "KRC_On_OH_Update"
+when
+	Item WB_KRC_On received command
+then
+	if(KidsroomAirconPower.state != receivedCommand) KidsroomAirconPower.sendCommand(receivedCommand)
+		logInfo("KRC", "KRC_On received command: " + receivedCommand.toString)
+end
+
+rule "KRC_On_WB_Update"
+when
+	Item KidsroomAirconPower received command
+then
+    if(WB_KRC_On.state != receivedCommand) WB_KRC_On.sendCommand(receivedCommand)
+	logInfo("KRC", "KidsroomAirconPower received update: " + receivedCommand.toString)
+end
+
+rule "KRC_Mode_OH_Update"
+when
+	Item WB_KRC_Mode received command
+then
+	if(KidsroomAirconMode.state != receivedCommand) KidsroomAirconMode.sendCommand(receivedCommand)
+	logInfo("KRC", "KRC_Mode received command: " + receivedCommand.toString)
+end
+
+rule "KRC_Mode_WB_Update"
+when
+	Item KidsroomAirconMode received command
+then
+    if(WB_KRC_Mode.state != receivedCommand) WB_KRC_Mode.sendCommand(receivedCommand)
+	logInfo("KRC", "KidsroomAirconMode received update: " + receivedCommand.toString)
+end
+
+rule "KRC_Temp_OH_Update"
+when
+	Item WB_KRC_Temp received command
+then
+	if(KidsroomAirconTemp.state != receivedCommand) KidsroomAirconTemp.sendCommand(receivedCommand)
+	logInfo("KRC", "KRC_Temp received command: " + receivedCommand.toString)
+end
+
+rule "KRC_Temp_WB_Update"
+when
+	Item KidsroomAirconTemp received command
+then
+    if(WB_KRC_Temp.state != receivedCommand) WB_KRC_Temp.sendCommand(receivedCommand)
+	logInfo("KRC", "KidsroomAirconTemp received update: " + receivedCommand.toString)
+end
+
+rule "KRC_Speed_OH_Update"
+when
+	Item WB_KRC_Speed  received command
+then
+	if(KidsroomAirconFanSpeed.state != receivedCommand) KidsroomAirconFanSpeed.sendCommand(receivedCommand)
+	logInfo("KRC", "KRC_Speed received command: " + receivedCommand.toString)
+end
+
+rule "KRC_Speed_WB_Update"
+when
+	Item KidsroomAirconFanSpeed received command
+then
+    if(WB_KRC_Speed.state != receivedCommand) WB_KRC_Speed.sendCommand(receivedCommand)
+	logInfo("KRC", "KidsroomAirconFanSpeed received update: " + receivedCommand.toString)
 end

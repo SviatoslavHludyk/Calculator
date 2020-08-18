@@ -155,11 +155,17 @@ Switch                  BedroomAirconDry                                        
 Switch                  BedroomAirconHealth                                                                                                     (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:health" }
 Switch                  BedroomAirconPowerSaving                                                                                                (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:powersave " }
 
+Switch                  WB_BRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:BRC_Auto" }
 Switch                  WB_BRC_On                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:BRC_On" }
 Number                  WB_BRC_Mode                           "[%d]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:BRC_Mode" }
 Number                  WB_BRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:BRC_Temp" }
 Number                  WB_BRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:BRC_Speed" }
 
+Switch                  WB_KRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_Auto" }
+Switch                  WB_KRC_On                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_On" }
+Number                  WB_KRC_Mode                           "[%d]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:KRC_Mode" }
+Number                  WB_KRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:KRC_Temp" }
+Number                  WB_KRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:KRC_Speed" }
 
 Switch                  KidsroomAirconPower                                                                                                     (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:power" }
 Number                  KidsroomAirconMode                                                                                                      (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:mode" }
