@@ -82,12 +82,16 @@ sitemap home label="Main menu"{
 			Frame label="Controls"{
 				Switch item=HallAirconPower label="Power" icon=switch
 				Selection item=HallAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
-				Setpoint item=HallAirconTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
-			Selection item=HallAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
-			Selection item=HallAirconSwingVertical label="Fan-Swing Direction" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
+				Setpoint item=HallAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
+				Text item=HallAirconCurrentTemp label="Current temperature [%.1f °C]" icon="temperature"
+			}
+			Frame label="Fan settings"{
+				Selection item=HallAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
+				Selection item=HallAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
+		        Selection item=HallAirconSwingHorizontal label="Direction H" mappings=[0="Off", 1="Full", 2="Left", 3="Mid-left", 4="Mid", 5="Mid-right", 6="Right"] icon=flow
 		}
 		Frame label="Options"{
-			Switch item=HallAirconTurbo label="Turbo" icon=fan
+				Switch item=HallAirconTurbo label="Turbo" icon=fan
 				Switch item=HallAirconLight label="Light" icon=light
 				Switch item=HallAirconAir label="Air" icon=flow
 				Switch item=HallAirconDry label="Dry" icon=rain
@@ -99,12 +103,16 @@ sitemap home label="Main menu"{
 	Group item=Kidsroom label="Air Conditioning Kidsroom" icon="flow" {
 
 		Frame label="Controls"{
-					Switch item=WB_KRC_Auto label="Auto" icon=switch
-			Switch item=KidsroomAirconPower label="Power" icon=switch
-			Selection item=KidsroomAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
-			Setpoint item=KidsroomAirconTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
+		Switch item=WB_KRC_Auto label="Auto" icon=switch
+		Switch item=KidsroomAirconPower label="Power" icon=switch
+		Selection item=KidsroomAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
+		Setpoint item=KidsroomAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
+		Text item=KidsroomAirconCurrentTemp label="Current temperature [%.1f °C]" icon="temperature"
+					}
+			Frame label="Fan settings"{
 		Selection item=KidsroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
-		Selection item=KidsroomAirconSwingVertical label="Fan-Swing Direction" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
+		Selection item=KidsroomAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
+        Selection item=KidsroomAirconSwingHorizontal label="Direction H" mappings=[0="Off", 1="Full", 2="Left", 3="Mid-left", 4="Mid", 5="Mid-right", 6="Right"] icon=flow
 	}
 	Frame label="Options"{
 		Switch item=KidsroomAirconTurbo label="Turbo" icon=fan
@@ -122,12 +130,16 @@ Group item=Bedroom label="Air Conditioning Bedroom" icon="flow" {
 		Switch item=WB_BRC_Auto label="Auto" icon=switch
 		Switch item=BedroomAirconPower label="Power" icon=switch
 		Selection item=BedroomAirconMode label="Mode" mappings=[0="Auto", 1="Cool", 2="Dry", 3="Fan", 4="Heat"]
-		Setpoint item=BedroomAirconTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
-	Selection item=BedroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
-	Selection item=BedroomAirconSwingVertical label="Fan-Swing Direction" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
+		Setpoint item=BedroomAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
+		Text item=BedroomAirconCurrentTemp label="Current temperature [%.1f °C]" icon="temperature"
+					}
+			Frame label="Fan settings"{
+    	Selection item=BedroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"] icon=fan
+	    Selection item=BedroomAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"] icon=flow
+        Selection item=BedroomAirconSwingHorizontal label="Direction H" mappings=[0="Off", 1="Full", 2="Left", 3="Mid-left", 4="Mid", 5="Mid-right", 6="Right"] icon=flow
 }
 Frame label="Options"{
-	Switch item=BedroomAirconTurbo label="Turbo" icon=fan
+	    Switch item=BedroomAirconTurbo label="Turbo" icon=fan
 		Switch item=BedroomAirconLight label="Light" icon=light
 		Switch item=BedroomAirconAir label="Air" icon=flow
 		Switch item=BedroomAirconDry label="Dry" icon=rain
