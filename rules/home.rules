@@ -83,23 +83,6 @@ then
 	/* if (newtemp !== null) RoomTemp.postUpdate(newtemp)*/
 end
 
-
-rule "BRC_On_OH_Update"
-when
-	Item WB_BRC_On received command
-then
-	if(BedroomAirconPower.state != receivedCommand) BedroomAirconPower.sendCommand(receivedCommand)
-		logInfo("BRC", "BRC_On received command: " + receivedCommand.toString)
-end
-
-rule "BRC_On_WB_Update"
-when
-	Item BedroomAirconPower received command
-then
-    if(WB_BRC_On.state != receivedCommand) WB_BRC_On.sendCommand(receivedCommand)
-	logInfo("BRC", "BedroomAirconPower received update: " + receivedCommand.toString)
-end
-
 rule "BRC_Mode_OH_Update"
 when
 	Item WB_BRC_Mode received command
@@ -148,28 +131,6 @@ then
 	logInfo("BRC", "BedroomAirconFanSpeed received update: " + receivedCommand.toString)
 end
 
-
-
-
-
-
-
-
-rule "KRC_On_OH_Update"
-when
-	Item WB_KRC_On received command
-then
-	if(KidsroomAirconPower.state != receivedCommand) KidsroomAirconPower.sendCommand(receivedCommand)
-		logInfo("KRC", "KRC_On received command: " + receivedCommand.toString)
-end
-
-rule "KRC_On_WB_Update"
-when
-	Item KidsroomAirconPower received command
-then
-    if(WB_KRC_On.state != receivedCommand) WB_KRC_On.sendCommand(receivedCommand)
-	logInfo("KRC", "KidsroomAirconPower received update: " + receivedCommand.toString)
-end
 
 rule "KRC_Mode_OH_Update"
 when
