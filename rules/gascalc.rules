@@ -1,0 +1,17 @@
+rule "Gas calc minute"
+	when 
+		Time cron "0 0/1 * * * ? *"
+	then
+		val Number gcons = WB_GasCounter.deltaSince(now.minusMinutes(1))
+		if (gcons !== null) Gas_Cons.postUpdate(gcons*60)
+		else Gas_Cons.postUpdate(0)
+end
+
+rule "Gas calc month"
+	when 
+		Time cron "0 5 0 * * ? *"
+	then    
+    var Number gcons_month = WB_GasCounter.deltaSince(now.withDayOfMonth(1).toLocalDate().atStartOfDay());
+    if (gcons_month !== null) GasConsM.postUpdate(gcons_month);
+
+end

@@ -1,0 +1,13 @@
+rule "get_8266_data222"
+when
+		Time cron "0 0/1 * * * ? *"
+then
+    var ScriptResponse = executeCommandLine(Duration.ofSeconds(5), "/var/opt/getclim.sh");
+	/* val newtemp = transform("REGEX", ".*?ppm:T(.*?)C:H.*", espinfo)*/
+	val newhum = transform("REGEX", ".*?C:H(.*?)%:d.*", ScriptResponse)
+	val newco2 = transform("REGEX", ".*?C(.*?)ppm:T.*", ScriptResponse)
+
+	if (newco2 !== null) RoomCO2.postUpdate(newco2)
+	if (newhum !== null) RoomHum.postUpdate(newhum)
+	/* if (newtemp !== null) RoomTemp.postUpdate(newtemp)*/
+end
