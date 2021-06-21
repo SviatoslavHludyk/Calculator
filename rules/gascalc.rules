@@ -12,7 +12,7 @@ rule "Gas calc month"
 		Time cron "0 5 0 * * ? *"
 	then    
 	val  ZonedDateTime 	zdtg = ZonedDateTime.now();
-    var Number gcons_month = WB_GasCounter.deltaSince(zdtg.withDayOfMonth(1).toLocalDate().atStartOfDay(zdtg.getZone()));
-    if (gcons_month !== null) GasConsM.postUpdate(gcons_month);
+    val Number gcons_month = WB_GasCounter.deltaSince(zdtg.withDayOfMonth(1).toLocalDate().atStartOfDay(zdtg.getZone()));
+    if (gcons_month !== null) Gas_ConsM.postUpdate(gcons_month);
 
 end
