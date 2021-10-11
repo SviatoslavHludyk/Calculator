@@ -155,11 +155,13 @@ Switch                  BedroomAirconPowerSaving                                
 
 Switch                  WB_BRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:BRC_Auto" }
 String                  WB_BRC_Mode                           "[%s]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:BRC_Mode" }
+Switch                  WB_BRC_Power                                                                                                                                                            { channel="mqtt:topic:cf2b98f3:BRC_Power" }
 Number                  WB_BRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:BRC_Temp" }
 Number                  WB_BRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:BRC_Speed" }
 
 Switch                  WB_KRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_Auto" }
 String                  WB_KRC_Mode                           "[%s]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:KRC_Mode" }
+Switch                  WB_KRC_Power                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_Power" }
 Number                  WB_KRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:KRC_Temp" }
 Number                  WB_KRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:KRC_Speed" }
 
@@ -285,4 +287,12 @@ Number:Dimensionless    localDailyforecastHours24Cloudiness     "Cloudiness for 
 Number:Length           localDailyforecastHours24RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#rain" }
 Number:Length           localDailyforecastHours24SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#snow" }
 
+Switch denon_power    "Receiver" <switch>         {channel="denonmarantz:avr:91c4d0d66e:general#power"}
+Dimmer denon_volume   "Volume"   <soundvolume>    {channel="denonmarantz:avr:91c4d0d66e:mainZone#volume"}
+Number denon_volumeDB "Volume [%.1f dB]"          {channel="denonmarantz:avr:91c4d0d66e:mainZone#volumeDB"}
+Switch denon_mute     "Mute"     <mute>           {channel="denonmarantz:avr:91c4d0d66e:mainZone#mute"}
+Switch denon_z2power  "Zone 2"                    {channel="denonmarantz:avr:91c4d0d66e:zone2#power"}
+String denon_input    "Input [%s]"                {channel="denonmarantz:avr:91c4d0d66e:mainZone#input" }
+String denon_surround "Surround: [%s]"            {channel="denonmarantz:avr:91c4d0d66e:general#surroundProgram"}
+String denon_command                              {channel="denonmarantz:avr:91c4d0d66e:general#command"}
 

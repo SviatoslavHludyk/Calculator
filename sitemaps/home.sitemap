@@ -271,6 +271,16 @@ Frame label="Options"{
 
 	}
 
+Group item=denon_input label="Denon Receiver" icon="receiver" {
+    Default   item=denon_power
+    Default   item=denon_mute      visibility=[denon_power==ON]
+    Setpoint  item=denon_volume    label="Volume [%.1f]" minValue=0 maxValue=60 step=0.5  visibility=[denon_power==ON]
+    Default   item=denon_volumeDB  visibility=[denon_power==ON]
+    Selection item=denon_input     mappings=[TV=TV,NET=Network,TUNER=Tuner]  visibility=[denon_power==ON]
+    Default   item=denon_surround  visibility=[denon_power==ON]
+    Default   item=denon_z2power
+
+}
 
 Group item=Weather label="Weather" icon="sun_clouds" {
 
