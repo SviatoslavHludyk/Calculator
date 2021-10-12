@@ -16,3 +16,14 @@ rule "Gas calc month"
     if (gcons_month !== null) Gas_ConsM.postUpdate(gcons_month);
 
 end
+
+rule "Gas calc today"
+	when 
+		Time cron "0 0/5 * * * ? *"
+	then    
+	val  ZonedDateTime 	zdt = ZonedDateTime.now()
+    var  ZonedDateTime 	start_of_day = zdt.toLocalDate().atStartOfDay(zdt.getZone())
+    var gcons_today = WB_GasCounter.deltaSince(start_of_day) as Number
+	postUpdate(Gas_ConsToday, gcons_today);
+
+end

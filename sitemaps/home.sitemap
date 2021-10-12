@@ -141,7 +141,7 @@ Frame label="Options"{
 }
 }
 
-	Group item=Heaters label="Heating" icon="heating" {
+	Group item=WB_Heater label="Heating" icon="heating" {
 		Frame label="Status" {
 			Text item=WB_CH_On
 				Text item=WB_DHW_On
@@ -165,12 +165,13 @@ Frame label="Options"{
 	}
 
 
-	Group item=Gas label="Gas" icon="gas" {
+	Group item=Gas_ConsToday label="Gas" icon="gas" {
 		Frame {
 			Text item=WB_GasCounter
 		}
 		Frame label="Consumption" {
 			Text item=Gas_Cons
+				Text item=Gas_ConsToday
 				Text item=Gas_ConsD
 				Text item=Gas_ConsDDHW
 				Text item=Gas_ConsM
@@ -191,7 +192,7 @@ Frame label="Options"{
 		}
 	}
 
-	Group item=Water label="Water" icon="water" {
+	Group item=WB_HotWater label="Water" icon="water" {
 		Frame {
 			Switch item=WB_Valve
 				Switch item=WB_DHW_En
@@ -223,7 +224,7 @@ Frame label="Options"{
 
 	}
 
-	Group item=Power label="Electricity" icon="energy" {
+	Group item=Power_PowerH label="Electricity" icon="energy" {
 		Frame {
 			Text item=Power_Energy
 		}
@@ -282,7 +283,7 @@ Group item=denon_input label="Denon Receiver" icon="receiver" {
 
 }
 
-Group item=Weather label="Weather" icon="sun_clouds" {
+Group item=localCurrentTemperature label="Weather" icon="sun_clouds" {
 
 	Frame label="Current local weather" {
 		Text item=localLastMeasurement
@@ -297,6 +298,44 @@ Group item=Weather label="Weather" icon="sun_clouds" {
 			Text item=localCurrentRainVolume
 			Text item=localCurrentSnowVolume
 	}
+    Frame {
+        Text item=airQualityIndex label="Air Quality Index [MAP(airquality.map):%s]" valuecolor=[
+                airQualityIndex=="-"="lightgray",
+                airQualityIndex==5="#990000",
+                ==4="#ff0000",
+                ==3="#ff9900",
+                ==2="#ffff66",
+                ==1="#009900"
+            ]
+        Text item=pollTimestamp
+	}
+    Frame {
+        Text item=particulateMatter2dot5 valuecolor=[
+                particulateMatter2dot5=="-"="lightgray",
+                particulateMatter2dot5>=250="#990000",
+                >=121="#ff0000",
+                >=91="#ff9900",
+                >=61="#ffff66",
+                >=31="#33ff33",
+				>=0="#009900"
+            ]
+        Text item=particulateMatter10 valuecolor=[
+                particulateMatter10=="-"="lightgray",
+                particulateMatter10>=430="#990000",
+                >=351="#ff0000",
+                >=251="#ff9900",
+                >=101="#ffff66",
+                >=51="#33ff33",
+				>=0="#009900"
+            ]
+		Text item=carbonMonoxide
+        Text item=nitrogenMonoxide
+        Text item=nitrogenDioxide
+        Text item=ozone
+        Text item=sulphurDioxide
+        Text item=ammonia
+    }
+
 	Frame label="3h forecast" {
 		Text item=localDailyforecastHours03Timestamp
 			Text item=localDailyforecastHours03Condition
@@ -410,6 +449,7 @@ Group item=Weather label="Weather" icon="sun_clouds" {
 			Chart item=Weather_Temp_Chart period=M refresh=3600 visibility=[Weather_Temp_Chart_Period == 3]
 			Chart item=Weather_Temp_Chart period=Y refresh=3600 visibility=[Weather_Temp_Chart_Period == 4]
 	}
+
 }
 
 Group item=Config label="Settings" icon="settings" {

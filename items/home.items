@@ -54,6 +54,7 @@ Number                  Gas_Cons                                "Consumption [%.
 Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                     <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasConsYest" }
 Number                  Gas_ConsDDHW                            "Cons. for DHW [%.2f m3]"                                       <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasDHW" }
 Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                         <gas>           (Gas)                                       
+Number                  Gas_ConsToday                           "Cons. today [%.2f m3]"                                         <gas>           (Gas)                                       
 Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                    
 Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                    
 
@@ -287,7 +288,7 @@ Number:Dimensionless    localDailyforecastHours24Cloudiness     "Cloudiness for 
 Number:Length           localDailyforecastHours24RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#rain" }
 Number:Length           localDailyforecastHours24SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#snow" }
 
-Switch denon_power    "Receiver" <switch>         {channel="denonmarantz:avr:91c4d0d66e:general#power"}
+Switch denon_power    "Receiver" <switch>         {channel="denonmarantz:avr:91c4d0d66e:mainZone#power"}
 Dimmer denon_volume   "Volume"   <soundvolume>    {channel="denonmarantz:avr:91c4d0d66e:mainZone#volume"}
 Number denon_volumeDB "Volume [%.1f dB]"          {channel="denonmarantz:avr:91c4d0d66e:mainZone#volumeDB"}
 Switch denon_mute     "Mute"     <mute>           {channel="denonmarantz:avr:91c4d0d66e:mainZone#mute"}
@@ -296,3 +297,15 @@ String denon_input    "Input [%s]"                {channel="denonmarantz:avr:91c
 String denon_surround "Surround: [%s]"            {channel="denonmarantz:avr:91c4d0d66e:general#surroundProgram"}
 String denon_command                              {channel="denonmarantz:avr:91c4d0d66e:general#command"}
 
+Group AirQuality <flow>
+
+Number   airQualityIndex           "Air Quality Index" <flow> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#airQualityIndex" }
+Number   particulateMatter2dot5    "PM\u2082\u2085 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#particulateMatter2dot5" }
+Number   particulateMatter10       "PM\u2081\u2080 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#particulateMatter10" }
+Number   carbonMonoxide            "CO Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#carbonMonoxide" }
+Number   nitrogenMonoxide          "NO Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#nitrogenMonoxide" }
+Number   nitrogenDioxide           "NO\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#nitrogenDioxide" }
+Number   ozone                  "O\u2083 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ozone" }
+Number   sulphurDioxide         "SO\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#sulphurDioxide" }
+Number   ammonia                "NH\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ammonia" }
+DateTime pollTimestamp          "Time of observation [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <clock> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#time-stamp" }
