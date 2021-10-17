@@ -309,3 +309,19 @@ Number   ozone                  "O\u2083 Level" <line> (AirQuality) { channel="o
 Number   sulphurDioxide         "SO\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#sulphurDioxide" }
 Number   ammonia                "NH\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ammonia" }
 DateTime pollTimestamp          "Time of observation [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <clock> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#time-stamp" }
+
+Player spotifyTrackPlayer   "Player"               {channel="spotify:player:0618dc3df1:trackPlayer"}
+Dimmer spotifyDeviceVolume  "Volume"               {channel="spotify:player:0618dc3df1:deviceVolume"}
+String spotifyDevices       "Active device [%s]"   {channel="spotify:player:0618dc3df1:devices"}
+Switch spotifyDeviceShuffle "Shuffle mode"         {channel="spotify:player:0618dc3df1:deviceShuffle"}
+String spotifyTrackRepeat   "Repeat mode: [%s]"    {channel="spotify:player:0618dc3df1:trackRepeat"}
+String spotifyTrackProgress "Track progress: [%s]" {channel="spotify:player:0618dc3df1:trackProgress"}
+String spotifyTrackDuration "Track duration: [%s]" {channel="spotify:player:0618dc3df1:trackDuration"}
+String spotifyTrackName     "Track Name: [%s]"     {channel="spotify:player:0618dc3df1:trackName"}
+String spotifyAlbumName     "Album Name: [%s]"     {channel="spotify:player:0618dc3df1:albumName"}
+String spotifyArtistName    "Artist Name: [%s]"    {channel="spotify:player:0618dc3df1:artistName"}
+Image  spotifyAlbumImage    "Album Art"            {channel="spotify:player:0618dc3df1:albumImage"}
+String spotifyPlaylists     "Playlists [%s]"       {channel="spotify:player:0618dc3df1:playlists"}
+String spotifyPlayName      "Playlist [%s]"        {channel="spotify:player:0618dc3df1:playlistName"}
+
+Switch homeSleep            "Home sleep mode"      { channel="mqtt:topic:cf2b98f3:Asleep" }
