@@ -1,1 +1,1 @@
-Thing exec:command:data8266 [command="bash /var/opt/getclim", interval=60, timeout=15]
+
