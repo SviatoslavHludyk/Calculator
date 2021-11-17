@@ -6,11 +6,13 @@ then
         // while(denon_power.state != ON){
         // Thread::sleep(12000) 
         // }
-        spotifyDevices.sendCommand("d57aa2c86b92392567aa3ebc8340813a076bff43")
-        spotifyPlaylists.sendCommand("spotify:playlist:37i9dQZF1E380X0aiT8MiT")
+        // denon_power.sendCommand(ON)
+        // Thread::sleep(12000)
+        // denon_z2power.sendCommand(OFF)
+        // spotifyDevices.sendCommand("d57aa2c86b92392567aa3ebc8340813a076bff43")
+        // spotifyPlaylists.sendCommand("spotify:playlist:37i9dQZF1E380X0aiT8MiT")
         spotifyTrackPlayer.sendCommand(PLAY)
-         Thread::sleep(12000)
-        spotifyDeviceVolume.sendCommand(35)
+        // spotifyDeviceVolume.sendCommand(35)
         // spotifyPlaylists.sendCommand("spotify:playlist:5rBaq7k3Y7YnpFi3snLqyk")        
         // spotifyDeviceVolume.sendCommand(35)        
     }
