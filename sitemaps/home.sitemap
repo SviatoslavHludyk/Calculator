@@ -473,4 +473,8 @@ Group item=Config label="Settings" icon="settings" {
 	}
 }
 
+Group item=Config label="Video" icon="video" {
+	Video url="http://192.168.15.175:8082/autofps.mjpeg" encoding="mjpeg"
+}
+
 }
