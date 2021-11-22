@@ -58,9 +58,13 @@ Number                  Gas_ConsToday                           "Cons. today [%.
 Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                    
 Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                    
 
-Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     
-Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     
-Number                  RoomTemp                                "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
+Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_CO2" }
+Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_Humidity" }
+Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempServ_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_DewPoint" }
+Number                  RoomWetBulbTemp                         "Wet bulb temp [%.2f °C]"                                       <temperature>      (Sensors, Sensors_TempServ_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_WetTemp" }
+Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
+
+Number                  WB_Bedroom                              "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
 Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart, Kidsroom) { channel="mqtt:topic:cf2b98f3:KidsRoom" }
 Number                  WB_Corridor                             "Corridor [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)           { channel="mqtt:topic:cf2b98f3:Corridor" }
 //Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }

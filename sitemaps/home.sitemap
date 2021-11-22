@@ -1,9 +1,14 @@
 sitemap home label="Main menu"{
 	Group item=Sensors label="Climate" icon="climate" {
 		Frame {
-			Text item=RoomCO2 valuecolor=[ > 3000="red",  > 2500="orange",  > 1500="green",  > 500="blue"]
+				Text item=RoomCO2 valuecolor=[ > 3000="red",  > 2500="orange",  > 1500="green",  > 500="blue"]
 				Text item=RoomHum
 				Text item=RoomTemp valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+				Text item=RoomDewPoint
+				Text item=RoomWetBulbTemp
+		}
+		Frame {
+				Text item=WB_Bedroom valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 				Text item=WB_KidsRoom valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 				Text item=WB_Corridor valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 				// Text item=WB_Cabinet valuecolor=[>35="red",>25="orange",>15="green",>5="blue"]
