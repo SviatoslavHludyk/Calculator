@@ -32,7 +32,7 @@ Group                   Water_Press_Chart                                       
 Group                   Vent_Temp_Chart                                                                                                         (Vent, Temp)                                
 Group                   Vent_FanSpeed_Chart                                                                                                     (Vent)                                      
 Group                   Weather_Temp_Chart                                                                                                      (Weather, Temp)                             
-
+Group                   Sensors_TempDev_Chart                                                                                                  (Sensors, Temp)                             
 
 Number                  Power_Energy                            "Energy [%.3f kWh]"                                             <energy>        (Power)                                     { channel="modbus:data:312f4244:number" }
 Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)              { channel="modbus:data:5bf2516b:number" }
@@ -60,9 +60,9 @@ Number                  Gas_ConsD_Chart_Period                  "Period"
 
 Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_CO2" }
 Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_Humidity" }
-Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempServ_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_DewPoint" }
-Number                  RoomWetBulbTemp                         "Wet bulb temp [%.2f °C]"                                       <temperature>      (Sensors, Sensors_TempServ_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_WetTemp" }
-Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
+Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_DewPoint" }
+Number                  RoomWetBulbTemp                         "Wet bulb temp [%.2f °C]"                                       <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_WetTemp" }
+Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempDev_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
 
 Number                  WB_Bedroom                              "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
 Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart, Kidsroom) { channel="mqtt:topic:cf2b98f3:KidsRoom" }
@@ -120,6 +120,7 @@ Number                  Sensors_TempCO_Chart_Period             "Period"
 Number                  Heater_Temp_Chart_Period                "Period"                                                                                                                    
 Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                    
 Number                  Sensors_TempServ_Chart_Period           "Period"                                                                                                                    
+Number                  Sensors_TempDev_Chart_Period           "Period"                                                                                                                    
 Number                  Vent_Temp_Chart_Period                  "Period"                                                                                                                    
 Number                  Vent_FanSpeed_Chart_Period              "Period"                                                                                                                    
 

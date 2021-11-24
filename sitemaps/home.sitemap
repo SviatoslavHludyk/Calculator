@@ -1,5 +1,5 @@
 sitemap home label="Main menu"{
-	Group item=Sensors label="Climate" icon="climate" {
+	Group item=WB_Hall label="Climate" icon="climate" {
 		Frame {
 				Text item=RoomCO2 valuecolor=[ > 3000="red",  > 2500="orange",  > 1500="green",  > 500="blue"]
 				Text item=RoomHum
@@ -39,12 +39,19 @@ sitemap home label="Main menu"{
 				Chart item=Sensors_TempServ_Chart period=M refresh=3600 visibility=[Sensors_TempServ_Chart_Period == 3]
 				Chart item=Sensors_TempServ_Chart period=Y refresh=3600 visibility=[Sensors_TempServ_Chart_Period == 4]
 		}
-
+		Frame {
+			Switch item=Sensors_TempDev_Chart_Period label="Bedroom, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
+				Chart item=Sensors_TempDev_Chart period=h refresh=600 visibility=[Sensors_TempDev_Chart_Period == 0, Sensors_TempDev_Chart_Period == "Uninitialized"]
+				Chart item=Sensors_TempDev_Chart period=D refresh=3600 visibility=[Sensors_TempDev_Chart_Period == 1]
+				Chart item=Sensors_TempDev_Chart period=W refresh=3600 visibility=[Sensors_TempDev_Chart_Period == 2]
+				Chart item=Sensors_TempDev_Chart period=M refresh=3600 visibility=[Sensors_TempDev_Chart_Period == 3]
+				Chart item=Sensors_TempDev_Chart period=Y refresh=3600 visibility=[Sensors_TempDev_Chart_Period == 4]
+		}
 	}
 
 	Group item=Conditioning label="Air Preparation" icon="flow" {
 
-	Group item=Vent label="Ventilation" icon="fan" {
+	Group item=WB_VentMode label="Ventilation" icon="fan" {
 		Frame label="Settings" {
 			Switch item=WB_VentMode label="Mode" mappings=[0="Off", 1="FAN", 4="Auto"]
 			Setpoint item=WB_AirSetpoint label="Setpoint [%d °C]" minValue=15 maxValue=30 step=1
