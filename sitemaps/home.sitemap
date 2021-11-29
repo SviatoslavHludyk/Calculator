@@ -1,12 +1,5 @@
 sitemap home label="Main menu"{
-	Group item=WB_Hall label="Climate" icon="climate" {
-		Frame {
-				Text item=RoomCO2 valuecolor=[ > 3000="red",  > 2500="orange",  > 1500="green",  > 500="blue"]
-				Text item=RoomHum
-				Text item=RoomTemp valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-				Text item=RoomDewPoint
-				Text item=RoomWetBulbTemp
-		}
+	Group item=WB_Corridor label="Climate" icon="climate" {
 		Frame {
 				Text item=WB_Bedroom valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 				Text item=WB_KidsRoom valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
@@ -15,6 +8,13 @@ sitemap home label="Main menu"{
 				Text item=WB_Hall valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 				Text item=WB_Entrance valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 		}
+		Frame {
+				Text item=RoomCO2 valuecolor=[ > 3000="red",  > 2500="orange",  > 1500="green",  > 500="blue"]
+				Text item=RoomHum
+				Text item=RoomTemp valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+				Text item=RoomDewPoint
+				Text item=RoomWetBulbTemp
+		}		
 		Frame {
 			Switch item=Sensors_COlev_Chart_Period label="CO2, ppm" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 				Chart item=Sensors_COlev_Chart period=h refresh=600 visibility=[Sensors_COlev_Chart_Period == 0, Sensors_COlev_Chart_Period == "Uninitialized"]
