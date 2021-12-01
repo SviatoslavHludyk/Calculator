@@ -5,9 +5,9 @@ rule "Power calc"
 
 	val  ZonedDateTime 	zdt = ZonedDateTime.now();
     val Number pconsmn = Power_Energy.deltaSince(zdt.toLocalDate().atStartOfDay(zdt.getZone()));
-    if (pconsmn !== null) Power_ConsMN.postUpdate(pconsmn);
+    Power_ConsMN.postUpdate(pconsmn);
     val Number pcons = Power_Energy.deltaSince(zdt.minusDays(1).toLocalDate().atStartOfDay(zdt.getZone()));
-    if (pcons !== null && pconsmn !== null) Power_Cons.postUpdate(pcons - pconsmn);
+    Power_Cons.postUpdate(pcons - pconsmn);
     val Number pconsm = Power_Energy.deltaSince(zdt.withDayOfMonth(1).toLocalDate().atStartOfDay(zdt.getZone()));
-    if (pconsm !== null) Power_ConsM.postUpdate(pconsm);
+    Power_ConsM.postUpdate(pconsm);
 end

@@ -6,10 +6,10 @@ rule "Send counters"
 		val ZonedDateTime first = zdt.withDayOfMonth(1).toLocalDate().atStartOfDay(zdt.getZone());
 		val ZonedDateTime second = zdt.minusMonths(1).withDayOfMonth(1).toLocalDate().atStartOfDay(zdt.getZone());
 
-		val Number gcount = ((WB_GasCounter.historicState(first,"rrd4j")).state as DecimalType).floatValue;
-		val Number g_old_count = ((WB_GasCounter.historicState(second,"rrd4j")).state as DecimalType).floatValue;
-		val Number pcount = ((Power_Energy.historicState(first,"rrd4j")).state as DecimalType).floatValue;
-		val Number p_old_count = ((Power_Energy.historicState(second,"rrd4j")).state as DecimalType).floatValue;
+		val Number gcount = ((WB_GasCounter.historicState(first,"influxdb")).state as DecimalType).floatValue;
+		val Number g_old_count = ((WB_GasCounter.historicState(second,"influxdb")).state as DecimalType).floatValue;
+		val Number pcount = ((Power_Energy.historicState(first,"influxdb")).state as DecimalType).floatValue;
+		val Number p_old_count = ((Power_Energy.historicState(second,"influxdb")).state as DecimalType).floatValue;
 
 		var String message1 = "Показники лічильника газу\n\n";
 		message1 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f m3\n", second.getMonthValue(), second.getYear(), (g_old_count));	
