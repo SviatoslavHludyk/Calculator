@@ -36,3 +36,14 @@ then
 			logInfo("Twinkly", "Twinkly is set to ON")
 		}
 end
+
+rule "Twinkle_morning_off"
+when
+	Channel 'astro:sun:local:civilDawn#event' triggered END
+then
+	if (home_athome.state == ON && 
+		twinkly_power.state == ON) {
+			twinkly_power.sendCommand(OFF)
+			logInfo("Twinkly", "Twinkly is set to OFF")
+		}
+end
