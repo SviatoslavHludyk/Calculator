@@ -298,7 +298,7 @@ Group item=denon_input label="Denon Receiver" icon="receiver" {
 Group item=localCurrentTemperature label="Weather" icon="sun_clouds" {
 
 	Frame label="Current local weather" {
-		Text item=localLastMeasurement
+			Text item=localLastMeasurement
 			Text item=localCurrentCondition
 			Image item=localCurrentConditionIcon
 			Text item=localCurrentTemperature
@@ -485,8 +485,13 @@ Group item=Config label="Settings" icon="settings" {
 	}
 }
 
-Group item=Config label="Video" icon="video" {
+Group item=Camera label="Video" icon="video" {
 	Video url="http://192.168.15.175:8081/ipcamera/c5d72f66c7/autofps.mjpeg" encoding="mjpeg"
 }
-
+Group item=Twinkly label="Twinkly" icon="light" {
+		Switch item=twinkly_power label="Light" icon=light
+	    Setpoint  item=twinkly_brightness    label="Brightness [%d]" minValue=0 maxValue=100 step=5  visibility=[twinkly_power==ON]
+		Text item=localDawn
+		Text item=localDusk
+}
 }
