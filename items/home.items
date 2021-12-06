@@ -315,8 +315,11 @@ Number   sulphurDioxide         "SO\u2082 Level" <line> (AirQuality) { channel="
 Number   ammonia                "NH\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ammonia" }
 DateTime pollTimestamp          "Time of observation [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <clock> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#time-stamp" }
 
-Switch twinkly_power  "Power"                    {channel="twinklytree:twinkly:d3e3eb3fdc:switch"}
-Dimmer twinkly_brightness   "Brightness"   <brightness>    {channel="twinklytree:twinkly:d3e3eb3fdc:dimmer"}
+Switch twinkly_power  "Power"                    {channel="twinklytree:twinkly:6a7e98fd79:switch"}
+Dimmer twinkly_brightness   "Brightness"   <brightness>    {channel="twinklytree:twinkly:6a7e98fd79:dimmer"}
+String twinkly_mode                              {channel="twinklytree:twinkly:6a7e98fd79:mode"}
+
+
 DateTime                localDawn                            "Dawn end [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                            { channel="astro:sun:local:civilDawn#end" }
 DateTime                localDusk                             "Dusk start [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                             { channel="astro:sun:local:civilDusk#start" }
 
