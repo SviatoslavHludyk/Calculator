@@ -1,0 +1,52 @@
+
+rule "Twinkle_on"
+when
+	Item home_athome changed from OFF to ON or Channel 'astro:sun:local:civilDusk#event' triggered START
+then
+	if (home_athome.state == ON && 
+		twinkly_power.state == OFF && 
+		ZonedDateTime.now().isAfter((localDusk.state as DateTimeType).getZonedDateTime())) {
+			twinkly_power.sendCommand(ON)
+			twinkly_mode.sendCommand("playlist")
+			logInfo("Twinkly", "Twinkly is set to ON")
+		}
+end
+
+rule "Twinkle_asleep_off"
+when
+	Item home_asleep changed from OFF to ON
+then
+	if (twinkly_power.state == ON) twinkly_power.sendCommand(OFF)
+	logInfo("Twinkly", "Twinkly is set to OFF")
+end
+
+rule "Twinkle_at_home_off"
+when
+	Item home_athome changed from ON to OFF
+then
+	if (twinkly_power.state == ON) twinkly_power.sendCommand(OFF)
+	logInfo("Twinkly", "Twinkly is set to OFF")
+end
+
+rule "Twinkle_awake_on"
+when
+	Item home_asleep changed from ON to OFF 
+then
+	if (twinkly_power.state == OFF &&
+	 ZonedDateTime.now().isBefore((localDawn.state as DateTimeType).getZonedDateTime())) {
+			twinkly_power.sendCommand(ON)
+			twinkly_mode.sendCommand("playlist")
+			logInfo("Twinkly", "Twinkly is set to ON")
+	 }
+end
+
+rule "Twinkle_morning_off"
+when
+	Channel 'astro:sun:local:civilDawn#event' triggered END
+then
+	if (home_athome.state == ON && 
+		twinkly_power.state == ON) {
+			twinkly_power.sendCommand(OFF)
+			logInfo("Twinkly", "Twinkly is set to OFF")
+		}
+end
