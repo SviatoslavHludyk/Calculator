@@ -236,7 +236,7 @@ Frame label="Options"{
 
 	}
 
-	Group item=Power_PowerH label="Electricity" icon="energy" {
+	Group item=Power_ConsMN label="Electricity" icon="energy" {
 		Frame {
 			Text item=Power_Energy
 		}
