@@ -6,6 +6,7 @@ then
 	if (home_athome.state == ON && 
 		twinkly_power.state == OFF && 
 		ZonedDateTime.now().isAfter((localDusk.state as DateTimeType).getZonedDateTime())) {
+			relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
 			logInfo("Twinkly", "Twinkly is set to ON")
@@ -16,7 +17,10 @@ rule "Twinkle_asleep_off"
 when
 	Item home_asleep changed from OFF to ON
 then
-	if (twinkly_power.state == ON) twinkly_power.sendCommand(OFF)
+	if (twinkly_power.state == ON) {
+		twinkly_power.sendCommand(OFF)
+		relay2.sendCommand(OFF)
+	}
 	logInfo("Twinkly", "Twinkly is set to OFF")
 end
 
@@ -24,7 +28,11 @@ rule "Twinkle_at_home_off"
 when
 	Item home_athome changed from ON to OFF
 then
-	if (twinkly_power.state == ON) twinkly_power.sendCommand(OFF)
+	if (twinkly_power.state == ON) {
+		twinkly_power.sendCommand(OFF)
+		relay2.sendCommand(OFF)
+	}
+
 	logInfo("Twinkly", "Twinkly is set to OFF")
 end
 
@@ -34,6 +42,7 @@ when
 then
 	if (twinkly_power.state == OFF &&
 	 ZonedDateTime.now().isBefore((localDawn.state as DateTimeType).getZonedDateTime())) {
+			relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
 			logInfo("Twinkly", "Twinkly is set to ON")
@@ -47,6 +56,7 @@ then
 	if (home_athome.state == ON && 
 		twinkly_power.state == ON) {
 			twinkly_power.sendCommand(OFF)
+			relay2.sendCommand(OFF)
 			logInfo("Twinkly", "Twinkly is set to OFF")
 		}
 end
