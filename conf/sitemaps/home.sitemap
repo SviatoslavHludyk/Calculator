@@ -498,7 +498,7 @@ Group item=twinkly_mode label="Twinkly" icon="light" {
 		Text item=localDawn
 		Text item=localDusk
 		}
-		Frame label="Ventilation" {
+		Frame label="Lights" {
 		Switch item=relay1 label="Light" icon=light
 		Switch item=relay2 label="Light" icon=light
 		}
