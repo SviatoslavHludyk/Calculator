@@ -5,7 +5,7 @@ rule "Gas_calc_minute"
 		Gas_Cons.postUpdate(WB_GasCounter.deltaSince(now().minusMinutes(1)) * 60)
 end
 
-rule "Gas calc month"
+rule "Gas_calc_month"
 	when 
 		Time cron "0 5 0 * * ? *"
 	then    
@@ -15,7 +15,7 @@ rule "Gas calc month"
 
 end
 
-rule "Gas calc today"
+rule "Gas_calc_today"
 	when 
 		Time cron "0 0/5 * * * ? *"
 	then    
