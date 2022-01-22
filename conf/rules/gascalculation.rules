@@ -2,7 +2,8 @@ rule "Gas_calc_minute"
 	when 
 		Time cron "0 0/1 * * * ? *"
 	then
-		Gas_Cons.postUpdate(WB_GasCounter.deltaSince(now().minusMinutes(1)) * 60)
+		val gcons_moment = (WB_GasCounter.deltaSince(now().minusMinutes(1)) * 60) as Number;
+		if (gcons_moment >= 0) Gas_Cons.postUpdate(gcons_moment);
 end
 
 rule "Gas_calc_month"
@@ -10,7 +11,7 @@ rule "Gas_calc_month"
 		Time cron "0 5 0 * * ? *"
 	then    
 	val  ZonedDateTime 	zdtg = ZonedDateTime.now();
-    val Number gcons_month = WB_GasCounter.deltaSince(zdtg.withDayOfMonth(1).toLocalDate().atStartOfDay(zdtg.getZone()));
+    val gcons_month = WB_GasCounter.deltaSince(zdtg.withDayOfMonth(1).toLocalDate().atStartOfDay(zdtg.getZone())) as Number;
     if (gcons_month !== null) Gas_ConsM.postUpdate(gcons_month);
 
 end
@@ -20,8 +21,8 @@ rule "Gas_calc_today"
 		Time cron "0 0/5 * * * ? *"
 	then    
 	val  ZonedDateTime 	zdt = ZonedDateTime.now()
-    var  ZonedDateTime 	start_of_day = zdt.toLocalDate().atStartOfDay(zdt.getZone())
-    var gcons_today = WB_GasCounter.deltaSince(start_of_day)
+    val  ZonedDateTime 	start_of_day = zdt.toLocalDate().atStartOfDay(zdt.getZone())
+    val gcons_today = WB_GasCounter.deltaSince(start_of_day) as Number
 	Gas_ConsToday.postUpdate(gcons_today);
 
 end
