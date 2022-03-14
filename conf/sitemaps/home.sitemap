@@ -467,6 +467,7 @@ Group item=localCurrentTemperature label="Weather" icon="sun_clouds" {
 Group item=Camera label="Video" icon="video" {
 	Video url="http://oh.home.arpa:8081/ipcamera/c5d72f66c7/autofps.mjpeg" encoding="mjpeg"
 }
+
 Group item=twinkly_mode label="Twinkly" icon="light" {
 		Frame label="Twinkly" {
 		Switch item=twinkly_power label="Light" icon=light
