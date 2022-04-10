@@ -504,4 +504,11 @@ Group item=Config label="Settings" icon="settings" {
 	}
 }
 
+Group item=home_athome label="Home status" icon=presence {
+	Text item=home_athome label="At home" icon=presence
+	Text item=home_asleep label="Asleep" icon=bedroom
+	Text item=home_away label="Away" icon=vacation
+
+}
+
 }

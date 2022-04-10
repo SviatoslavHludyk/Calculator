@@ -325,5 +325,7 @@ DateTime                localDusk                             "Dusk start [%1$td
 
 Switch home_asleep  "Asleep"                    {channel="mqtt:topic:cf2b98f3:Asleep"}
 Switch home_athome  "At home"                    {channel="mqtt:topic:cf2b98f3:AtHome"}
+Switch home_away  "Away"                    {channel="mqtt:topic:cf2b98f3:home_away"}
+
 Switch relay1  "Socket 1"                    {channel="mqtt:topic:cf2b98f3:relay1"}
 Switch relay2  "Socket 2"                    {channel="mqtt:topic:cf2b98f3:relay2"}
