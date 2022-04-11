@@ -42,7 +42,7 @@ rule "Twinkle_awake_on"
 when
 	Item home_asleep changed from ON to OFF 
 then
-	if (twinkly_power.state == OFF &&
+	if (twinkly_power.state == OFF && home_athome.state == ON &&
 	 ZonedDateTime.now().isBefore((localDawn.state as DateTimeType).getZonedDateTime())) {
 			// relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
