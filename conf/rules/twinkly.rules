@@ -6,12 +6,11 @@ then
 	var nowTime = ZonedDateTime.now();
 	if (home_athome.state == ON && 
 		twinkly_power.state == OFF && 
-		nowTime.isAfter((localDusk.state as DateTimeType).getZonedDateTime()) &&
-		nowTime.isBefore(nowTime.with(LocalTime.MIDNIGHT))) {
+		nowTime.isAfter((localDusk.state as DateTimeType).getZonedDateTime())) {
 			// relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
-			logInfo("Twinkly", "Twinkly is set to ON")
+			logInfo("Twinkly", "Twinkly is set to ON by civilDusk at home")
 		}
 end
 
@@ -23,7 +22,7 @@ then
 		twinkly_power.sendCommand(OFF)
 		// relay2.sendCommand(OFF)
 	}
-	logInfo("Twinkly", "Twinkly is set to OFF")
+	logInfo("Twinkly", "Twinkly is set to OFF by asleep_off")
 end
 
 rule "Twinkle_at_home_off"
@@ -35,7 +34,7 @@ then
 		// relay2.sendCommand(OFF)
 	}
 
-	logInfo("Twinkly", "Twinkly is set to OFF")
+	logInfo("Twinkly", "Twinkly is set to OFF by at_home_off")
 end
 
 rule "Twinkle_awake_on"
@@ -47,7 +46,7 @@ then
 			// relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
-			logInfo("Twinkly", "Twinkly is set to ON")
+			logInfo("Twinkly", "Twinkly is set to ON by awake")
 	 }
 end
 
@@ -55,10 +54,9 @@ rule "Twinkle_morning_off"
 when
 	Channel 'astro:sun:local:civilDawn#event' triggered END
 then
-	if (home_athome.state == ON && 
-		twinkly_power.state == ON) {
+	if (twinkly_power.state == ON) {
 			twinkly_power.sendCommand(OFF)
 			// relay2.sendCommand(OFF)
-			logInfo("Twinkly", "Twinkly is set to OFF")
+			logInfo("Twinkly", "Twinkly is set to OFF by civilDawn")
 		}
 end
