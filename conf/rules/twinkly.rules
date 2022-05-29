@@ -21,8 +21,8 @@ then
 	if (twinkly_power.state == ON) {
 		twinkly_power.sendCommand(OFF)
 		// relay2.sendCommand(OFF)
-	}
 	logInfo("Twinkly", "Twinkly is set to OFF by asleep_off")
+	}
 end
 
 rule "Twinkle_at_home_off"
@@ -32,9 +32,8 @@ then
 	if (twinkly_power.state == ON) {
 		twinkly_power.sendCommand(OFF)
 		// relay2.sendCommand(OFF)
+		logInfo("Twinkly", "Twinkly is set to OFF by at_home_off")
 	}
-
-	logInfo("Twinkly", "Twinkly is set to OFF by at_home_off")
 end
 
 rule "Twinkle_awake_on"

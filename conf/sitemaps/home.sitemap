@@ -464,10 +464,6 @@ Group item=localCurrentTemperature label="Weather" icon="sun_clouds" {
 
 }
 
-Group label="Video" icon="video" {
-	Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/autofps.mjpeg" encoding="mjpeg"
-}
-
 Group item=twinkly_mode label="Twinkly" icon="light" {
 		Frame label="Twinkly" {
 		Switch item=twinkly_power label="Light" icon=light
@@ -508,7 +504,9 @@ Group item=home_athome label="Home status" icon=presence {
 	Text item=home_athome label="At home" icon=presence
 	Text item=home_asleep label="Asleep" icon=bedroom
 	Text item=home_away label="Away" icon=vacation
-
+	Text label="Video" icon="video" {
+	Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/autofps.mjpeg" encoding="mjpeg"
+	}
 }
 
 }
