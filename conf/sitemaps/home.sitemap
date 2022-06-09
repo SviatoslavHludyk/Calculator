@@ -95,7 +95,7 @@ sitemap home label="Main menu"{
 				Switch item=HallAirconPower label="Power" icon=switch
 				Selection item=HallAirconMode label="Mode" mappings=["auto"="Auto", "cool"="Cool", "eco"="Eco", "dry"="Dry", "fan"="Fan", "heat"="Heat", "on"="ON", "off"="OFF"]
 				Setpoint item=HallAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1
-				Selection item=HallAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
+				Selection item=HallAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 3="Medium", 5="High"]icon=fan
 				Selection item=HallAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
 		}
 		Frame label="Options"{
@@ -117,7 +117,7 @@ sitemap home label="Main menu"{
 		Frame label="Controls"{
 				Selection item=KidsroomAirconMode label="Mode" mappings=["auto"="Auto", "cool"="Cool", "eco"="Eco", "dry"="Dry", "fan"="Fan", "heat"="Heat", "on"="ON", "off"="OFF"]
 				Setpoint item=KidsroomAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1			
-				Selection item=KidsroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"]icon=fan
+				Selection item=KidsroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 3="Medium", 5="High"]icon=fan
 				Selection item=KidsroomAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"]icon=flow
 		}
 		Frame label="Options"{
@@ -139,7 +139,7 @@ Group item=Bedroom label="Air Conditioning Bedroom" icon="flow" {
 		Frame label="Controls"{
 			Selection item=BedroomAirconMode label="Mode" mappings=["auto"="Auto", "cool"="Cool", "eco"="Eco", "dry"="Dry", "fan"="Fan", "heat"="Heat", "on"="ON", "off"="OFF"]
 			Setpoint item=BedroomAirconTargetTemp label="Set temperature" icon=temperature minValue=16 maxValue=30 step=1				
-    		Selection item=BedroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 2="Medium Low", 3="Medium", 4="Medium High", 5="High"] icon=fan
+    		Selection item=BedroomAirconFanSpeed label="Fan Speed" mappings=[0="Auto", 1="Low", 3="Medium", 5="High"] icon=fan
 	    	Selection item=BedroomAirconSwingVertical label="Direction V" mappings=[0="Off", 1="Full", 2="Up", 3="Mid-up", 4="Mid", 5="Mid-low", 6="Down"] icon=flow
 }
 Frame label="Options"{
