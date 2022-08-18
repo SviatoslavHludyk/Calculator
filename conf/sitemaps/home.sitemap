@@ -505,7 +505,10 @@ Group item=home_athome label="Home status" icon=presence {
 	Text item=home_asleep label="Asleep" icon=bedroom
 	Text item=home_away label="Away" icon=vacation
 	Text label="Video" icon="video" {
-	Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/autofps.mjpeg" encoding="mjpeg"
+	Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/snapshots.mjpeg" encoding="mjpeg"
+	}
+	Text label="Corridor" icon="video" {
+	Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
 	}
 }
 
