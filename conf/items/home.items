@@ -329,3 +329,9 @@ Switch home_away  "Away"                    {channel="mqtt:topic:cf2b98f3:home_a
 
 Switch relay1  "Socket 1"                    {channel="mqtt:topic:cf2b98f3:relay1"}
 Switch relay2  "Socket 2"                    {channel="mqtt:topic:cf2b98f3:relay2"}
+
+Number GasValue "Gas cost [%.2f UAH]" <price> (Gas)
+Number GasMonthValue "Gas cost [%.2f UAH]" <price> (Gas)
+
+Number EnergyValue "Energy cost [%.2f UAH]" <price> (Power)
+Number EnergyMonthValue "Energy cost [%.2f UAH]" <price> (Power)

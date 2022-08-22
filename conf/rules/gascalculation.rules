@@ -13,6 +13,7 @@ rule "Gas_calc_month"
 	val  ZonedDateTime 	zdtg = ZonedDateTime.now();
     val gcons_month = WB_GasCounter.deltaSince(zdtg.withDayOfMonth(1).toLocalDate().atStartOfDay(zdtg.getZone())) as Number;
     if (gcons_month !== null) Gas_ConsM.postUpdate(gcons_month);
+	GasMonthValue.postUpdate((Gas_ConsM.state as Number) * (GasValue.state as Number));
 
 end
 

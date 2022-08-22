@@ -11,4 +11,6 @@ rule "Power calc"
     if (pcons_calc >= 0) Power_Cons.postUpdate(pcons_calc);
     val Number pconsm = Power_Energy.deltaSince(zdt.withDayOfMonth(1).toLocalDate().atStartOfDay(zdt.getZone()));
     Power_ConsM.postUpdate(pconsm);
+   	EnergyMonthValue.postUpdate((Power_ConsM.state as Number) * (EnergyValue.state as Number));
+
 end

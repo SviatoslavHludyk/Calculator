@@ -187,6 +187,8 @@ Frame label="Options"{
 				Text item=Gas_ConsD
 				Text item=Gas_ConsDDHW
 				Text item=Gas_ConsM
+				Text item=GasMonthValue
+
 		}
 
 		Frame {
@@ -247,8 +249,9 @@ Frame label="Options"{
 		}
 		Frame label="Consumption" {
 			Text item=Power_Cons
-				Text item=Power_ConsMN
-				Text item=Power_ConsM
+			Text item=Power_ConsMN
+			Text item=Power_ConsM
+			Text item=EnergyMonthValue
 		}
 
 		Frame {
@@ -497,6 +500,10 @@ Group item=Config label="Settings" icon="settings" {
 			Setpoint item=WB_FanSpeed1 label="Fans speed 1 [%d %%]" minValue=10 maxValue=50 step=1
 			Setpoint item=WB_FanSpeed2 label="Fans speed 2 [%d %%]" minValue=30 maxValue=80 step=1
 			Setpoint item=WB_FanSpeed3 label="Fans speed 3 [%d %%]" minValue=50 maxValue=100 step=1
+	}
+	Frame label="Tariffs" {
+		Setpoint item=GasValue label="Gas cost [%.2f UAH]" minValue=5 maxValue=30 step=0.01
+		Setpoint item=EnergyValue label="Energy cost [%.2f UAH]" minValue=5 maxValue=30 step=0.01
 	}
 }
 
