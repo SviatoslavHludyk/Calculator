@@ -467,7 +467,7 @@ Group item=localCurrentTemperature label="Weather" icon="sun_clouds" {
 
 }
 
-Group item=twinkly_mode label="Twinkly" icon="light" {
+Group item=twinkly_mode label="Lights" icon="light" {
 		Frame label="Twinkly" {
 		Switch item=twinkly_power label="Light" icon=light
 	    Setpoint  item=twinkly_brightness    label="Brightness [%d]" minValue=0 maxValue=100 step=5  visibility=[twinkly_power==ON]
