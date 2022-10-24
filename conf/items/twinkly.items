@@ -1,0 +1,15 @@
+
+Switch twinkly_power  "Power"                    {channel="twinklytree:twinkly:6a7e98fd79:switch"}
+Dimmer twinkly_brightness   "Brightness"   <brightness>    {channel="twinklytree:twinkly:6a7e98fd79:dimmer"}
+String twinkly_mode                              {channel="twinklytree:twinkly:6a7e98fd79:mode"}
+
+
+DateTime                localDawn                            "Dawn end [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                            { channel="astro:sun:local:civilDawn#end" }
+DateTime                localDusk                             "Dusk start [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                             { channel="astro:sun:local:civilDusk#start" }
+
+Switch home_asleep  "Asleep"                    {channel="mqtt:topic:cf2b98f3:Asleep"}
+Switch home_athome  "At home"                    {channel="mqtt:topic:cf2b98f3:AtHome"}
+Switch home_away  "Away"                    {channel="mqtt:topic:cf2b98f3:home_away"}
+
+Switch relay1  "Socket 1"                    {channel="mqtt:topic:cf2b98f3:relay1"}
+Switch relay2  "Socket 2"                    {channel="mqtt:topic:cf2b98f3:relay2"}

@@ -1,0 +1,23 @@
+Group                   Power                                                                                                                   (All)                                       
+Group                   Power_Volt_Sens_Chart                                                                                                   (Power)                                     
+Group                   Power_Curr_Sens_Chart                                                                                                   (Power)                                     
+Group                   Power_Wt_Sens_Chart                                                                                                     (Power)                                     
+Group                   Power_ConsD_Chart                                                                                                       (Power)                                     
+
+
+Number                  Power_Energy                            "Energy [%.3f kWh]"                                             <energy>        (Power)                                     { channel="modbus:data:312f4244:number" }
+Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)              { channel="modbus:data:5bf2516b:number" }
+Number                  Power_Current                           "Current [%.1f A]"                                              <energy>        (Power, Power_Curr_Sens_Chart)              { channel="modbus:data:ef0ab11d:number" }
+Number                  Power_PowerH                            "Power [%d W]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="modbus:data:1fd5096a:number" }
+
+Number                  Power_Volt_Sens_Chart_Period            "Period"                                                                                                                    
+Number                  Power_Curr_Sens_Chart_Period            "Period"                                                                                                                    
+Number                  Power_Wt_Sens_Chart_Period              "Period"                                                                                                                    
+Number                  Power_ConsD_Chart_Period                "Period"                                                                                                                    
+
+Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                    <energy>        (Power, Power_ConsD_Chart)                  
+Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                        <energy>        (Power)                                     
+Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                        <energy>        (Power)                                     
+
+Number EnergyValue "Energy cost [%.2f UAH]" <price> (Power)
+Number EnergyMonthValue "Energy cost [%.2f UAH]" <price> (Power)

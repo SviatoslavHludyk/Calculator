@@ -1,0 +1,16 @@
+
+Group                   Gas                                                                                                                     (All)                                       
+Group                   Gas_Cons_Chart                                                                                                          (Gas)                                       
+Group                   Gas_ConsD_Chart                                                                                                         (Gas)                                       
+
+Number                  WB_GasCounter                           "Counter [%.2f m3]"                                             <gas>           (Gas)                                       { channel="mqtt:topic:cf2b98f3:GazCounter" }
+Number                  Gas_Cons                                "Consumption [%.2f m3/h]"                                       <gas>           (Gas, Gas_Cons_Chart)                       
+Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                     <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasConsYest" }
+Number                  Gas_ConsDDHW                            "Cons. for DHW [%.2f m3]"                                       <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasDHW" }
+Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                         <gas>           (Gas)                                       
+Number                  Gas_ConsToday                           "Cons. today [%.2f m3]"                                         <gas>           (Gas)                                       
+Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                    
+Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                    
+
+Number GasValue "Gas cost [%.2f UAH]" <price> (Gas)
+Number GasMonthValue "Gas cost [%.2f UAH]" <price> (Gas)

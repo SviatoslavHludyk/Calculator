@@ -1,0 +1,25 @@
+
+Group Inverter
+Group                   WB_BatteryVoltage_Chart                                (Power, Inverter)                                     
+Group                   WB_BatteryCurrent_Chart                                (Power, Inverter)                                     
+Group                   WB_LoadPower_Chart                                  (Power, Inverter)
+Group                   WB_BatterySoc_Chart                                  (Power, Inverter)
+Group                   WB_Inverter_Voltage_Chart                                  (Power, Inverter)
+
+Number                  WB_BatteryVoltage_Chart_Period              "Period"                                                                                                                    
+Number                  WB_BatteryCurrent_Chart_Period              "Period"                                                                                                                    
+Number                  WB_LoadPower_Chart_Period             "Period"    
+Number                  WB_BatterySoc_Chart_Period             "Period"    
+Number                  WB_Inverter_Voltage_Chart_Period             "Period"    
+
+Number:ElectricPotential WB_GridVoltage  "Input Voltage [%.1f V]"     <energy> (Power, Inverter, WB_Inverter_Voltage_Chart)              {channel="mqtt:topic:cf2b98f3:WB_GridVoltage"}
+Number:Frequency WB_GridFrequency  "Input Frequency [%.1f Hz]" <energy> (Power, Inverter)                  {channel="mqtt:topic:cf2b98f3:WB_GridFrequency"}
+Number:ElectricPotential WB_OutputVoltage  "Output Voltage [%.1f V]"  <energy> (Power, Inverter, WB_Inverter_Voltage_Chart)                 {channel="mqtt:topic:cf2b98f3:WB_OutputVoltage"}
+Number:Frequency WB_OutputFrequency  "Output Frequency [%.1f Hz]" <energy>  (Power, Inverter)                 {channel="mqtt:topic:cf2b98f3:WB_OutputFrequency"}
+Number:Power WB_LoadPower  "Load Power [%d W]"   <energy>  (Power, Inverter, WB_LoadPower_Chart)               {channel="mqtt:topic:cf2b98f3:WB_LoadPower"}
+Number:Power WB_LoadVA  "Load VA [%d VA]"         <energy>  (Power, Inverter)         {channel="mqtt:topic:cf2b98f3:WB_LoadVA"}
+Number:Dimensionless WB_LoadPercent  "Load Percent [%d %%]"  <energy>  (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_LoadPercent"}
+Number:ElectricPotential WB_BatteryVoltage  "Battery Voltage [%.1f V]"   <energy>  (Power, Inverter, WB_BatteryVoltage_Chart)               {channel="mqtt:topic:cf2b98f3:WB_BatteryVoltage"}
+Number:ElectricCurrent WB_BatteryCurrent  "Battery Current [%.1f A]"  <energy>   (Power, Inverter, WB_BatteryCurrent_Chart)               {channel="mqtt:topic:cf2b98f3:WB_BatteryCurrent"}
+Number:Dimensionless WB_BatterySoc  "Battery Soc [%d %%]"         <battery>   (Power, Inverter, WB_BatterySoc_Chart)        {channel="mqtt:topic:cf2b98f3:WB_BatterySoc"}
+Number:Temperature WB_Inverteremperature  "Inverter teremperature [%d %unit%]"  <temperature>  (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_Inverteremperature"}

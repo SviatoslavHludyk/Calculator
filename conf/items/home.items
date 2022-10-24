@@ -1,75 +1,39 @@
 Group                   All                                                                                                                                                                 
 Group                   Gates                                                                                                                   (All)                                       
-Group                   Weather                                                                                                                 (All)                                       
 Group                   Heaters                                                                                                                 (All)                                       
 Group                   Temp                                                                                                                    (All)                                       
 Group                   Sensors                                                                                                                 (All)                                       
-Group                   Power                                                                                                                   (All)                                       
 Group                   Flat                                                                                                                    (All)                                       
 Group                   Lights                                                                                                                  (All)                                       
-Group                   Gas                                                                                                                     (All)                                       
 Group                   Water                                                                                                                   (All)                                       
-Group                   Vent                                                                                                                    (All)                                       
 Group                   Config                                                                                                                  (All)                                       
-Group                   Conditioning                                                                                                            (All)                                       
 Group                   Bedroom                                                                                                                 (All)                                       
 Group                   Kidsroom                                                                                                                (All)                                       
 Group                   Hall                                                                                                                    (All)                                       
 
-Group                   Power_Volt_Sens_Chart                                                                                                   (Power)                                     
-Group                   Power_Curr_Sens_Chart                                                                                                   (Power)                                     
-Group                   Power_Wt_Sens_Chart                                                                                                     (Power)                                     
 Group                   Sensors_TempServ_Chart                                                                                                  (Sensors, Temp)                             
 Group                   Sensors_TempCO_Chart                                                                                                    (Sensors, Temp)                             
 Group                   Sensors_COlev_Chart                                                                                                     (Sensors)                                   
 Group                   Sensors_HumCO_Chart                                                                                                     (Sensors)                                   
 Group                   Heater_Temp_Chart                                                                                                       (Sensors, Temp)                             
 Group                   Boiler_Temp_Chart                                                                                                       (Sensors, Temp)                             
-Group                   Gas_Cons_Chart                                                                                                          (Gas)                                       
-Group                   Gas_ConsD_Chart                                                                                                         (Gas)                                       
-Group                   Power_ConsD_Chart                                                                                                       (Power)                                     
 Group                   Water_Press_Chart                                                                                                       (Water)                                     
-Group                   Vent_Temp_Chart                                                                                                         (Vent, Temp)                                
-Group                   Vent_FanSpeed_Chart                                                                                                     (Vent)                                      
-Group                   Weather_Temp_Chart                                                                                                      (Weather, Temp)                             
 Group                   Sensors_TempDev_Chart                                                                                                  (Sensors, Temp)                             
+Group:Number:AVG        Temperatures  "All Room Temperatures [%.1f °C]" // e.g. "21.3 °C"
 
-Number                  Power_Energy                            "Energy [%.3f kWh]"                                             <energy>        (Power)                                     { channel="modbus:data:312f4244:number" }
-Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)              { channel="modbus:data:5bf2516b:number" }
-Number                  Power_Current                           "Current [%.1f A]"                                              <energy>        (Power, Power_Curr_Sens_Chart)              { channel="modbus:data:ef0ab11d:number" }
-Number                  Power_PowerH                            "Power [%d W]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="modbus:data:1fd5096a:number" }
-
-Number                  Power_Volt_Sens_Chart_Period            "Period"                                                                                                                    
-Number                  Power_Curr_Sens_Chart_Period            "Period"                                                                                                                    
-Number                  Power_Wt_Sens_Chart_Period              "Period"                                                                                                                    
-Number                  Power_ConsD_Chart_Period                "Period"                                                                                                                    
-
-Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                    <energy>        (Power, Power_ConsD_Chart)                  
-Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                        <energy>        (Power)                                     
-Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                        <energy>        (Power)                                     
-
-
-Number                  WB_GasCounter                           "Counter [%.2f m3]"                                             <gas>           (Gas)                                       { channel="mqtt:topic:cf2b98f3:GazCounter" }
-Number                  Gas_Cons                                "Consumption [%.2f m3/h]"                                       <gas>           (Gas, Gas_Cons_Chart)                       
-Number                  Gas_ConsD                               "Cons. yesterday [%.2f m3]"                                     <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasConsYest" }
-Number                  Gas_ConsDDHW                            "Cons. for DHW [%.2f m3]"                                       <gas>           (Gas, Gas_ConsD_Chart)                      { channel="mqtt:topic:cf2b98f3:GasDHW" }
-Number                  Gas_ConsM                               "Cons. month [%.2f m3]"                                         <gas>           (Gas)                                       
-Number                  Gas_ConsToday                           "Cons. today [%.2f m3]"                                         <gas>           (Gas)                                       
-Number                  Gas_Cons_Chart_Period                   "Period"                                                                                                                    
-Number                  Gas_ConsD_Chart_Period                  "Period"                                                                                                                    
 
 Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_CO2" }
 Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_Humidity" }
 Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_DewPoint" }
 Number                  RoomWetBulbTemp                         "Wet bulb temp [%.2f °C]"                                       <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_WetTemp" }
-Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempDev_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
+Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempDev_Chart, Bedroom, Temperatures)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
 
-Number                  WB_Bedroom                              "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
-Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart, Kidsroom) { channel="mqtt:topic:cf2b98f3:KidsRoom" }
-Number                  WB_Corridor                             "Corridor [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart)           { channel="mqtt:topic:cf2b98f3:Corridor" }
+Number                  WB_Bedroom                              "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom, Temperatures)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
+Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart, Kidsroom, Temperatures) { channel="mqtt:topic:cf2b98f3:KidsRoom" }
+Number                  WB_Corridor                             "Corridor [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Temperatures)           { channel="mqtt:topic:cf2b98f3:Corridor" }
 //Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
-Number                  WB_Hall                                 "Hall [%.2f °C]"                                                <temperature>   (Sensors, Sensors_TempServ_Chart, Hall)     { channel="mqtt:topic:cf2b98f3:Hall" }
-Number                  WB_Entrance                             "Entrance [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall)     { channel="mqtt:topic:cf2b98f3:Entrance" }
+Number                  WB_Hall                                 "Hall [%.2f °C]"                                                <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Hall" }
+Number                  WB_Entrance                             "Entrance [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Entrance" }
 
 Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:Boiler" }
 Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                       <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:RCPump" }
@@ -86,28 +50,6 @@ Number                  WB_DHW_Spt                              "Temp. water [%.
 Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
 Number                  WB_Modulation                           "Modulation [%d %%]"                                            <heating>       (Heaters)                                   { channel="mqtt:topic:cf2b98f3:Modulation" }
 
-Number                  WB_AirSetpoint                          "Setpoint [%d °C]"                                              <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:Setpoint" }
-Number                  WB_VentMode                             "Mode"                                                          <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:Mode" }
-Number                  WB_FanSpeed                             "Fan speed"                                                     <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:FanSpeed" }
-Switch                  WB_EcoMode                              "Eco Mode"                                                      <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:EcoMode" }
-Number                  WB_AirOutdoor                           "Outdoor Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:OutdoorAir" }
-Number                  WB_AirSupply                            "Supply Air [%.1f °C]"                                          <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:SupplyAir" }
-Number                  WB_AirAfterRecuperator                  "After Recuperator [%.1f °C]"                                   <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:AfterRecuperator" }
-Number                  WB_AirDefrostsensor                     "Defrost sensor [%.1f °C]"                                      <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:Defrostsensor" }
-Number                  WB_AirExhaust                           "Exhaust Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:ExhaustAir" }
-
-Number                  WB_SFanSpeed                            "Fans speed [%d %%]"                                            <fan>           (Sensors, Vent, Vent_FanSpeed_Chart)        { channel="mqtt:topic:cf2b98f3:SFanSpeed" }
-Switch                  WB_VentDampers                          "Air Dampers"                                                   <rollershutter> (Vent)                                      { channel="mqtt:topic:cf2b98f3:AirDampers" }
-Switch                  WB_VentRecuperator                      "Recuperator"                                                   <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:Recuperator" }
-Switch                  WB_VentCompressor                       "Compressor"                                                    <pump>          (Vent)                                      { channel="mqtt:topic:cf2b98f3:Compressor" }
-Switch                  WB_VentHeater                           "Electric Heater"                                               <heating>       (Vent)                                      { channel="mqtt:topic:cf2b98f3:ElectricHeater" }
-
-
-Number                  WB_FanSpeed1                            "Fans speed 1 [%d %%]"                                          <fan>           (Vent, Config)                              { channel="mqtt:topic:cf2b98f3:FanS1" }
-Number                  WB_FanSpeed2                            "Fans speed 2 [%d %%]"                                          <fan>           (Vent, Config)                              { channel="mqtt:topic:cf2b98f3:FanS2" }
-Number                  WB_FanSpeed3                            "Fans speed 3 [%d %%]"                                          <fan>           (Vent, Config)                              { channel="mqtt:topic:cf2b98f3:FanS3" }
-Number                  WB_FanEcoSpeed                          "Fans eco speed [%d %%]"                                        <fan>           (Vent, Config)                              { channel="mqtt:topic:cf2b98f3:VentEcoSpeed" }
-Number                  WB_FanLowSpeed                          "Fans low speed [%d %%]"                                        <fan>           (Vent, Config)                              { channel="mqtt:topic:cf2b98f3:VentLowSpeed" }
 Number                  WB_RCPumpTemp                           "RC On Min Temp [%d °C]"                                        <temperature>   (Config)                                    { channel="mqtt:topic:cf2b98f3:RCPumpTemp" }
 Number                  WB_RCBoilerTemp                         "Boiler Min Temp [%d °C]"                                       <temperature>   (Config)                                    { channel="mqtt:topic:cf2b98f3:RCBoilerTemp" }
 Number                  WB_RCPumpTimer                          "RC Off Timer [%d s]"                                           <time>          (Config)                                    { channel="mqtt:topic:cf2b98f3:RCPumpTimer" }
@@ -121,10 +63,6 @@ Number                  Heater_Temp_Chart_Period                "Period"
 Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                    
 Number                  Sensors_TempServ_Chart_Period           "Period"                                                                                                                    
 Number                  Sensors_TempDev_Chart_Period           "Period"                                                                                                                    
-Number                  Vent_Temp_Chart_Period                  "Period"                                                                                                                    
-Number                  Vent_FanSpeed_Chart_Period              "Period"                                                                                                                    
-
-Number                  Weather_Temp_Chart_Period               "Period"                                                                                                                    
 
 DateTime                Date                                    "Date [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                                  { channel="ntp:ntp:local:dateTime"}
 
@@ -133,205 +71,3 @@ Switch                  WB_Valve                                "Main Valve"    
 Switch                  WB_RPump                                "Recirculation"                                                 <pump>          (Water)                                     { channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
 Number                  Water_Press_Chart_Period                "Period"                                                                                                                    
-
-
-Switch                  HallAirconPower                                                                                                         (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:power" }
-String                  HallAirconMode                                                                                                          (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:mode" }
-Switch                  HallAirconTurbo                                                                                                         (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:turbo" }
-Switch                  HallAirconLight                                                                                                         (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:light" }
-Number                  HallAirconTargetTemp                          "Target Temperature [%d °C]"                                              (Hall, Conditioning)                        {channel="gree:airconditioner:f4911e09c841:temperature" }
-Number                  HallAirconSwingVertical                                                                                                 (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:swingUpDown" }
-Number                  HallAirconFanSpeed                                                                                                      (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:windspeed" }
-Switch                  HallAirconAir                                                                                                           (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:air" }
-Switch                  HallAirconDry                                                                                                           (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:dry" }
-Switch                  HallAirconHealth                                                                                                        (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:health" }
-Switch                  HallAirconPowerSaving                                                                                                   (Hall, Conditioning)                        { channel="gree:airconditioner:f4911e09c841:powersave" }
-
-Switch                  BedroomAirconPower                                                                                                      (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:power" }
-String                  BedroomAirconMode                                                                                                       (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:mode" }
-Switch                  BedroomAirconTurbo                                                                                                      (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:turbo" }
-Switch                  BedroomAirconLight                                                                                                      (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:light" }
-Number                  BedroomAirconTargetTemp                       "Target Temperature [%d °C]"                                            (Bedroom, Conditioning)                     {channel="gree:airconditioner:f4911e78dc7a:temperature" }
-Number                  BedroomAirconSwingVertical                                                                                              (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:swingUpDown" }
-Number                  BedroomAirconFanSpeed                                                                                                   (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:windspeed" }
-Switch                  BedroomAirconAir                                                                                                        (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:air" }
-Switch                  BedroomAirconDry                                                                                                        (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:dry" }
-Switch                  BedroomAirconHealth                                                                                                     (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:health" }
-Switch                  BedroomAirconPowerSaving                                                                                                (Bedroom, Conditioning)                     { channel="gree:airconditioner:f4911e78dc7a:powersave " }
-
-Switch                  WB_BRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:BRC_Auto" }
-String                  WB_BRC_Mode                           "[%s]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:BRC_Mode" }
-Switch                  WB_BRC_Power                                                                                                                                                            { channel="mqtt:topic:cf2b98f3:BRC_Power" }
-Number                  WB_BRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:BRC_Temp" }
-Number                  WB_BRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:BRC_Speed" }
-
-Switch                  WB_KRC_Auto                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_Auto" }
-String                  WB_KRC_Mode                           "[%s]"                                                                                                                                 { channel="mqtt:topic:cf2b98f3:KRC_Mode" }
-Switch                  WB_KRC_Power                                                                                                                                                              { channel="mqtt:topic:cf2b98f3:KRC_Power" }
-Number                  WB_KRC_Temp                           "[%d]"                                                                                                                                 {channel="mqtt:topic:cf2b98f3:KRC_Temp" }
-Number                  WB_KRC_Speed                           "[%d]"                                                                                                                                { channel="mqtt:topic:cf2b98f3:KRC_Speed" }
-
-Switch                  KidsroomAirconPower                                                                                                     (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:power" }
-String                  KidsroomAirconMode                                                                                                      (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:mode" }
-Switch                  KidsroomAirconTurbo                                                                                                     (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:turbo" }
-Switch                  KidsroomAirconLight                                                                                                     (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:light" }
-Number                  KidsroomAirconTargetTemp                      "Target Temperature [%d °C]"                                            (Kidsroom, Conditioning)                    {channel="gree:airconditioner:f4911e78dc79:temperature" }
-Number                  KidsroomAirconSwingVertical                                                                                             (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:swingUpDown" }
-
-Number                  KidsroomAirconFanSpeed                                                                                                  (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:windspeed" }
-Switch                  KidsroomAirconAir                                                                                                       (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:air" }
-Switch                  KidsroomAirconDry                                                                                                       (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:dry" }
-Switch                  KidsroomAirconHealth                                                                                                    (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:health" }
-Switch                  KidsroomAirconPowerSaving                                                                                               (Kidsroom, Conditioning)                    { channel="gree:airconditioner:f4911e78dc79:powersave" }
-
-
-DateTime                localLastMeasurement                    "Timestamp of last measurement [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#time-stamp" }
-String                  localCurrentCondition                   "Current condition [%s]"                                        <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:current#condition" }
-Image                   localCurrentConditionIcon               "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#icon" }
-Number:Temperature      localCurrentTemperature                 "Current temperature [%.1f %unit%]"                             <temperature>   (Weather, Temp, Weather_Temp_Chart)         { channel="openweathermap:weather-and-forecast:cdca1037:local:current#temperature" }
-Number:Pressure         localCurrentPressure                    "Current barometric pressure [%.1f %unit%]"                     <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:current#pressure" }
-Number:Dimensionless    localCurrentHumidity                    "Current atmospheric humidity [%d %unit%]"                      <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:current#humidity" }
-Number:Speed            localCurrentWindSpeed                   "Current wind speed [%.1f km/h]"                                <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#wind-speed" }
-Number:Angle            localCurrentWindDirection               "Current wind direction [%d %unit%]"                            <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#wind-direction" }
-Number:Dimensionless    localCurrentCloudiness                  "Current cloudiness [%d %unit%]"                                <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:current#cloudiness" }
-Number:Length           localCurrentRainVolume                  "Current rain volume [%.1f %unit%]"                             <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#rain" }
-Number:Length           localCurrentSnowVolume                  "Current snow volume [%.1f %unit%]"                             <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:current#snow" }
-
-DateTime                localDailyforecastHours03Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#time-stamp" }
-String                  localDailyforecastHours03Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#condition" }
-Image                   localDailyforecastHours03ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#icon" }
-Number:Temperature      localDailyforecastHours03Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#temperature" }
-Number:Pressure         localDailyforecastHours03Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#pressure" }
-Number:Dimensionless    localDailyforecastHours03Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#humidity" }
-Number:Speed            localDailyforecastHours03WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#wind-speed" }
-Number:Angle            localDailyforecastHours03WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#wind-direction" }
-Number:Dimensionless    localDailyforecastHours03Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#cloudiness" }
-Number:Length           localDailyforecastHours03RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#rain" }
-Number:Length           localDailyforecastHours03SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours03#snow" }
-
-DateTime                localDailyforecastHours06Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#time-stamp" }
-String                  localDailyforecastHours06Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#condition" }
-Image                   localDailyforecastHours06ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#icon" }
-Number:Temperature      localDailyforecastHours06Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#temperature" }
-Number:Pressure         localDailyforecastHours06Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#pressure" }
-Number:Dimensionless    localDailyforecastHours06Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#humidity" }
-Number:Speed            localDailyforecastHours06WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#wind-speed" }
-Number:Angle            localDailyforecastHours06WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#wind-direction" }
-Number:Dimensionless    localDailyforecastHours06Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#cloudiness" }
-Number:Length           localDailyforecastHours06RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#rain" }
-Number:Length           localDailyforecastHours06SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours06#snow" }
-
-DateTime                localDailyforecastHours09Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#time-stamp" }
-String                  localDailyforecastHours09Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#condition" }
-Image                   localDailyforecastHours09ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#icon" }
-Number:Temperature      localDailyforecastHours09Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#temperature" }
-Number:Pressure         localDailyforecastHours09Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#pressure" }
-Number:Dimensionless    localDailyforecastHours09Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#humidity" }
-Number:Speed            localDailyforecastHours09WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#wind-speed" }
-Number:Angle            localDailyforecastHours09WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#wind-direction" }
-Number:Dimensionless    localDailyforecastHours09Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#cloudiness" }
-Number:Length           localDailyforecastHours09RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#rain" }
-Number:Length           localDailyforecastHours09SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours09#snow" }
-
-DateTime                localDailyforecastHours12Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#time-stamp" }
-String                  localDailyforecastHours12Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#condition" }
-Image                   localDailyforecastHours12ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#icon" }
-Number:Temperature      localDailyforecastHours12Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#temperature" }
-Number:Pressure         localDailyforecastHours12Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#pressure" }
-Number:Dimensionless    localDailyforecastHours12Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#humidity" }
-Number:Speed            localDailyforecastHours12WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#wind-speed" }
-Number:Angle            localDailyforecastHours12WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#wind-direction" }
-Number:Dimensionless    localDailyforecastHours12Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#cloudiness" }
-Number:Length           localDailyforecastHours12RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#rain" }
-Number:Length           localDailyforecastHours12SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours12#snow" }
-
-DateTime                localDailyforecastHours15Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#time-stamp" }
-String                  localDailyforecastHours15Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#condition" }
-Image                   localDailyforecastHours15ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#icon" }
-Number:Temperature      localDailyforecastHours15Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#temperature" }
-Number:Pressure         localDailyforecastHours15Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#pressure" }
-Number:Dimensionless    localDailyforecastHours15Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#humidity" }
-Number:Speed            localDailyforecastHours15WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#wind-speed" }
-Number:Angle            localDailyforecastHours15WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#wind-direction" }
-Number:Dimensionless    localDailyforecastHours15Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#cloudiness" }
-Number:Length           localDailyforecastHours15RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#rain" }
-Number:Length           localDailyforecastHours15SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours15#snow" }
-
-DateTime                localDailyforecastHours18Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#time-stamp" }
-String                  localDailyforecastHours18Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#condition" }
-Image                   localDailyforecastHours18ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#icon" }
-Number:Temperature      localDailyforecastHours18Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#temperature" }
-Number:Pressure         localDailyforecastHours18Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#pressure" }
-Number:Dimensionless    localDailyforecastHours18Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#humidity" }
-Number:Speed            localDailyforecastHours18WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#wind-speed" }
-Number:Angle            localDailyforecastHours18WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#wind-direction" }
-Number:Dimensionless    localDailyforecastHours18Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#cloudiness" }
-Number:Length           localDailyforecastHours18RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#rain" }
-Number:Length           localDailyforecastHours18SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours18#snow" }
-
-DateTime                localDailyforecastHours21Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#time-stamp" }
-String                  localDailyforecastHours21Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#condition" }
-Image                   localDailyforecastHours21ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#icon" }
-Number:Temperature      localDailyforecastHours21Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#temperature" }
-Number:Pressure         localDailyforecastHours21Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#pressure" }
-Number:Dimensionless    localDailyforecastHours21Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#humidity" }
-Number:Speed            localDailyforecastHours21WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#wind-speed" }
-Number:Angle            localDailyforecastHours21WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#wind-direction" }
-Number:Dimensionless    localDailyforecastHours21Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#cloudiness" }
-Number:Length           localDailyforecastHours21RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#rain" }
-Number:Length           localDailyforecastHours21SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours21#snow" }
-
-DateTime                localDailyforecastHours24Timestamp      "Timestamp of forecast [%1$td.%1$tm.%1$tY %1$tH:%1$tM]"         <time>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#time-stamp" }
-String                  localDailyforecastHours24Condition      "Condition for today [%s]"                                      <sun_clouds>                                                { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#condition" }
-Image                   localDailyforecastHours24ConditionIcon  "Icon"                                                                                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#icon" }
-Number:Temperature      localDailyforecastHours24Temperature    "Forecast temperature [%.1f %unit%]"                            <temperature>                                               { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#temperature" }
-Number:Pressure         localDailyforecastHours24Pressure       "Barometric pressure for today [%.1f %unit%]"                   <pressure>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#pressure" }
-Number:Dimensionless    localDailyforecastHours24Humidity       "Atmospheric humidity for today [%d %unit%]"                    <humidity>                                                  { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#humidity" }
-Number:Speed            localDailyforecastHours24WindSpeed      "Wind speed for today [%.1f km/h]"                              <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#wind-speed" }
-Number:Angle            localDailyforecastHours24WindDirection  "Wind direction for today [%d %unit%]"                          <wind>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#wind-direction" }
-Number:Dimensionless    localDailyforecastHours24Cloudiness     "Cloudiness for today [%d %unit%]"                              <clouds>                                                    { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#cloudiness" }
-Number:Length           localDailyforecastHours24RainVolume     "Rain volume for today [%.1f %unit%]"                           <rain>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#rain" }
-Number:Length           localDailyforecastHours24SnowVolume     "Snow volume for today [%.1f %unit%]"                           <snow>                                                      { channel="openweathermap:weather-and-forecast:cdca1037:local:forecastHours24#snow" }
-
-Switch denon_power    "Receiver" <switch>         {channel="denonmarantz:avr:91c4d0d66e:mainZone#power"}
-Dimmer denon_volume   "Volume"   <soundvolume>    {channel="denonmarantz:avr:91c4d0d66e:mainZone#volume"}
-Number denon_volumeDB "Volume [%.1f dB]"          {channel="denonmarantz:avr:91c4d0d66e:mainZone#volumeDB"}
-Switch denon_mute     "Mute"     <mute>           {channel="denonmarantz:avr:91c4d0d66e:mainZone#mute"}
-Switch denon_z2power  "Zone 2"                    {channel="denonmarantz:avr:91c4d0d66e:zone2#power"}
-String denon_input    "Input [%s]"                {channel="denonmarantz:avr:91c4d0d66e:mainZone#input" }
-String denon_surround "Surround: [%s]"            {channel="denonmarantz:avr:91c4d0d66e:general#surroundProgram"}
-String denon_command                              {channel="denonmarantz:avr:91c4d0d66e:general#command"}
-
-Group AirQuality <flow>
-
-Number   airQualityIndex           "Air Quality Index" <flow> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#airQualityIndex" }
-Number   particulateMatter2dot5    "PM\u2082\u2085 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#particulateMatter2dot5" }
-Number   particulateMatter10       "PM\u2081\u2080 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#particulateMatter10" }
-Number   carbonMonoxide            "CO Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#carbonMonoxide" }
-Number   nitrogenMonoxide          "NO Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#nitrogenMonoxide" }
-Number   nitrogenDioxide           "NO\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#nitrogenDioxide" }
-Number   ozone                  "O\u2083 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ozone" }
-Number   sulphurDioxide         "SO\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#sulphurDioxide" }
-Number   ammonia                "NH\u2082 Level" <line> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#ammonia" }
-DateTime pollTimestamp          "Time of observation [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <clock> (AirQuality) { channel="openweathermap:air-pollution:cdca1037:local:current#time-stamp" }
-
-Switch twinkly_power  "Power"                    {channel="twinklytree:twinkly:6a7e98fd79:switch"}
-Dimmer twinkly_brightness   "Brightness"   <brightness>    {channel="twinklytree:twinkly:6a7e98fd79:dimmer"}
-String twinkly_mode                              {channel="twinklytree:twinkly:6a7e98fd79:mode"}
-
-
-DateTime                localDawn                            "Dawn end [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                            { channel="astro:sun:local:civilDawn#end" }
-DateTime                localDusk                             "Dusk start [%1$td.%1$tm.%1$tY %1$tH:%1$tM]" <time>                                                                             { channel="astro:sun:local:civilDusk#start" }
-
-Switch home_asleep  "Asleep"                    {channel="mqtt:topic:cf2b98f3:Asleep"}
-Switch home_athome  "At home"                    {channel="mqtt:topic:cf2b98f3:AtHome"}
-Switch home_away  "Away"                    {channel="mqtt:topic:cf2b98f3:home_away"}
-
-Switch relay1  "Socket 1"                    {channel="mqtt:topic:cf2b98f3:relay1"}
-Switch relay2  "Socket 2"                    {channel="mqtt:topic:cf2b98f3:relay2"}
-
-Number GasValue "Gas cost [%.2f UAH]" <price> (Gas)
-Number GasMonthValue "Gas cost [%.2f UAH]" <price> (Gas)
-
-Number EnergyValue "Energy cost [%.2f UAH]" <price> (Power)
-Number EnergyMonthValue "Energy cost [%.2f UAH]" <price> (Power)
