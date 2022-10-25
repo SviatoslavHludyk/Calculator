@@ -253,55 +253,61 @@ Frame label="Options"{
 			Text item=Power_ConsM
 			Text item=EnergyMonthValue
 		}
-		Group item=WB_LoadPower label="Inverter" icon="energy" {
-			Frame {
-				Text item=WB_GridVoltage
-				Text item=WB_GridFrequency
-				Text item=WB_OutputVoltage
-				Text item=WB_OutputFrequency
-				Text item=WB_LoadPower
-				Text item=WB_LoadVA
-				Text item=WB_LoadPercent
-				Text item=WB_BatteryVoltage
-				Text item=WB_BatteryCurrent
-				Text item=WB_BatterySoc
-				Text item=WB_Inverteremperature
+		Frame label="AVR" {
+			Group item=WB_LoadPower label="Inverter" icon="energy" {
+				Frame {
+					Text item=WB_GridVoltage
+					Text item=WB_GridFrequency
+					Text item=WB_OutputVoltage
+					Text item=WB_OutputFrequency
+					Text item=WB_LoadPower
+					Text item=WB_LoadVA
+					Text item=WB_LoadPercent
+					Text item=WB_BatteryVoltage
+					Text item=WB_BatteryCurrent
+					Text item=WB_BatterySoc
+					Text item=WB_Inverteremperature
+					Text item=WB_WorkState label="Work State: [MAP(inverterstate.map):%s]"
+					Text item=WB_AVRState label="AVR State: [MAP(avrstate.map):%s]"
+					Text item=WB_ChargeStage label="Charge Stage: [MAP(chargestage.map):%s]"
+					Text item=WB_ChargeFlag label="Charge State: [MAP(chargestate.map):%s]"
+				}
+				Frame {
+					Switch item=WB_Inverter_Voltage_Chart_Period label="Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_Inverter_Voltage_Chart period=h refresh=600 visibility=[WB_Inverter_Voltage_Chart_Period == 0, WB_Inverter_Voltage_Chart_Period == "Uninitialized"]
+					Chart item=WB_Inverter_Voltage_Chart period=D refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 1]
+					Chart item=WB_Inverter_Voltage_Chart period=W refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 2]
+					Chart item=WB_Inverter_Voltage_Chart period=M refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 3]
+				}			
+				Frame {
+					Switch item=WB_BatteryVoltage_Chart_Period label="Battery Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_BatteryVoltage_Chart period=h refresh=600 visibility=[WB_BatteryVoltage_Chart_Period == 0, WB_BatteryVoltage_Chart_Period == "Uninitialized"]
+					Chart item=WB_BatteryVoltage_Chart period=D refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 1]
+					Chart item=WB_BatteryVoltage_Chart period=W refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 2]
+					Chart item=WB_BatteryVoltage_Chart period=M refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 3]
+				}
+				Frame {
+					Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_BatteryCurrent_Chart period=h refresh=600 visibility=[WB_BatteryCurrent_Chart_Period == 0, WB_BatteryCurrent_Chart_Period == "Uninitialized"]
+					Chart item=WB_BatteryCurrent_Chart period=D refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 1]
+					Chart item=WB_BatteryCurrent_Chart period=W refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 2]
+					Chart item=WB_BatteryCurrent_Chart period=M refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 3]
+				}	
+				Frame {
+					Switch item=WB_LoadPower_Chart_Period label="Load Power, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_LoadPower_Chart period=h refresh=600 visibility=[WB_LoadPower_Chart_Period == 0, WB_LoadPower_Chart_Period == "Uninitialized"]
+					Chart item=WB_LoadPower_Chart period=D refresh=3600 visibility=[WB_LoadPower_Chart_Period == 1]
+					Chart item=WB_LoadPower_Chart period=W refresh=3600 visibility=[WB_LoadPower_Chart_Period == 2]
+					Chart item=WB_LoadPower_Chart period=M refresh=3600 visibility=[WB_LoadPower_Chart_Period == 3]
+				}		
+				Frame {
+					Switch item=WB_BatterySoc_Chart_Period label="Battery Soc, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_BatterySoc_Chart period=h refresh=600 visibility=[WB_BatterySoc_Chart_Period == 0, WB_BatterySoc_Chart_Period == "Uninitialized"]
+					Chart item=WB_BatterySoc_Chart period=D refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 1]
+					Chart item=WB_BatterySoc_Chart period=W refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 2]
+					Chart item=WB_BatterySoc_Chart period=M refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 3]
+				}							
 			}
-			Frame {
-				Switch item=WB_Inverter_Voltage_Chart_Period label="Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-				Chart item=WB_Inverter_Voltage_Chart period=h refresh=600 visibility=[WB_Inverter_Voltage_Chart_Period == 0, WB_Inverter_Voltage_Chart_Period == "Uninitialized"]
-				Chart item=WB_Inverter_Voltage_Chart period=D refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 1]
-				Chart item=WB_Inverter_Voltage_Chart period=W refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 2]
-				Chart item=WB_Inverter_Voltage_Chart period=M refresh=3600 visibility=[WB_Inverter_Voltage_Chart_Period == 3]
-			}			
-			Frame {
-				Switch item=WB_BatteryVoltage_Chart_Period label="Battery Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-				Chart item=WB_BatteryVoltage_Chart period=h refresh=600 visibility=[WB_BatteryVoltage_Chart_Period == 0, WB_BatteryVoltage_Chart_Period == "Uninitialized"]
-				Chart item=WB_BatteryVoltage_Chart period=D refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 1]
-				Chart item=WB_BatteryVoltage_Chart period=W refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 2]
-				Chart item=WB_BatteryVoltage_Chart period=M refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 3]
-			}
-			Frame {
-				Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-				Chart item=WB_BatteryCurrent_Chart period=h refresh=600 visibility=[WB_BatteryCurrent_Chart_Period == 0, WB_BatteryCurrent_Chart_Period == "Uninitialized"]
-				Chart item=WB_BatteryCurrent_Chart period=D refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 1]
-				Chart item=WB_BatteryCurrent_Chart period=W refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 2]
-				Chart item=WB_BatteryCurrent_Chart period=M refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 3]
-			}	
-			Frame {
-				Switch item=WB_LoadPower_Chart_Period label="Load Power, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-				Chart item=WB_LoadPower_Chart period=h refresh=600 visibility=[WB_LoadPower_Chart_Period == 0, WB_LoadPower_Chart_Period == "Uninitialized"]
-				Chart item=WB_LoadPower_Chart period=D refresh=3600 visibility=[WB_LoadPower_Chart_Period == 1]
-				Chart item=WB_LoadPower_Chart period=W refresh=3600 visibility=[WB_LoadPower_Chart_Period == 2]
-				Chart item=WB_LoadPower_Chart period=M refresh=3600 visibility=[WB_LoadPower_Chart_Period == 3]
-			}		
-			Frame {
-				Switch item=WB_BatterySoc_Chart_Period label="Battery Soc, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-				Chart item=WB_BatterySoc_Chart period=h refresh=600 visibility=[WB_BatterySoc_Chart_Period == 0, WB_BatterySoc_Chart_Period == "Uninitialized"]
-				Chart item=WB_BatterySoc_Chart period=D refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 1]
-				Chart item=WB_BatterySoc_Chart period=W refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 2]
-				Chart item=WB_BatterySoc_Chart period=M refresh=3600 visibility=[WB_BatterySoc_Chart_Period == 3]
-			}							
 		}
 		Frame {
 			Switch item=Power_Volt_Sens_Chart_Period label="Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
@@ -520,7 +526,7 @@ Group item=twinkly_mode label="Lights" icon="light" {
 		Frame label="Twinkly" {
 		Switch item=twinkly_power label="Light" icon=light
 	    Setpoint  item=twinkly_brightness    label="Brightness [%d]" minValue=0 maxValue=100 step=5  visibility=[twinkly_power==ON]
-		Selection item=twinkly_mode label="Mode" mappings=["off"="Off", "demo"="Demo", "movie"="Movie", "playlist"="Playlist"]
+		Selection item=twinkly_mode label="Mode" mappings=["off"="Off", "color"="Color", "demo"="Demo", "effect"="Effect", "movie"="Movie", "playlist"="Playlist"]
 		}
 		Frame label="Sun" {
 		Text item=localDawn
