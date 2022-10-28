@@ -290,7 +290,7 @@ Frame label="Options"{
 					Chart item=WB_BatteryVoltage_Chart period=M refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 3]
 				}
 				Frame {
-					Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, A" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
 					Chart item=WB_BatteryCurrent_Chart period=h refresh=600 visibility=[WB_BatteryCurrent_Chart_Period == 0, WB_BatteryCurrent_Chart_Period == "Uninitialized"]
 					Chart item=WB_BatteryCurrent_Chart period=D refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 1]
 					Chart item=WB_BatteryCurrent_Chart period=W refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 2]
