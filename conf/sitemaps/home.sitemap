@@ -53,7 +53,7 @@ sitemap home label="Main menu"{
 
 	Group item=WB_VentMode label="Ventilation" icon="fan" {
 		Frame label="Settings" {
-			Switch item=WB_VentMode label="Mode" mappings=[0="Off", 1="FAN", 4="Auto"]
+			Switch item=WB_VentMode
 			Setpoint item=WB_AirSetpoint label="Setpoint [%d °C]" minValue=15 maxValue=30 step=1
 			Selection item=WB_FanSpeed label="Fan speed" mappings=[1="Low", 2="Middle", 3="High"]
 			Switch item=WB_EcoMode

@@ -7,7 +7,7 @@ Number                  Vent_FanSpeed_Chart_Period              "Period"
 
 
 Number                  WB_AirSetpoint                          "Setpoint [%d °C]"                                              <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:Setpoint" }
-Number                  WB_VentMode                             "Mode"                                                          <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:Mode" }
+Switch                  WB_VentMode                             "Power"                                                          <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:Mode" }
 Number                  WB_FanSpeed                             "Fan speed"                                                     <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:FanSpeed" }
 Switch                  WB_EcoMode                              "Eco Mode"                                                      <fan>           (Vent)                                      { channel="mqtt:topic:cf2b98f3:EcoMode" }
 Number                  WB_AirOutdoor                           "Outdoor Air [%.1f °C]"                                         <temperature>   (Vent, Vent_Temp_Chart, Temp)               { channel="mqtt:topic:cf2b98f3:OutdoorAir" }

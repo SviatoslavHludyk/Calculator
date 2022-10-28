@@ -1,0 +1,666 @@
+UID: mqtt:topic:cf2b98f3
+label: Generic MQTT Thing
+thingTypeUID: mqtt:topic
+configuration: {}
+bridgeUID: mqtt:broker:8f67b874
+channels:
+  - id: GazCounter
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-mwac-cust_60/controls/G Counter
+      transformationPattern: ""
+  - id: Corridor
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0316033dbbff
+  - id: KidsRoom
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0300a279b6d7
+  - id: water_valve
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      commandTopic: /devices/water_valve/controls/on/on
+      postCommand: true
+      retained: false
+      stateTopic: /devices/water_valve/controls/on
+      off: "0"
+      on: "1"
+  - id: water_pressure
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/w_pressure/controls/Pressure
+      transformationPattern: ""
+  - id: recirc_pump
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      commandTopic: /devices/recirculation_pump/controls/on/on
+      postCommand: true
+      retained: false
+      stateTopic: /devices/recirculation_pump/controls/on
+      off: "0"
+      on: "1"
+  - id: Hall
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0301a2790db9
+  - id: Entrance
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0300a279c314
+  - id: Boiler
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/DHW Temperature
+  - id: Setpoint
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 15
+      formatBeforePublish: "%d"
+      max: 35
+      commandTopic: /devices/vutr_tn_1/controls/Setpoint/on
+      stateTopic: /devices/vutr_tn_1/controls/Setpoint
+  - id: FanSpeed
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      min: 1
+      formatBeforePublish: "%d"
+      max: 3
+      commandTopic: /devices/vutr_tn_1/controls/Set Fan Speed/on
+      stateTopic: /devices/vutr_tn_1/controls/Fan Speed
+      transformationPattern: ""
+  - id: OutdoorAir
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Outdoor Air
+  - id: SupplyAir
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Supply Air
+  - id: AfterRecuperator
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/After Recuperator
+  - id: Defrostsensor
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Defrost sensor
+  - id: ExhaustAir
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Exhaust Air
+  - id: SFanSpeed
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Supply Fan Speed
+  - id: FanS1
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 10
+      formatBeforePublish: "%d"
+      max: 50
+      commandTopic: /devices/ventilation_switcher/controls/FanS1/on
+      stateTopic: /devices/ventilation_switcher/controls/FanS1
+  - id: FanS2
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 30
+      formatBeforePublish: "%d"
+      max: 80
+      commandTopic: /devices/ventilation_switcher/controls/FanS2/on
+      stateTopic: /devices/ventilation_switcher/controls/FanS2
+  - id: FanS3
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 50
+      formatBeforePublish: "%d"
+      max: 100
+      commandTopic: /devices/ventilation_switcher/controls/FanS3/on
+      stateTopic: /devices/ventilation_switcher/controls/FanS3
+  - id: AirDampers
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Air Dampers
+      off: "0"
+      on: "1"
+  - id: Recuperator
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Recuperator
+      off: "0"
+      on: "1"
+  - id: Compressor
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Compressor
+      off: "0"
+      on: "1"
+  - id: ElectricHeater
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/vutr_tn_1/controls/Electric heater
+      off: "0"
+      on: "1"
+  - id: EcoMode
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      commandTopic: /devices/ventilation_switcher/controls/eco/on
+      postCommand: true
+      retained: false
+      stateTopic: /devices/ventilation_switcher/controls/eco
+      off: "0"
+      on: "1"
+  - id: ManifIn
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0300a279a7b1
+  - id: ManifOut
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0301a2793ca1
+  - id: RCPump
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0316033fcfff
+  - id: HotWater
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-03160366deff
+  - id: RCPumpTemp
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 20
+      formatBeforePublish: '"%d"'
+      max: 60
+      commandTopic: /devices/recirculation_pump/controls/r_min_temp/on
+      stateTopic: /devices/recirculation_pump/controls/r_min_temp
+  - id: RCPumpTimer
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 0
+      formatBeforePublish: '"%d"'
+      max: 900
+      commandTopic: /devices/recirculation_pump/controls/timer/on
+      step: 60
+      stateTopic: /devices/recirculation_pump/controls/timer
+  - id: VentEcoSpeed
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 5
+      formatBeforePublish: "%d"
+      max: 35
+      commandTopic: /devices/ventilation_switcher/controls/EcoSpeed/on
+      stateTopic: /devices/ventilation_switcher/controls/EcoSpeed
+  - id: VentLowSpeed
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 20
+      formatBeforePublish: "%d"
+      max: 50
+      commandTopic: /devices/ventilation_switcher/controls/LowSpeed/on
+      stateTopic: /devices/ventilation_switcher/controls/LowSpeed
+  - id: RCBoilerTemp
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 20
+      formatBeforePublish: '"%d"'
+      max: 70
+      commandTopic: /devices/recirculation_pump/controls/b_min_temp/on
+      stateTopic: /devices/recirculation_pump/controls/b_min_temp
+  - id: CHTemperature
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/Boiler Temperature
+  - id: DHW_Enabled
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      commandTopic: /devices/ot_gtw_15/controls/DHW Enabled/on
+      postCommand: true
+      stateTopic: /devices/ot_gtw_15/controls/DHW Enabled
+      off: "0"
+      on: "1"
+  - id: Flame_On
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/Flame On
+      off: "0"
+      on: "1"
+  - id: CH_ON
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/CH On
+      off: "0"
+      on: "1"
+  - id: DHW_ON
+    channelTypeUID: mqtt:switch
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/DHW On
+      off: "0"
+      on: "1"
+  - id: CHSetpoint
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      postCommand: true
+      retained: false
+      min: 10
+      formatBeforePublish: "%d"
+      max: 75
+      commandTopic: /devices/ot_gtw_15/controls/CH Setpoint/on
+      stateTopic: /devices/ot_gtw_15/controls/CH Setpoint
+  - id: Modulation
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/Modulation Level
+  - id: DHWSetpoint
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      commandTopic: /devices/ot_gtw_15/controls/DHW Setpoint/on
+      postCommand: true
+      min: 20
+      formatBeforePublish: "%d"
+      stateTopic: /devices/ot_gtw_15/controls/DHW Setpoint
+      max: 80
+  - id: GasDHW
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/gas_counter/controls/DHW consumption
+  - id: GasConsYest
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/gas_counter/controls/Gas count
+  - id: BedroomTemp
+    channelTypeUID: mqtt:number
+    label: null
+    description: null
+    configuration:
+      stateTopic: /devices/wb-w1/controls/28-0301a2790a52
+  - id: BRC_Temp
+    channelTypeUID: mqtt:number
+    label: BRC Temp
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 16
+      formatBeforePublish: "%d"
+      max: 30
+      commandTopic: /devices/cond_switcher/controls/BRC Temp/on
+      stateTopic: /devices/cond_switcher/controls/BRC Temp
+  - id: BRC_Speed
+    channelTypeUID: mqtt:number
+    label: BRC Speed
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 0
+      formatBeforePublish: "%d"
+      max: 5
+      commandTopic: /devices/cond_switcher/controls/BRC Speed/on
+      stateTopic: /devices/cond_switcher/controls/BRC Speed
+  - id: BRC_Auto
+    channelTypeUID: mqtt:switch
+    label: BRC_Auto
+    description: null
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/BRC Auto/on
+      postCommand: true
+      stateTopic: /devices/cond_switcher/controls/BRC Auto
+      off: "0"
+      on: "1"
+  - id: KRC_Temp
+    channelTypeUID: mqtt:number
+    label: KRC_Temp
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 16
+      formatBeforePublish: "%d"
+      max: 30
+      commandTopic: /devices/cond_switcher/controls/KRC Temp/on
+      stateTopic: /devices/cond_switcher/controls/KRC Temp
+  - id: KRC_Speed
+    channelTypeUID: mqtt:number
+    label: KRC_Speed
+    description: null
+    configuration:
+      postCommand: true
+      retained: true
+      min: 0
+      formatBeforePublish: "%d"
+      max: 5
+      commandTopic: /devices/cond_switcher/controls/KRC Speed/on
+      stateTopic: /devices/cond_switcher/controls/KRC Speed
+  - id: KRC_Auto
+    channelTypeUID: mqtt:switch
+    label: KRC_Auto
+    description: null
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/KRC Auto/on
+      postCommand: true
+      stateTopic: /devices/cond_switcher/controls/KRC Auto
+      off: "0"
+      on: "1"
+  - id: KRC_Mode
+    channelTypeUID: mqtt:string
+    label: KRC_Mode
+    description: null
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/KRC Mode/on
+      stateTopic: /devices/cond_switcher/controls/KRC Mode
+  - id: BRC_Mode
+    channelTypeUID: mqtt:string
+    label: BRC_Mode
+    description: null
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/BRC Mode/on
+      stateTopic: /devices/cond_switcher/controls/BRC Mode
+  - id: BRC_Power
+    channelTypeUID: mqtt:switch
+    label: BRC_Power
+    description: ""
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/BRC Power/on
+      stateTopic: /devices/cond_switcher/controls/BRC Power/
+      postCommand: true
+  - id: KRC_Power
+    channelTypeUID: mqtt:switch
+    label: KRC_Power
+    description: ""
+    configuration:
+      commandTopic: /devices/cond_switcher/controls/BRC Mode/on
+      stateTopic: /devices/cond_switcher/controls/BRC Mode/
+  - id: Asleep
+    channelTypeUID: mqtt:switch
+    label: Asleep
+    description: ""
+    configuration:
+      stateTopic: /devices/homeState/controls/Asleep
+      off: "0"
+      on: "1"
+  - id: WB_CO2
+    channelTypeUID: mqtt:number
+    label: CO2
+    description: ""
+    configuration:
+      stateTopic: /devices/air_quality/controls/co2
+  - id: WB_Humidity
+    channelTypeUID: mqtt:number
+    label: Room Humidity
+    description: ""
+    configuration:
+      stateTopic: /devices/air_quality/controls/humidity
+  - id: WB_RTemp
+    channelTypeUID: mqtt:number
+    label: Room Temperature
+    description: ""
+    configuration:
+      stateTopic: /devices/air_quality/controls/temperature
+  - id: WB_DewPoint
+    channelTypeUID: mqtt:number
+    label: Dew Point
+    description: ""
+    configuration:
+      stateTopic: /devices/air_quality/controls/dew_point
+  - id: WB_WetTemp
+    channelTypeUID: mqtt:number
+    label: Wet bulb temp
+    description: ""
+    configuration:
+      stateTopic: /devices/air_quality/controls/wet_temp
+  - id: AtHome
+    channelTypeUID: mqtt:switch
+    label: AtHome
+    description: ""
+    configuration:
+      retained: true
+      stateTopic: /devices/homeState/controls/At home
+      off: "0"
+      on: "1"
+  - id: relay1
+    channelTypeUID: mqtt:switch
+    label: Relay 1
+    description: ""
+    configuration:
+      commandTopic: /devices/espMQTT/controls/relay1/on
+      stateTopic: /devices/espMQTT/controls/relay1
+      off: "0"
+      on: "1"
+  - id: relay2
+    channelTypeUID: mqtt:switch
+    label: Relay 2
+    description: ""
+    configuration:
+      commandTopic: /devices/espMQTT/controls/relay2/on
+      stateTopic: /devices/espMQTT/controls/relay2
+      off: "0"
+      on: "1"
+  - id: home_away
+    channelTypeUID: mqtt:switch
+    label: Home Away
+    description: ""
+    configuration:
+      commandTopic: /devices/homeState/controls/Away/on
+      stateTopic: /devices/homeState/controls/Away
+      off: "0"
+      on: "1"
+  - id: WB_GridVoltage
+    channelTypeUID: mqtt:number
+    label: Grid Voltage
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Grid Voltage
+  - id: WB_GridFrequency
+    channelTypeUID: mqtt:number
+    label: Grid Frequency
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Grid Frequency
+  - id: WB_OutputVoltage
+    channelTypeUID: mqtt:number
+    label: Output Voltage
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Output Voltage
+  - id: WB_OutputFrequency
+    channelTypeUID: mqtt:number
+    label: Output Frequency
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Output Frequency
+  - id: WB_LoadPower
+    channelTypeUID: mqtt:number
+    label: Load Power
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Load Power
+  - id: WB_LoadVA
+    channelTypeUID: mqtt:number
+    label: Load VA
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Load VA
+  - id: WB_LoadPercent
+    channelTypeUID: mqtt:number
+    label: Load Percent
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Load Percent
+  - id: WB_BatteryVoltage
+    channelTypeUID: mqtt:number
+    label: Battery Voltage
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Battery Voltage
+  - id: WB_BatteryCurrent
+    channelTypeUID: mqtt:number
+    label: Battery Current
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Battery Current
+  - id: WB_BatterySoc
+    channelTypeUID: mqtt:number
+    label: Battery Soc
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Battery Soc
+  - id: WB_Inverteremperature
+    channelTypeUID: mqtt:number
+    label: Inverter Temperature
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Inverter Temperature
+  - id: WB_WorkState
+    channelTypeUID: mqtt:number
+    label: Work State
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Work State
+  - id: WB_AVRState
+    channelTypeUID: mqtt:number
+    label: AVR State
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/AVR State
+  - id: WB_FaultID
+    channelTypeUID: mqtt:number
+    label: FaultID
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/FaultID
+  - id: WB_AlarmID
+    channelTypeUID: mqtt:number
+    label: AlarmID
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/AlarmID
+  - id: WB_ChargeStage
+    channelTypeUID: mqtt:number
+    label: Charge Stage
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Charge Stage
+  - id: WB_ChargeFlag
+    channelTypeUID: mqtt:number
+    label: Charge Flag
+    description: null
+    configuration:
+      stateTopic: /devices/must-ep2000_10/controls/Charge Flag
+  - id: Mode
+    channelTypeUID: mqtt:switch
+    label: VentMode
+    description: ""
+    configuration:
+      commandTopic: /devices/vutr_tn_1/controls/Mode/on
+      postCommand: true
+      stateTopic: /devices/vutr_tn_1/controls/Mode
+      off: "0"
+      on: "4"
