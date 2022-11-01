@@ -1,0 +1,6 @@
+Switch WB_MR6C_K1  "K1"                    (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k1"}
+Switch WB_MR6C_K2  "K2"    <temperature>   (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k2"}
+Switch WB_MR6C_K3  "K3"    <temperature>   (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k3"}
+Switch WB_MR6C_K4  "K4"    <energy>        (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k4"}
+Switch WB_MR6C_K5  "K5"    <energy>        (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k5"}
+Switch WB_MR6C_K6  "K6"    <energy>        (Config)        {channel="mqtt:topic:cf2b98f3:wb-mr6c_k6"}

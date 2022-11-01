@@ -664,3 +664,57 @@ channels:
       stateTopic: /devices/vutr_tn_1/controls/Mode
       off: "0"
       on: "4"
+  - id: wb-mr6c_k1
+    channelTypeUID: mqtt:switch
+    label: K1
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K1/on
+      stateTopic: /devices/wb-mr6c_51/controls/K1
+      off: "0"
+      on: "1"
+  - id: wb-mr6c_k2
+    channelTypeUID: mqtt:switch
+    label: K2
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K2/on
+      stateTopic: /devices/wb-mr6c_51/controls/K2
+      off: "0"
+      on: "1"
+  - id: wb-mr6c_k3
+    channelTypeUID: mqtt:switch
+    label: K3
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K3/on
+      stateTopic: /devices/wb-mr6c_51/controls/K3
+      off: "0"
+      on: "1"
+  - id: wb-mr6c_k4
+    channelTypeUID: mqtt:switch
+    label: K4
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K4/on
+      stateTopic: /devices/wb-mr6c_51/controls/K4
+      off: "0"
+      on: "1"
+  - id: wb-mr6c_k5
+    channelTypeUID: mqtt:switch
+    label: K5
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K5/on
+      stateTopic: /devices/wb-mr6c_51/controls/K5
+      off: "0"
+      on: "1"
+  - id: wb-mr6c_k6
+    channelTypeUID: mqtt:switch
+    label: K6
+    description: ""
+    configuration:
+      commandTopic: /devices/wb-mr6c_51/controls/K6/on
+      stateTopic: /devices/wb-mr6c_51/controls/K6
+      off: "0"
+      on: "1"
