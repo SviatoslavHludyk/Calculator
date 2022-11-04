@@ -156,6 +156,7 @@ sitemap home label="Main menu"{
 		Frame label="Status" {
 			Text item=WB_CH_On
 			Text item=WB_DHW_On
+			Text item=WB_CH_Request
 			Text item=WB_Flame
 			Text item=WB_Modulation
 		}
@@ -206,7 +207,6 @@ sitemap home label="Main menu"{
 	Group item=WB_Boiler label="Water" icon="water" {
 		Frame {
 			Switch item=WB_Valve
-			Switch item=WB_DHW_En
 			Switch item=WB_RPump
 		}
 		Frame {
@@ -547,6 +547,8 @@ sitemap home label="Main menu"{
 	Group item=Config label="Settings" icon="settings" {
 
 		Frame label="Boiler" {
+			Switch item=WB_CH_En label="Heating enabled"
+			Switch item=WB_DHW_En label="Water heating enabled"
 			Setpoint item=WB_CH_Spt label="CH Setpoint [%d °C]" minValue=10 maxValue=80 step=1
 			Setpoint item=WB_DHW_Spt label="DHW Setpoint [%d °C]" minValue=20 maxValue=80 step=1
 		}
