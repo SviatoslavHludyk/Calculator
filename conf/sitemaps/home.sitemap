@@ -174,6 +174,14 @@ sitemap home label="Main menu"{
 			Chart item=Heater_Temp_Chart period=M refresh=3600 visibility=[Heater_Temp_Chart_Period == 3]
 			Chart item=Heater_Temp_Chart period=Y refresh=3600 visibility=[Heater_Temp_Chart_Period == 4]
 		}
+		Frame {
+			Text item=WB_CH_Floor1
+			Text item=WB_CH_Floor2
+			Text item=WB_CH_Floor3
+			Text item=WB_CH_Floor4
+			Text item=WB_CH_Floor5
+			Text item=WB_CH_Floor6
+		}
 	}
 
 	Group item=Gas_Cons label="Gas" icon="gas" {
