@@ -598,4 +598,17 @@ sitemap home label="Main menu"{
 		}
 	}
 
+	Group item=WB_Shpylch label="Shpylchyna" icon="climate" {
+		Frame {
+			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
+		}
+		Frame {
+			Switch item=Sensors_Shpylchyna_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
+			Chart item=Sensors_Shpylchyna_Chart period=h refresh=600 visibility=[Sensors_Shpylchyna_Chart_Period == 0, Sensors_Shpylchyna_Chart_Period == "Uninitialized"]
+			Chart item=Sensors_Shpylchyna_Chart period=D refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 1]
+			Chart item=Sensors_Shpylchyna_Chart period=W refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 2]
+			Chart item=Sensors_Shpylchyna_Chart period=M refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 3]
+			Chart item=Sensors_Shpylchyna_Chart period=Y refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 4]
+		}
+	}
 }

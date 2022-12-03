@@ -20,6 +20,7 @@ Group                   Boiler_Temp_Chart                                       
 Group                   Water_Press_Chart                                                                                                       (Water)                                     
 Group                   Sensors_TempDev_Chart                                                                                                  (Sensors, Temp)                             
 Group:Number:AVG        Temperatures  "All Room Temperatures [%.1f °C]" // e.g. "21.3 °C"
+Group                   Sensors_Shpylchyna_Chart                                                                                                  (Sensors, Temp)                             
 
 
 Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_CO2" }
@@ -73,6 +74,7 @@ Number                  Heater_Temp_Chart_Period                "Period"
 Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                    
 Number                  Sensors_TempServ_Chart_Period           "Period"                                                                                                                    
 Number                  Sensors_TempDev_Chart_Period           "Period"                                                                                                                    
+Number                  Sensors_Shpylchyna_Chart_Period           "Period"                                                                                                                    
 
 DateTime                Date                                    "Date [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                                  { channel="ntp:ntp:local:dateTime"}
 
@@ -81,3 +83,5 @@ Switch                  WB_Valve                                "Main Valve"    
 Switch                  WB_RPump                                "Recirculation"                                                 <pump>          (Water)                                     { channel="mqtt:topic:cf2b98f3:recirc_pump" }
 
 Number                  Water_Press_Chart_Period                "Period"                                                                                                                    
+
+Number                  WB_Shpylch                             "Shpylchyna [%.2f °C]"                                            <temperature>   (Sensors, Sensors_Shpylchyna_Chart, Temperatures)           { channel="mqtt:topic:cf2b98f3:Shpylchyna" }
