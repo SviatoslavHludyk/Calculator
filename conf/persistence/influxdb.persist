@@ -9,4 +9,5 @@ Items {
 	//Power* : strategy = everyChange, everyMinute, restoreOnStartup
 	// let's only store temperature values in rrd
 Power*,Sensors*,Gas*,Temp*: strategy = everyMinute, restoreOnStartup
+HeaterState*: strategy = everyMinute
 }

@@ -10,6 +10,7 @@ Group                   Config                                                  
 Group                   Bedroom                                                                                                                 (All)                                       
 Group                   Kidsroom                                                                                                                (All)                                       
 Group                   Hall                                                                                                                    (All)                                       
+Group                   HeaterState                                                                                                                 (All)                                       
 
 Group                   Sensors_TempServ_Chart                                                                                                  (Sensors, Temp)                             
 Group                   Sensors_TempCO_Chart                                                                                                    (Sensors, Temp)                             
@@ -53,12 +54,12 @@ Number                  WB_DHW_Spt                              "Temp. water [%.
 Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
 Number                  WB_Modulation                           "Modulation [%d %%]"                                            <heating>       (Heaters)                                   { channel="mqtt:topic:cf2b98f3:Modulation" }
 
-Switch                  WB_CH_Floor1                            "Bath 1st"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor1" }
-Switch                  WB_CH_Floor2                            "Hall"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor2" }
-Switch                  WB_CH_Floor3                            "Kitchen"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor3" }
-Switch                  WB_CH_Floor4                            "Bath 2st"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor4" }
-Switch                  WB_CH_Floor5                            "Kids room"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor5" }
-Switch                  WB_CH_Floor6                            "Bed room"                                                       <radiator>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_floor6" }
+Switch                  WB_CH_Floor1                            "Bath 1st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor1" }
+Switch                  WB_CH_Floor2                            "Hall"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor2" }
+Switch                  WB_CH_Floor3                            "Kitchen"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor3" }
+Switch                  WB_CH_Floor4                            "Bath 2st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor4" }
+Switch                  WB_CH_Floor5                            "Kids room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor5" }
+Switch                  WB_CH_Floor6                            "Bed room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor6" }
 
 
 Number                  WB_RCPumpTemp                           "RC On Min Temp [%d °C]"                                        <temperature>   (Config)                                    { channel="mqtt:topic:cf2b98f3:RCPumpTemp" }
