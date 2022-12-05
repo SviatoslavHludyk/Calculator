@@ -596,9 +596,6 @@ sitemap home label="Main menu"{
 		Text label="Corridor" icon="video" {
 			Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
 		}
-	}
-
-	Group item=WB_Shpylch label="Shpylchyna" icon="climate" {
 		Frame {
 			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 		}
@@ -609,6 +606,7 @@ sitemap home label="Main menu"{
 			Chart item=Sensors_Shpylchyna_Chart period=W refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 2]
 			Chart item=Sensors_Shpylchyna_Chart period=M refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 3]
 			Chart item=Sensors_Shpylchyna_Chart period=Y refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 4]
-		}
+		}		
 	}
+
 }
