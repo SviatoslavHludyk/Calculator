@@ -577,24 +577,26 @@ sitemap home label="Main menu"{
 			Setpoint item=EnergyValue label="Energy cost [%.2f UAH]" minValue=5 maxValue=30 step=0.01
 		}
 		Frame label="WB_MR6C" {
-			Switch item=WB_MR6C_K1 label="K1"
-			Switch item=WB_MR6C_K2 label="K2"
-			Switch item=WB_MR6C_K3 label="K3"
-			Switch item=WB_MR6C_K4 label="K4"
-			Switch item=WB_MR6C_K5 label="K5"
-			Switch item=WB_MR6C_K6 label="K6"
+			Switch item=WB_MR6C_K1 label="1st Floor Lights Backup"
+			Switch item=WB_MR6C_K2 label="Turn Off Bathroom Heating"
+			Switch item=WB_MR6C_K3 label="Heating Away Mode"
+			Switch item=WB_MR6C_K4 label="Bedroom Outlets Backup"
+			Switch item=WB_MR6C_K5 label="Kidsroom Outlets"
+			Switch item=WB_MR6C_K6 label="Cabinet Outlets"
 		}
 	}
 
 	Group item=home_athome label="Home status" icon=presence {
-		Text item=home_athome label="At home" icon=presence
-		Text item=home_asleep label="Asleep" icon=bedroom
-		Text item=home_away label="Away" icon=vacation
-		Text label="Video" icon="video" {
-			Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/snapshots.mjpeg" encoding="mjpeg"
-		}
-		Text label="Corridor" icon="video" {
-			Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
+		Frame {
+			Text item=home_athome label="At home" icon=presence
+			Text item=home_asleep label="Asleep" icon=bedroom
+			Text item=home_away label="Away" icon=vacation
+			Text label="Video" icon="video" {
+				Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/snapshots.mjpeg" encoding="mjpeg"
+			}
+			Text label="Corridor" icon="video" {
+				Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
+			}
 		}
 		Frame {
 			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
