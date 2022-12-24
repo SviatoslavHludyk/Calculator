@@ -552,108 +552,58 @@ channels:
       stateTopic: /devices/homeState/controls/Away
       off: "0"
       on: "1"
-  - id: WB_GridVoltage
-    channelTypeUID: mqtt:number
-    label: Grid Voltage
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Grid Voltage
-  - id: WB_GridFrequency
-    channelTypeUID: mqtt:number
-    label: Grid Frequency
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Grid Frequency
-  - id: WB_OutputVoltage
-    channelTypeUID: mqtt:number
-    label: Output Voltage
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Output Voltage
   - id: WB_OutputFrequency
     channelTypeUID: mqtt:number
     label: Output Frequency
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Output Frequency
-  - id: WB_LoadPower
-    channelTypeUID: mqtt:number
-    label: Load Power
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Load Power
-  - id: WB_LoadVA
+      stateTopic: /devices/smartups/controls/outputFrequency
+  - id: WB_outputCurrent
     channelTypeUID: mqtt:number
     label: Load VA
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Load VA
-  - id: WB_LoadPercent
+      stateTopic: /devices/smartups/controls/outputCurrent
+  - id: WB_upsLoad
     channelTypeUID: mqtt:number
     label: Load Percent
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Load Percent
+      stateTopic: /devices/smartups/controls/upsLoad
   - id: WB_BatteryVoltage
     channelTypeUID: mqtt:number
     label: Battery Voltage
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Battery Voltage
-  - id: WB_BatteryCurrent
-    channelTypeUID: mqtt:number
-    label: Battery Current
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Battery Current
+      stateTopic: /devices/smartups/controls/voltage
   - id: WB_BatterySoc
     channelTypeUID: mqtt:number
     label: Battery Soc
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Battery Soc
+      stateTopic: /devices/smartups/controls/charge
   - id: WB_Inverteremperature
     channelTypeUID: mqtt:number
     label: Inverter Temperature
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Inverter Temperature
-  - id: WB_WorkState
-    channelTypeUID: mqtt:number
+      stateTopic: /devices/smartups/controls/temperature
+  - id: WB_upsStatusOnline
+    channelTypeUID: mqtt:switch
     label: Work State
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Work State
-  - id: WB_AVRState
-    channelTypeUID: mqtt:number
-    label: AVR State
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/AVR State
-  - id: WB_FaultID
-    channelTypeUID: mqtt:number
-    label: FaultID
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/FaultID
-  - id: WB_AlarmID
-    channelTypeUID: mqtt:number
-    label: AlarmID
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/AlarmID
-  - id: WB_ChargeStage
-    channelTypeUID: mqtt:number
+      stateTopic: /devices/smartups/controls/upsStatusOnline
+      off: "0"
+      on: "1"
+  - id: WB_chargeStatus
+    channelTypeUID: mqtt:switch
     label: Charge Stage
     description: null
     configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Charge Stage
-  - id: WB_ChargeFlag
-    channelTypeUID: mqtt:number
-    label: Charge Flag
-    description: null
-    configuration:
-      stateTopic: /devices/must-ep2000_10/controls/Charge Flag
+      stateTopic: /devices/smartups/controls/chargeStatus
+      off: "0"
+      on: "1"
   - id: Mode
     channelTypeUID: mqtt:switch
     label: VentMode
@@ -667,7 +617,7 @@ channels:
   - id: wb-mr6c_k1
     channelTypeUID: mqtt:switch
     label: K1
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K1/on
       stateTopic: /devices/wb-mr6c_51/controls/K1
@@ -676,7 +626,7 @@ channels:
   - id: wb-mr6c_k2
     channelTypeUID: mqtt:switch
     label: K2
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K2/on
       stateTopic: /devices/wb-mr6c_51/controls/K2
@@ -685,7 +635,7 @@ channels:
   - id: wb-mr6c_k3
     channelTypeUID: mqtt:switch
     label: K3
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K3/on
       stateTopic: /devices/wb-mr6c_51/controls/K3
@@ -694,7 +644,7 @@ channels:
   - id: wb-mr6c_k4
     channelTypeUID: mqtt:switch
     label: K4
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K4/on
       stateTopic: /devices/wb-mr6c_51/controls/K4
@@ -703,7 +653,7 @@ channels:
   - id: wb-mr6c_k5
     channelTypeUID: mqtt:switch
     label: K5
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K5/on
       stateTopic: /devices/wb-mr6c_51/controls/K5
@@ -712,9 +662,92 @@ channels:
   - id: wb-mr6c_k6
     channelTypeUID: mqtt:switch
     label: K6
-    description: ""
+    description: null
     configuration:
       commandTopic: /devices/wb-mr6c_51/controls/K6/on
       stateTopic: /devices/wb-mr6c_51/controls/K6
       off: "0"
       on: "1"
+  - id: CH_Enabled
+    channelTypeUID: mqtt:switch
+    label: CH Enabled
+    description: ""
+    configuration:
+      commandTopic: /devices/ot_gtw_15/controls/CH Enabled/on
+      stateTopic: /devices/ot_gtw_15/controls/CH Enabled
+      off: "0"
+      on: "1"
+  - id: CH_Request
+    channelTypeUID: mqtt:switch
+    label: CH Request
+    description: ""
+    configuration:
+      stateTopic: /devices/ot_gtw_15/controls/CH Request
+      off: "0"
+      on: "1"
+  - id: CH_floor1
+    channelTypeUID: mqtt:switch
+    label: CH floor1
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR1
+      off: "0"
+      on: "1"
+  - id: CH_floor2
+    channelTypeUID: mqtt:switch
+    label: CH floor2
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR2
+      off: "0"
+      on: "1"
+  - id: CH_floor3
+    channelTypeUID: mqtt:switch
+    label: CH floor3
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR3
+      off: "0"
+      on: "1"
+  - id: CH_floor4
+    channelTypeUID: mqtt:switch
+    label: CH floor4
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR4
+      off: "0"
+      on: "1"
+  - id: CH_floor5
+    channelTypeUID: mqtt:switch
+    label: CH floor5
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR5
+      off: "0"
+      on: "1"
+  - id: CH_floor6
+    channelTypeUID: mqtt:switch
+    label: CH floor6
+    description: null
+    configuration:
+      stateTopic: /devices/wb-gpio/controls/EXT1_DR6
+      off: "0"
+      on: "1"
+  - id: Shpylchyna
+    channelTypeUID: mqtt:number
+    label: Shpylchyna
+    description: Shpylchyna temperature
+    configuration:
+      stateTopic: /devices/espMQTTShp/controls/temp
+  - id: WB_inputVoltage
+    channelTypeUID: mqtt:number
+    label: Grid Voltage
+    description: null
+    configuration:
+      stateTopic: /devices/smartups/controls/inputVoltage
+  - id: WB_outputVoltage
+    channelTypeUID: mqtt:number
+    label: Output Voltage
+    description: null
+    configuration:
+      stateTopic: /devices/smartups/controls/outputVoltage

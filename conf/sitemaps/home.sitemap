@@ -259,25 +259,25 @@ sitemap home label="Main menu"{
 			Text item=EnergyMonthValue
 		}
 		Frame label="AVR" {
-			Group item=WB_LoadPower label="Inverter" icon="energy" {
+			Group item=WB_BatterySoc label="Inverter" icon="energy" {
 				Frame {
 					Text item=WB_GridVoltage
-					Text item=WB_GridFrequency
+					// Text item=WB_GridFrequency
 					Text item=WB_OutputVoltage
 					Text item=WB_OutputFrequency
-					Text item=WB_LoadPower
+					// Text item=WB_LoadPower
 					Text item=WB_LoadVA
 					Text item=WB_LoadPercent
 					Text item=WB_BatteryVoltage
-					Text item=WB_BatteryCurrent
+					// Text item=WB_BatteryCurrent
 					Text item=WB_BatterySoc
 					Text item=WB_Inverteremperature
-					Text item=WB_WorkState label="Work State: [MAP(inverterstate.map):%s]"
-					Text item=WB_AVRState label="AVR State: [MAP(avrstate.map):%s]"
-					Text item=WB_ChargeStage label="Charge Stage: [MAP(chargestage.map):%s]"
-					Text item=WB_ChargeFlag label="Charge State: [MAP(chargestate.map):%s]"
-					Text item=WB_FaultID label="Fault: [MAP(inverterfaults.map):%s]"
-					Text item=WB_AlarmID
+					Text item=WB_WorkState
+					// Text item=WB_AVRState label="AVR State: [MAP(avrstate.map):%s]"
+					Text item=WB_ChargeStage
+					// Text item=WB_ChargeFlag label="Charge State: [MAP(chargestate.map):%s]"
+					// Text item=WB_FaultID label="Fault: [MAP(inverterfaults.map):%s]"
+					// Text item=WB_AlarmID
 				}
 				Frame {
 					Switch item=WB_Inverter_Voltage_Chart_Period label="Voltage, V" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
@@ -293,19 +293,19 @@ sitemap home label="Main menu"{
 					Chart item=WB_BatteryVoltage_Chart period=W refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 2]
 					Chart item=WB_BatteryVoltage_Chart period=M refresh=3600 visibility=[WB_BatteryVoltage_Chart_Period == 3]
 				}
+				// Frame {
+				// 	Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, A" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+				// 	Chart item=WB_BatteryCurrent_Chart period=h refresh=600 visibility=[WB_BatteryCurrent_Chart_Period == 0, WB_BatteryCurrent_Chart_Period == "Uninitialized"]
+				// 	Chart item=WB_BatteryCurrent_Chart period=D refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 1]
+				// 	Chart item=WB_BatteryCurrent_Chart period=W refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 2]
+				// 	Chart item=WB_BatteryCurrent_Chart period=M refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 3]
+				// }	
 				Frame {
-					Switch item=WB_BatteryCurrent_Chart_Period label="Battery Current, A" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-					Chart item=WB_BatteryCurrent_Chart period=h refresh=600 visibility=[WB_BatteryCurrent_Chart_Period == 0, WB_BatteryCurrent_Chart_Period == "Uninitialized"]
-					Chart item=WB_BatteryCurrent_Chart period=D refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 1]
-					Chart item=WB_BatteryCurrent_Chart period=W refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 2]
-					Chart item=WB_BatteryCurrent_Chart period=M refresh=3600 visibility=[WB_BatteryCurrent_Chart_Period == 3]
-				}	
-				Frame {
-					Switch item=WB_LoadPower_Chart_Period label="Load Power, W" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
-					Chart item=WB_LoadPower_Chart period=h refresh=600 visibility=[WB_LoadPower_Chart_Period == 0, WB_LoadPower_Chart_Period == "Uninitialized"]
-					Chart item=WB_LoadPower_Chart period=D refresh=3600 visibility=[WB_LoadPower_Chart_Period == 1]
-					Chart item=WB_LoadPower_Chart period=W refresh=3600 visibility=[WB_LoadPower_Chart_Period == 2]
-					Chart item=WB_LoadPower_Chart period=M refresh=3600 visibility=[WB_LoadPower_Chart_Period == 3]
+					Switch item=WB_LoadPercent_Chart_Period label="Load, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
+					Chart item=WB_LoadPercent_Chart period=h refresh=600 visibility=[WB_LoadPercent_Chart_Period == 0, WB_LoadPercent_Chart_Period == "Uninitialized"]
+					Chart item=WB_LoadPercent_Chart period=D refresh=3600 visibility=[WB_LoadPercent_Chart_Period == 1]
+					Chart item=WB_LoadPercent_Chart period=W refresh=3600 visibility=[WB_LoadPercent_Chart_Period == 2]
+					Chart item=WB_LoadPercent_Chart period=M refresh=3600 visibility=[WB_LoadPercent_Chart_Period == 3]
 				}		
 				Frame {
 					Switch item=WB_BatterySoc_Chart_Period label="Battery Soc, %" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]

@@ -85,4 +85,4 @@ Switch                  WB_RPump                                "Recirculation" 
 
 Number                  Water_Press_Chart_Period                "Period"                                                                                                                    
 
-Number                  WB_Shpylch                             "Shpylchyna [%.2f °C]"                                            <temperature>   (Sensors, Sensors_Shpylchyna_Chart, Temperatures)           { channel="mqtt:topic:cf2b98f3:Shpylchyna" }
+Number                  WB_Shpylch                             "Shpylchyna [%.2f °C]"                                            <temperature>   (Sensors, Sensors_Shpylchyna_Chart)           { channel="mqtt:topic:cf2b98f3:Shpylchyna" }
