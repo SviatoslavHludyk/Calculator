@@ -577,10 +577,10 @@ sitemap home label="Main menu"{
 			Setpoint item=EnergyValue label="Energy cost [%.2f UAH]" minValue=5 maxValue=30 step=0.01
 		}
 		Frame label="WB_MR6C" {
-			Switch item=WB_MR6C_K1 label="1st Floor Lights Backup"
+			Switch item=WB_MR6C_K1 label="Switch to Backup"
 			Switch item=WB_MR6C_K2 label="Turn Off Bathroom Heating"
 			Switch item=WB_MR6C_K3 label="Heating Away Mode"
-			Switch item=WB_MR6C_K4 label="Bedroom Outlets Backup"
+			Switch item=WB_MR6C_K4 label="Bedroom Outlets"
 			Switch item=WB_MR6C_K5 label="Kidsroom Outlets"
 			Switch item=WB_MR6C_K6 label="Cabinet Outlets"
 		}
