@@ -597,6 +597,7 @@ sitemap home label="Main menu"{
 			Text label="Corridor" icon="video" {
 				Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
 			}
+			Switch item=ExternalLight label="Light switch"
 		}
 		Frame {
 			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]

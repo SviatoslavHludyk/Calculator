@@ -1,0 +1,3 @@
+Switch ExternalLight "ExternalLight" {channel="http:url:3de94ebee2:CameraLight"}
+// Switch ExternalLight "ExternalLight" ["Lighting"] {http=">[ON:GET:http://svh:changer@192.168.10.120/axis-cgi/io/output.cgi?action=1:/] >[OFF:GET:http://svh:changer@192.168.10.120/axis-cgi/io/output.cgi?action=0:/]"}
+// Switch ChangeView "Change View" ["Lighting"] {http=">[ON:POST:http://root:changer@192.168.10.120/ON.php] >[OFF:POST:http://root:changer@192.168.10.120/OFF.php]"}
