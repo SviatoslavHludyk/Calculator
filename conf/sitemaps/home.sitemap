@@ -266,7 +266,7 @@ sitemap home label="Main menu"{
 					Text item=WB_OutputVoltage
 					Text item=WB_OutputFrequency
 					// Text item=WB_LoadPower
-					Text item=WB_LoadVA
+					// Text item=WB_LoadVA
 					Text item=WB_LoadPercent
 					Text item=WB_BatteryVoltage
 					// Text item=WB_BatteryCurrent
@@ -274,7 +274,7 @@ sitemap home label="Main menu"{
 					Text item=WB_Inverteremperature
 					Text item=WB_WorkState
 					// Text item=WB_AVRState label="AVR State: [MAP(avrstate.map):%s]"
-					Text item=WB_ChargeStage
+					// Text item=WB_ChargeStage
 					// Text item=WB_ChargeFlag label="Charge State: [MAP(chargestate.map):%s]"
 					// Text item=WB_FaultID label="Fault: [MAP(inverterfaults.map):%s]"
 					// Text item=WB_AlarmID

@@ -17,13 +17,13 @@ rule "Send counters"
 		message1 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f m3\n", second.getMonthValue(), second.getYear(), (g_old_count));	
 		message1 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f m3\n", first.getMonthValue(), first.getYear(), (gcount));	
 		message1 += String::format("Спожито за місяць: %1$.2f m3\n", ((gcount - g_old_count)));	
-		message1 += String::format("Вартість: %1$.2f грн", (pvalue));	
+		message1 += String::format("Вартість: %1$.2f грн", (gvalue));	
 
 		var String message2 = "Показники лічильника ел.енергії\n\n";
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", second.getMonthValue(), second.getYear(), p_old_count);	
 		message2 += String::format("Показник станом на 01.%1$02d.%2$02d: %3$.2f kWh\n", first.getMonthValue(), first.getYear(), pcount);	
 		message2 += String::format("Спожито за місяць: %1$.2f kWh\n", (pcount - p_old_count));
-		message2 += String::format("Вартість: %1$.2f грн", (gvalue));	
+		message2 += String::format("Вартість: %1$.2f грн", (pvalue));	
 		val mailActions = getActions("mail","mail:smtp:327b0d61")
 		mailActions.sendMail("sv_h@ukr.net", "Показники лічильників", message1 + "\n\n\n" + message2);
 		

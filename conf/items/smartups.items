@@ -15,11 +15,11 @@ Number                  WB_Inverteremperature_Chart_Period             "Period"
 
 Number:ElectricPotential WB_GridVoltage  "Input Voltage [%.1f V]"     <energy> (Power, Inverter, WB_Inverter_Voltage_Chart)              {channel="mqtt:topic:cf2b98f3:WB_inputVoltage"}
 Number:ElectricPotential WB_OutputVoltage  "Output Voltage [%.1f V]"  <energy> (Power, Inverter, WB_Inverter_Voltage_Chart)                 {channel="mqtt:topic:cf2b98f3:WB_outputVoltage"}
-Number:Frequency WB_OutputFrequency  "Output Frequency [%.1f Hz]" <energy>  (Power, Inverter)                 {channel="mqtt:topic:cf2b98f3:WB_outputFrequency"}
-Number:Power WB_LoadVA  "Load A [%.2f A]"         <energy>  (Power, Inverter)         {channel="mqtt:topic:cf2b98f3:WB_outputCurrent"}
-Number:Dimensionless WB_LoadPercent  "Load Percent [%d %%]"  <energy>  (Power, Inverter, WB_LoadPercent_Chart)                {channel="mqtt:topic:cf2b98f3:WB_upsLoad"}
+Number:Frequency WB_OutputFrequency  "Line Frequency [%.1f Hz]" <energy>  (Power, Inverter)                 {channel="mqtt:topic:cf2b98f3:WB_outputFrequency"}
+// Number:Power WB_LoadVA  "Load A [%.2f A]"         <energy>  (Power, Inverter)         {channel="mqtt:topic:cf2b98f3:WB_outputCurrent"}
+Number:Dimensionless WB_LoadPercent  "Load Percent [%.1f %%]"  <energy>  (Power, Inverter, WB_LoadPercent_Chart)                {channel="mqtt:topic:cf2b98f3:WB_upsLoad"}
 Number:ElectricPotential WB_BatteryVoltage  "Battery Voltage [%.1f V]"   <energy>  (Power, Inverter, WB_BatteryVoltage_Chart)               {channel="mqtt:topic:cf2b98f3:WB_voltage"}
 Number:Dimensionless WB_BatterySoc  "Battery Soc [%d %%]"         <battery>   (Power, Inverter, WB_BatterySoc_Chart)        {channel="mqtt:topic:cf2b98f3:WB_charge"}
 Number:Temperature WB_Inverteremperature  "Inverter teremperature [%d %unit%]"  <temperature>  (Power, Inverter, WB_Inverteremperature_Chart)                {channel="mqtt:topic:cf2b98f3:WB_temperature"}
-Switch WB_WorkState  "Work State" <energy> (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_upsStatusOnline"}
-Switch WB_ChargeStage  "Charge Stage" <energy> (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_chargeStatus"}
+String WB_WorkState  "UPS Status" <energy> (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_upsStatusOnline"}
+// Switch WB_ChargeStage  "Charge Stage" <energy> (Power, Inverter)                {channel="mqtt:topic:cf2b98f3:WB_chargeStatus"}
