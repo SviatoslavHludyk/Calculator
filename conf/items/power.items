@@ -5,18 +5,20 @@ Group                   Power_Wt_Sens_Chart                                     
 Group                   Power_ConsD_Chart                                                                                                       (Power)                                     
 
 
-Number                  Power_Energy                            "Energy [%.3f kWh]"                                             <energy>        (Power)                                     { channel="modbus:data:312f4244:number" }
-Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)              { channel="modbus:data:5bf2516b:number" }
-Number                  Power_Current                           "Current [%.1f A]"                                              <energy>        (Power, Power_Curr_Sens_Chart)              { channel="modbus:data:ef0ab11d:number" }
-Number                  Power_PowerH                            "Power [%d W]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="modbus:data:1fd5096a:number" }
+Number                  Power_Energy                            "Energy Total [%.3f kWh]"                                             <energy>        (Power)                                     { channel="mqtt:topic:cf2b98f3:pzemTotal" }
+Number                  Power_Voltage                           "Voltage [%.1f V]"                                              <energy>        (Power, Power_Volt_Sens_Chart)              { channel="mqtt:topic:cf2b98f3:pzemVolage" }
+Number                  Power_Current                           "Current [%.1f A]"                                              <energy>        (Power, Power_Curr_Sens_Chart)              { channel="mqtt:topic:cf2b98f3:pzemCurrent" }
+Number                  Power_PowerH                            "Active Power [%d W]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="mqtt:topic:cf2b98f3:pzemPower" }
+Number                  Power_APower                            "Apparent Power [%d VA]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="mqtt:topic:cf2b98f3:pzemAPower" }
+Number                  Power_RPower                            "Reactive Power [%d VAr]"                                                  <energy>        (Power, Power_Wt_Sens_Chart)                { channel="mqtt:topic:cf2b98f3:pzemRPower" }
 
 Number                  Power_Volt_Sens_Chart_Period            "Period"                                                                                                                    
 Number                  Power_Curr_Sens_Chart_Period            "Period"                                                                                                                    
 Number                  Power_Wt_Sens_Chart_Period              "Period"                                                                                                                    
 Number                  Power_ConsD_Chart_Period                "Period"                                                                                                                    
 
-Number                  Power_Cons                              "Cons. yesterday [%.3f kWh]"                                    <energy>        (Power, Power_ConsD_Chart)                  
-Number                  Power_ConsMN                            "Cons. today [%.3f kWh]"                                        <energy>        (Power)                                     
+Number                  Power_Cons                              "Energy Yesterday [%.3f kWh]"                                    <energy>        (Power, Power_ConsD_Chart)                  {channel="mqtt:topic:cf2b98f3:pzemYesterday"}
+Number                  Power_ConsMN                            "Energy Today [%.3f kWh]"                                        <energy>        (Power)                                     {channel="mqtt:topic:cf2b98f3:pzemToday"}
 Number                  Power_ConsM                             "Cons. month [%.3f kWh]"                                        <energy>        (Power)                                     
 
 Number EnergyValue "Energy cost [%.2f UAH]" <price> (Power)
