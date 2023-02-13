@@ -1,0 +1,30 @@
+
+rule "Aqua_asleep_off"
+when
+	Item home_asleep changed from OFF to ON
+then
+	if (WB_aquaRelay1.state == ON) {
+		WB_aquaRelay1.sendCommand(OFF)
+	logInfo("Aqua", "AquaLight is set to OFF by asleep_off")
+	}
+end
+
+rule "Aqua_at_home_off"
+when
+	Item home_athome changed from ON to OFF
+then
+	if (WB_aquaRelay1.state == ON) {
+		WB_aquaRelay1.sendCommand(OFF)
+		logInfo("Aqua", "Aqua is set to OFF by at_home_off")
+	}
+end
+
+rule "Aqua_awake_on"
+when
+	Item home_asleep changed from ON to OFF 
+then
+	if (WB_aquaRelay1.state == OFF && home_athome.state == ON) {
+			WB_aquaRelay1.sendCommand(ON)
+			logInfo("Aqua", "Aqua is set to ON by awake")
+	 }
+end
