@@ -13,7 +13,7 @@ sitemap home label="Main menu"{
 			Text item=RoomHum
 			Text item=RoomTemp valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
 			Text item=RoomDewPoint
-			Text item=RoomWetBulbTemp
+			// Text item=RoomWetBulbTemp
 		}		
 		Frame {
 			Switch item=Sensors_COlev_Chart_Period label="CO2, ppm" mappings=[0="Hour", 1="Day", 2="Week", 3="Month"]
@@ -573,9 +573,10 @@ sitemap home label="Main menu"{
 	}
 	Group item=home_athome label="Home status" icon=presence {
 		Frame label="Home" {
-			Text item=home_athome label="At home" icon=presence{
+			Text item=home_athome label="At home" icon=presence
 			Text item=home_asleep label="Asleep" icon=bedroom
 			Text item=home_away label="Away" icon=vacation
+			Text label="Corridor" icon=camera {
 			Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
 			}
 		}
