@@ -529,6 +529,7 @@ sitemap home label="Main menu"{
 			Text item=localDailyforecastHours24SnowVolume
 		}}}
 		Frame {
+			Text item=Generic_MQTT_Thing_Balcony
 			Switch item=Weather_Temp_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
 			Chart item=Weather_Temp_Chart period=h refresh=600 visibility=[Weather_Temp_Chart_Period == 0, Weather_Temp_Chart_Period == "Uninitialized"]
 			Chart item=Weather_Temp_Chart period=D refresh=3600 visibility=[Weather_Temp_Chart_Period == 1]
@@ -570,7 +571,29 @@ sitemap home label="Main menu"{
 			Chart item=Sensors_Aqua_Chart period=Y refresh=3600 visibility=[Sensors_Aqua_Chart_Period == 4]
 		}		
 	}
-
+	Group item=home_athome label="Home status" icon=presence {
+		Frame label="Home" {
+			Text item=home_athome label="At home" icon=presence{
+			Text item=home_asleep label="Asleep" icon=bedroom
+			Text item=home_away label="Away" icon=vacation
+			Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
+			}
+		}
+		Frame label="Shpylchyna" {
+			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]{
+			Switch item=WB_ShpHeater	
+			Switch item=ExternalLight label="Kitchen Light"
+			Switch item=HTTP_URL_Thing_Position label="Camera Position"	
+			Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/snapshots.mjpeg" encoding="mjpeg"
+			Switch item=Sensors_Shpylchyna_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
+			Chart item=Sensors_Shpylchyna_Chart period=h refresh=600 visibility=[Sensors_Shpylchyna_Chart_Period == 0, Sensors_Shpylchyna_Chart_Period == "Uninitialized"]
+			Chart item=Sensors_Shpylchyna_Chart period=D refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 1]
+			Chart item=Sensors_Shpylchyna_Chart period=W refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 2]
+			Chart item=Sensors_Shpylchyna_Chart period=M refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 3]
+			Chart item=Sensors_Shpylchyna_Chart period=Y refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 4]
+			}
+		}		
+	}
 	Group item=Config label="Settings" icon="settings" {
 
 		Frame label="Boiler" {
@@ -604,31 +627,4 @@ sitemap home label="Main menu"{
 			Switch item=WB_MR6C_K6 label="Cabinet Outlets"
 		}
 	}
-
-	Group item=home_athome label="Home status" icon=presence {
-		Frame {
-			Text item=home_athome label="At home" icon=presence
-			Text item=home_asleep label="Asleep" icon=bedroom
-			Text item=home_away label="Away" icon=vacation
-			Text label="Video" icon="video" {
-				Video url="http://oh.lan.hlfam.uk/ipcamera/c5d72f66c7/snapshots.mjpeg" encoding="mjpeg"
-			}
-			Text label="Corridor" icon="video" {
-				Video url="https://oh.lan.hlfam.uk/ipcamera/db391a34f8/snapshots.mjpeg" encoding="mjpeg"
-			}
-			Switch item=ExternalLight label="Light switch"
-		}
-		Frame {
-			Text item=WB_Shpylch valuecolor=[ > 35="red",  > 25="orange",  > 15="green",  > 5="blue"]
-		}
-		Frame {
-			Switch item=Sensors_Shpylchyna_Chart_Period label="Temp, °C" mappings=[0="Hour", 1="Day", 2="Week", 3="Month", 4="Year"]
-			Chart item=Sensors_Shpylchyna_Chart period=h refresh=600 visibility=[Sensors_Shpylchyna_Chart_Period == 0, Sensors_Shpylchyna_Chart_Period == "Uninitialized"]
-			Chart item=Sensors_Shpylchyna_Chart period=D refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 1]
-			Chart item=Sensors_Shpylchyna_Chart period=W refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 2]
-			Chart item=Sensors_Shpylchyna_Chart period=M refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 3]
-			Chart item=Sensors_Shpylchyna_Chart period=Y refresh=3600 visibility=[Sensors_Shpylchyna_Chart_Period == 4]
-		}		
-	}
-
 }
