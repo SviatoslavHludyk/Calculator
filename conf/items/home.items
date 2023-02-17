@@ -36,6 +36,7 @@ Number                  WB_Corridor                             "Corridor [%.2f 
 //Number                  WB_Cabinet                              "Кабінет [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart)       { channel="mqtt:topic:cf2b98f3:Cabinet" }
 Number                  WB_Hall                                 "Hall [%.2f °C]"                                                <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Hall" }
 Number                  WB_Entrance                             "Entrance [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Entrance" }
+Number                  WB_Kitchen                             "Kitchen [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Kitchen" }
 
 Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:Boiler" }
 Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                       <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:RCPump" }
