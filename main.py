@@ -3,26 +3,19 @@ import os
 import math
 import datetime
 
-# Define the file path where the user data will be stored
+# Define the file names where the user data will be stored
 USERS_FILE_PATH = 'users.json'
-HISTORY_FILE_PATH = 'history.json'
+HISTORY_FILE_PATH = 'history.log'
 
 logged_user = None
 clear = lambda: os.system('clear')
 
 
-try:
-    # Load existing user data from the JSON file
-    with open(os.path.join(USERS_FILE_PATH), 'r') as f:
-        user_data = json.load(f)
-except Exception:
-    # If the file doesn't exist, create it and initialize an empty dictionary
-    with open(os.path.join(USERS_FILE_PATH), 'w') as f:
-        user_data = {}
-        json.dump(user_data, f)
-
 def register():
     """Allows the user to register a new account."""
+    user_data = {}
+    with open(os.path.join(USERS_FILE_PATH), 'r') as f:
+        user_data = json.load(f)
     while True:
         username = input("Enter a username: ")
         if username in user_data:
@@ -61,9 +54,12 @@ def login():
 
 def log_history(username, message):
     """Allows the logged in user to save calc history."""
+    now = datetime.datetime.now()
+    new_log = str(now) + ", " + username + ", " + message + "\n"
+    with open(os.path.join(HISTORY_FILE_PATH),'a+') as file:
+        file.write(new_log)
 
-
-def calc_without_login(*username):
+def calc_without_login(username):
     x = int(input('Enter first number: '))
     operation = input('Enter operation: ')
     y = int(input('Enter second number: '))
@@ -94,7 +90,20 @@ def calc_with_login(username):
         message = operation + '(' + str(x) + ')' + '=' + str(result)
         log_history (username, message)
         return result
-    
+
+
+
+try:
+    # Load existing user data from the JSON file
+    with open(os.path.join(USERS_FILE_PATH), 'r') as f:
+        user_data = json.load(f)
+except Exception:
+    # If the file doesn't exist, create it and initialize an empty dictionary
+    with open(os.path.join(USERS_FILE_PATH), 'w') as f:
+        user_data = {}
+        json.dump(user_data, f)
+
+
 # Main program loop
 while True:
     if os.stat(os.path.join(USERS_FILE_PATH)).st_size == 0:
@@ -102,11 +111,9 @@ while True:
         register()
     else:
         if logged_user != None:
-            # logged_in_username = next(iter(user_data))
             print(f"You are currently logged in as: {logged_user}\n")
             options = ['Calculate arithmetic', 'Calculate trigonometric', 'Logout']
         else:
-            # No user is currently logged in
             options = ['Calculate arithmetic', 'Register', 'Login']
 
         options.append('Quit')
