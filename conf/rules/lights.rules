@@ -7,8 +7,8 @@ then
 	if (home_athome.state == ON && 
 		twinkly_power.state == OFF && 
 		nowTime.isAfter((localDusk.state as DateTimeType).getZonedDateTime())) {
-			relay1.sendCommand(ON)
-			relay2.sendCommand(ON)
+			// relay1.sendCommand(ON)
+			// relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
 			twinkly_brightness.sendCommand(100)
@@ -46,8 +46,8 @@ when
 then
 	if (twinkly_power.state == OFF && home_athome.state == ON &&
 	 ZonedDateTime.now().isBefore((localDawn.state as DateTimeType).getZonedDateTime())) {
-			relay1.sendCommand(ON)
-			relay2.sendCommand(ON)
+			// relay1.sendCommand(ON)
+			// relay2.sendCommand(ON)
 			twinkly_power.sendCommand(ON)
 			twinkly_mode.sendCommand("playlist")
 			twinkly_brightness.sendCommand(100)
@@ -61,8 +61,8 @@ when
 then
 	if (twinkly_power.state == ON) {
 			twinkly_power.sendCommand(OFF)
-			relay1.sendCommand(OFF)
-			relay2.sendCommand(OFF)
+			// relay1.sendCommand(OFF)
+			// relay2.sendCommand(OFF)
 			logInfo("Twinkly", "Twinkly is set to OFF by civilDawn")
 		}
 end
