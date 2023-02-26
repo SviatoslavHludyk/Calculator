@@ -365,6 +365,8 @@ sitemap home label="Main menu"{
 		Setpoint  item=denon_volume    label="Volume [%.1f]" minValue=0 maxValue=60 step=0.5  visibility=[denon_power==ON]
 		Default   item=denon_volumeDB  visibility=[denon_power==ON]
 		Selection item=denon_input     mappings=[TV=TV,NET=Network,TUNER=Tuner]  visibility=[denon_power==ON]
+		Default   item=denon_artist	   visibility=[denon_power==ON]
+		Default	  item=denon_track     visibility=[denon_power==ON]
 		Default   item=denon_surround  visibility=[denon_power==ON]
 		Default   item=denon_z2power
 

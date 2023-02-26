@@ -3,6 +3,9 @@ Switch denon_power    "Receiver" <switch>         {channel="denonmarantz:avr:91c
 Dimmer denon_volume   "Volume"   <soundvolume>    {channel="denonmarantz:avr:91c4d0d66e:mainZone#volume"}
 Number denon_volumeDB "Volume [%.1f dB]"          {channel="denonmarantz:avr:91c4d0d66e:mainZone#volumeDB"}
 Switch denon_mute     "Mute"     <mute>           {channel="denonmarantz:avr:91c4d0d66e:mainZone#mute"}
+String denon_artist     "Artist"                {channel="denonmarantz:avr:91c4d0d66e:general#artist"}
+String denon_track     "Track"                {channel="denonmarantz:avr:91c4d0d66e:general#track"}
+
 Switch denon_z2power  "Zone 2"                    {channel="denonmarantz:avr:91c4d0d66e:zone2#power"}
 String denon_input    "Input [%s]"                {channel="denonmarantz:avr:91c4d0d66e:mainZone#input" }
 String denon_surround "Surround: [%s]"            {channel="denonmarantz:avr:91c4d0d66e:general#surroundProgram"}
