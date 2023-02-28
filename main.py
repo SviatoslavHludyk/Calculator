@@ -7,6 +7,16 @@ import csv
 USERS_FILE_PATH = 'users.json'
 HISTORY_FILE_PATH = 'history.log'
 
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 def register():
     with open(os.path.join(USERS_FILE_PATH), 'r') as f:
         user_data = json.load(f)
@@ -61,11 +71,16 @@ def log_history(username, message):
 def show_history(username):
     with open(os.path.join(HISTORY_FILE_PATH), 'r') as csv_file:
         read_file = csv.reader(csv_file)
+        history_available = False
         for row in read_file:
             if username == row[1].strip():
                 print(row[0], row[2])
+                history_available = True
+        if history_available is False:
+            print('History is empty.')
 
 def delete_history(username):
+    history_list = []
     with open(os.path.join(HISTORY_FILE_PATH), 'r') as f:
         lines = f.readlines()
     with open(os.path.join(HISTORY_FILE_PATH), 'w') as f:
@@ -157,7 +172,7 @@ def main():
             register()
         else:
             if logged_user is not None:
-                print(f"You are currently logged in as: {logged_user}\n")
+                print(f"\n{bcolors.OKGREEN}You are currently logged in as:{bcolors.ENDC} {bcolors.BOLD}{bcolors.OKCYAN}{logged_user}{bcolors.ENDC}\n")
                 options = ['Calculate arithmetic', 'Calculate trigonometric', 'Show history', 'Delete history', 'Logout']
             else:
                 options = ['Calculate arithmetic', 'Register', 'Login']
@@ -185,6 +200,7 @@ def main():
             elif selected_option == 'Calculate trigonometric':
                 print("Result: ", calc_with_login(logged_user))
             elif selected_option == 'Show history':
+                print('History:')
                 show_history(logged_user)
             elif selected_option == 'Delete history':
                 delete_history(logged_user)
