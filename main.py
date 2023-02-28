@@ -18,10 +18,14 @@ def register():
         else:
             break
     password = input("Enter a password: ")
+    confirm_password = input("Confirm the password: ")
     user_data[username] = {'password': password}
-    with open(os.path.join(USERS_FILE_PATH), 'w+') as f:
-        json.dump(user_data, f)
-    print("Account created successfully.")    
+    if password == confirm_password:
+        with open(os.path.join(USERS_FILE_PATH), 'w+') as f:
+            json.dump(user_data, f)
+        print("Account created successfully.")
+    else:
+        print("Passwords are different. Try again. ")
 
 def login():
     with open(os.path.join(USERS_FILE_PATH), 'r') as f:
@@ -69,11 +73,11 @@ def calc_without_login(username):
         '/': lambda x, y: x / y,
     }
     while True:
-        x = input('Enter first number: ')
+        x = input('Enter first number: ').strip()
         if check_if_number_is_float(x):
-            operation = input('Enter operation in {}: '.format(list(calculator.keys())))
+            operation = input('Enter operation in {}: '.format(list(calculator.keys()))).strip()
             if operation in calculator.keys():
-                y = input('Enter second number: ')
+                y = input('Enter second number: ').strip()
                 if check_if_number_is_float(y):
                     x = float(x)
                     y = float(y)
@@ -102,10 +106,11 @@ def calc_with_login(username):
     }
 
     while True:
-        operation = input('Enter operation between {}: '.format(list(calculator.keys())))
+        operation = input('Enter operation between {}: '.format(list(calculator.keys()))).strip()
         if operation in calculator.keys():
-            x = float(input('Enter number: '))
+            x = input('Enter number: ').strip()
             if check_if_number_is_float(x):
+                x = float(x)
                 try:
                     result = calculator[operation](x)
                     message = operation + '(' + str(x) + ')' + '=' + str(result)
