@@ -2,6 +2,7 @@ import json
 import os
 import math
 import datetime
+import csv
 
 USERS_FILE_PATH = 'users.json'
 HISTORY_FILE_PATH = 'history.log'
@@ -12,7 +13,7 @@ def register():
     with open(os.path.join(USERS_FILE_PATH), 'r') as f:
         user_data = json.load(f)
     while True:
-        username = input("Enter a username: ")
+        username = input("Enter a username: ").strip()
         if username in user_data:
             print("Username already exists. Please try a different username.")
         else:
@@ -31,7 +32,7 @@ def login():
     with open(os.path.join(USERS_FILE_PATH), 'r') as f:
         user_data = json.load(f)
     while True:
-        username = input("Enter your username: ")
+        username = input("Enter your username: ").strip()
         if username in user_data:
             break
         else:
@@ -57,6 +58,14 @@ def log_history(username, message):
     new_log = str(now) + ", " + username + ", " + message + "\n"
     with open(os.path.join(HISTORY_FILE_PATH),'a+') as file:
         file.write(new_log)
+
+def show_history(username):
+    with open(os.path.join(HISTORY_FILE_PATH), 'r') as csv_file:
+        read_file = csv.reader(csv_file)
+        header = next(read_file)
+        for row in read_file:
+            if username == row[1].strip():
+                print(row[0], row[2])
 
 def check_if_number_is_float(number):
     try:
@@ -141,7 +150,7 @@ while True:
     else:
         if logged_user is not None:
             print(f"You are currently logged in as: {logged_user}\n")
-            options = ['Calculate arithmetic', 'Calculate trigonometric', 'Logout']
+            options = ['Calculate arithmetic', 'Calculate trigonometric', 'Show history', 'Logout']
         else:
             options = ['Calculate arithmetic', 'Register', 'Login']
 
@@ -167,6 +176,8 @@ while True:
             print("Result: ", calc_without_login(logged_user))
         elif selected_option == 'Calculate trigonometric':
             print("Result: ", calc_with_login(logged_user))
+        elif selected_option == 'Show history':
+            show_history(logged_user)
         elif selected_option == 'Logout':
             user_data.clear()
             logged_user = None
