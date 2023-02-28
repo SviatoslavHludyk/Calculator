@@ -13,7 +13,7 @@ class bcolors:
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
-    FAIL = '\033[91m'
+    RED = '\033[91m'
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
@@ -77,10 +77,9 @@ def show_history(username):
                 print(row[0], row[2])
                 history_available = True
         if history_available is False:
-            print('History is empty.')
+            print('History is empty.\n')
 
 def delete_history(username):
-    history_list = []
     with open(os.path.join(HISTORY_FILE_PATH), 'r') as f:
         lines = f.readlines()
     with open(os.path.join(HISTORY_FILE_PATH), 'w') as f:
@@ -196,9 +195,9 @@ def main():
             elif selected_option == 'Login':
                 logged_user = login()
             elif selected_option == 'Calculate arithmetic':
-                print("Result: ", calc_without_login(logged_user))
+                print(f"Result: {bcolors.RED}{calc_without_login(logged_user)}{bcolors.ENDC}\n")
             elif selected_option == 'Calculate trigonometric':
-                print("Result: ", calc_with_login(logged_user))
+                print(f"Result: {bcolors.RED}{calc_with_login(logged_user)}{bcolors.ENDC}\n")
             elif selected_option == 'Show history':
                 print('History:')
                 show_history(logged_user)
