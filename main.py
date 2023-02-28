@@ -7,8 +7,6 @@ import csv
 USERS_FILE_PATH = 'users.json'
 HISTORY_FILE_PATH = 'history.log'
 
-logged_user = None
-
 def register():
     with open(os.path.join(USERS_FILE_PATH), 'r') as f:
         user_data = json.load(f)
@@ -59,13 +57,22 @@ def log_history(username, message):
     with open(os.path.join(HISTORY_FILE_PATH),'a+') as file:
         file.write(new_log)
 
+
 def show_history(username):
     with open(os.path.join(HISTORY_FILE_PATH), 'r') as csv_file:
         read_file = csv.reader(csv_file)
-        header = next(read_file)
         for row in read_file:
             if username == row[1].strip():
                 print(row[0], row[2])
+
+def delete_history(username):
+    with open(os.path.join(HISTORY_FILE_PATH), 'r') as f:
+        lines = f.readlines()
+    with open(os.path.join(HISTORY_FILE_PATH), 'w') as f:
+        for line in lines:
+            if username not in line:
+                f.write(line)
+        print('History deleted successfully. ')
 
 def check_if_number_is_float(number):
     try:
@@ -133,54 +140,59 @@ def calc_with_login(username):
         else:
             print('Incorrect operation. Operation must be in {}'.format(list(calculator.keys())))
 
+def main():
+    logged_user = None
 
-try:
-    with open(os.path.join(USERS_FILE_PATH), 'r') as f:
-        user_data = json.load(f)
-except Exception:
-    with open(os.path.join(USERS_FILE_PATH), 'w') as f:
-        user_data = {}
-        json.dump(user_data, f)
+    try:
+        with open(os.path.join(USERS_FILE_PATH), 'r') as f:
+            user_data = json.load(f)
+    except Exception:
+        with open(os.path.join(USERS_FILE_PATH), 'w') as f:
+            user_data = {}
+            json.dump(user_data, f)
 
-
-while True:
-    if os.stat(os.path.join(USERS_FILE_PATH)).st_size == 0:
-        print("No users found. Please register a new account.")
-        register()
-    else:
-        if logged_user is not None:
-            print(f"You are currently logged in as: {logged_user}\n")
-            options = ['Calculate arithmetic', 'Calculate trigonometric', 'Show history', 'Logout']
-        else:
-            options = ['Calculate arithmetic', 'Register', 'Login']
-
-        options.append('Quit')
-
-        for index, option in enumerate(options, start=1):
-            print(f"{index}. {option}")
-
-        choice = input("\nEnter your choice: ")
-
-        try:
-            choice = int(choice)
-            selected_option = options[choice-1]
-        except (ValueError, IndexError):
-            print("Invalid choice. Please try again.")
-            continue
-
-        if selected_option == 'Register':
+    while True:
+        if os.stat(os.path.join(USERS_FILE_PATH)).st_size == 0:
+            print("No users found. Please register a new account.")
             register()
-        elif selected_option == 'Login':
-            logged_user = login()
-        elif selected_option == 'Calculate arithmetic':
-            print("Result: ", calc_without_login(logged_user))
-        elif selected_option == 'Calculate trigonometric':
-            print("Result: ", calc_with_login(logged_user))
-        elif selected_option == 'Show history':
-            show_history(logged_user)
-        elif selected_option == 'Logout':
-            user_data.clear()
-            logged_user = None
-            print("Logout successful!\n")
-        elif selected_option == 'Quit':
-            break
+        else:
+            if logged_user is not None:
+                print(f"You are currently logged in as: {logged_user}\n")
+                options = ['Calculate arithmetic', 'Calculate trigonometric', 'Show history', 'Delete history', 'Logout']
+            else:
+                options = ['Calculate arithmetic', 'Register', 'Login']
+
+            options.append('Quit')
+
+            for index, option in enumerate(options, start=1):
+                print(f"{index}. {option}")
+
+            choice = input("\nEnter your choice: ")
+
+            try:
+                choice = int(choice)
+                selected_option = options[choice-1]
+            except (ValueError, IndexError):
+                print("Invalid choice. Please try again.")
+                continue
+
+            if selected_option == 'Register':
+                register()
+            elif selected_option == 'Login':
+                logged_user = login()
+            elif selected_option == 'Calculate arithmetic':
+                print("Result: ", calc_without_login(logged_user))
+            elif selected_option == 'Calculate trigonometric':
+                print("Result: ", calc_with_login(logged_user))
+            elif selected_option == 'Show history':
+                show_history(logged_user)
+            elif selected_option == 'Delete history':
+                delete_history(logged_user)
+            elif selected_option == 'Logout':
+                user_data.clear()
+                logged_user = None
+                print("Logout successful!\n")
+            elif selected_option == 'Quit':
+                break
+
+main()
