@@ -1,6 +1,5 @@
 Group                   All                                                                                                                                                                 
 Group                   Gates                                                                                                                   (All)                                       
-Group                   Heaters                                                                                                                 (All)                                       
 Group                   Temp                                                                                                                    (All)                                       
 Group                   Sensors                                                                                                                 (All)                                       
 Group                   Flat                                                                                                                    (All)                                       
@@ -10,25 +9,21 @@ Group                   Config                                                  
 Group                   Bedroom                                                                                                                 (All)                                       
 Group                   Kidsroom                                                                                                                (All)                                       
 Group                   Hall                                                                                                                    (All)                                       
-Group                   HeaterState                                                                                                                 (All)                                       
 
 Group                   Sensors_TempServ_Chart                                                                                                  (Sensors, Temp)                             
 Group                   Sensors_TempCO_Chart                                                                                                    (Sensors, Temp)                             
 Group                   Sensors_COlev_Chart                                                                                                     (Sensors)                                   
 Group                   Sensors_HumCO_Chart                                                                                                     (Sensors)                                   
-Group                   Heater_Temp_Chart                                                                                                       (Sensors, Temp)                             
-Group                   Boiler_Temp_Chart                                                                                                       (Sensors, Temp)                             
-Group                   Water_Press_Chart                                                                                                       (Water)                                     
 Group                   Sensors_TempDev_Chart                                                                                                  (Sensors, Temp)                             
 Group:Number:AVG        Temperatures  "All Room Temperatures [%.1f °C]" // e.g. "21.3 °C"
 Group                   Sensors_Shpylchyna_Chart                                                                                                  (Sensors, Temp)                             
 
 
-Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_CO2" }
-Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_Humidity" }
-Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_DewPoint" }
+Number                  RoomCO2                                 "СО2 lvl [%d ppm]"                                              <carbondioxide> (Sensors, Sensors_COlev_Chart, Bedroom)     { channel="mqtt:topic:755b320e60:0e48bc333c:WB_CO2" }
+Number                  RoomHum                                 "Humidity [%.1f %%]"                                            <humidity>      (Sensors, Sensors_HumCO_Chart, Bedroom)     { channel="mqtt:topic:755b320e60:0e48bc333c:WB_Humidity" }
+Number                  RoomDewPoint                            "Dew point [%.2f °C]"                                           <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:755b320e60:0e48bc333c:WB_DewPoint" }
 // Number                  RoomWetBulbTemp                         "Wet bulb temp [%.2f °C]"                                       <temperature>      (Sensors, Sensors_TempDev_Chart, Bedroom)     { channel="mqtt:topic:cf2b98f3:WB_WetTemp" }
-Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempDev_Chart, Bedroom, Temperatures)  { channel="mqtt:topic:cf2b98f3:WB_RTemp" }
+Number                  RoomTemp                                "Temperature [%.2f °C]"                                         <temperature>   (Sensors, Sensors_TempDev_Chart, Bedroom, Temperatures)  { channel="mqtt:topic:755b320e60:0e48bc333c:WB_RTemp" }
 
 Number                  WB_Bedroom                              "Bedroom [%.2f °C]"                                             <temperature>   (Sensors, Sensors_TempServ_Chart, Bedroom, Temperatures)  { channel="mqtt:topic:cf2b98f3:BedroomTemp" }
 Number                  WB_KidsRoom                             "Kids room [%.2f °C]"                                           <temperature>   (Sensors, Sensors_TempServ_Chart, Kidsroom, Temperatures) { channel="mqtt:topic:cf2b98f3:KidsRoom" }
@@ -38,53 +33,16 @@ Number                  WB_Hall                                 "Hall [%.2f °C]
 Number                  WB_Entrance                             "Entrance [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Entrance" }
 Number                  WB_Kitchen                             "Kitchen [%.2f °C]"                                            <temperature>   (Sensors, Sensors_TempServ_Chart, Hall, Temperatures)     { channel="mqtt:topic:cf2b98f3:Kitchen" }
 
-Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:Boiler" }
-Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                       <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:RCPump" }
-Number                  WB_HotWater                             "Hot water [%.2f °C]"                                           <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:HotWater" }
-Number                  WB_ManifIn                              "Manifold in [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:ManifIn" }
-Number                  WB_ManifOut                             "Manifold out [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:ManifOut" }
-Number                  WB_Heater                               "Heater [%.2f °C]"                                              <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:cf2b98f3:CHTemperature" }
-
-Switch                  WB_DHW_En                               "Hot water enabled"                                             <water>         (Water, Heaters)                            { channel="mqtt:topic:cf2b98f3:DHW_Enabled" }
-Switch                  WB_CH_En                                "Heating enabled"                                               <fire>          (Heaters)                            { channel="mqtt:topic:cf2b98f3:CH_Enabled" }
-Switch                  WB_Flame                                "Flame"                                                         <fire>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:Flame_On" }
-Switch                  WB_CH_On                                "Heating"                                                       <fire>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_ON" }
-Switch                  WB_CH_Request                           "Heating request"                                               <fire>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CH_Request" }
-Switch                  WB_DHW_On                               "Hot water"                                                     <fire>          (Heaters)                                   { channel="mqtt:topic:cf2b98f3:DHW_ON" }
-Number                  WB_DHW_Spt                              "Temp. water [%.1f °C]"                                         <temperature>   (Heaters)                                   { channel="mqtt:topic:cf2b98f3:DHWSetpoint" }
-Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                                   { channel="mqtt:topic:cf2b98f3:CHSetpoint" }
-Number                  WB_Modulation                           "Modulation [%d %%]"                                            <heating>       (Heaters)                                   { channel="mqtt:topic:cf2b98f3:Modulation" }
-
-Switch                  WB_CH_Floor1                            "Bath 1st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor1" }
-Switch                  WB_CH_Floor2                            "Hall"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor2" }
-Switch                  WB_CH_Floor3                            "Kitchen"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor3" }
-Switch                  WB_CH_Floor4                            "Bath 2st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor4" }
-Switch                  WB_CH_Floor5                            "Kids room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor5" }
-Switch                  WB_CH_Floor6                            "Bed room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:cf2b98f3:CH_floor6" }
-
-
-Number                  WB_RCPumpTemp                           "RC On Min Temp [%d °C]"                                        <temperature>   (Config)                                    { channel="mqtt:topic:cf2b98f3:RCPumpTemp" }
-Number                  WB_RCBoilerTemp                         "Boiler Min Temp [%d °C]"                                       <temperature>   (Config)                                    { channel="mqtt:topic:cf2b98f3:RCBoilerTemp" }
-Number                  WB_RCPumpTimer                          "RC Off Timer [%d s]"                                           <time>          (Config)                                    { channel="mqtt:topic:cf2b98f3:RCPumpTimer" }
-
-
 
 Number                  Sensors_COlev_Chart_Period              "Period"                                                                                                                    
 Number                  Sensors_HumCO_Chart_Period              "Period"                                                                                                                    
 Number                  Sensors_TempCO_Chart_Period             "Period"                                                                                                                    
-Number                  Heater_Temp_Chart_Period                "Period"                                                                                                                    
-Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                    
 Number                  Sensors_TempServ_Chart_Period           "Period"                                                                                                                    
 Number                  Sensors_TempDev_Chart_Period           "Period"                                                                                                                    
 Number                  Sensors_Shpylchyna_Chart_Period           "Period"                                                                                                                    
 
 DateTime                Date                                    "Date [%1$tA, %1$td.%1$tm.%1$tY]"                               <calendar>                                                  { channel="ntp:ntp:local:dateTime"}
 
-Number                  WB_Pressure                             "Pressure [%.2f ppi]"                                           <pressure>      (Sensors, Water, Water_Press_Chart)         { channel="mqtt:topic:cf2b98f3:water_pressure" }
-Switch                  WB_Valve                                "Main Valve"                                                    <water>         (Water)                                     { channel="mqtt:topic:cf2b98f3:water_valve" }
-Switch                  WB_RPump                                "Recirculation"                                                 <pump>          (Water)                                     { channel="mqtt:topic:cf2b98f3:recirc_pump" }
-
-Number                  Water_Press_Chart_Period                "Period"                                                                                                                    
-
-Number                  WB_Shpylch                             "Shpylchyna [%.2f °C]"                                            <temperature>   (Sensors, Sensors_Shpylchyna_Chart)           { channel="mqtt:topic:cf2b98f3:Shpylchyna" }
+Number                  WB_Shpylch                             "Shpylchyna [%.2f °C]"                                            <temperature>   (Sensors, Sensors_Shpylchyna_Chart)           { channel="mqtt:topic:755b320e60:57af9ea8eb:Shpylchyna" }
 Switch                  WB_ShpHeater                           "Heater Off"                                                 <radiator>                                              { channel="mqtt:topic:cf2b98f3:shpHeaterOff" }
+Number                  Generic_MQTT_Thing_Balcony             "Balcony [%.2f °C]"                                            <temperature>   (Sensors, Weather_Temp_Chart)           { channel="mqtt:topic:755b320e60:8faf43f758:tasmota_temp" }

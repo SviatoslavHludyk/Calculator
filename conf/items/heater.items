@@ -1,0 +1,28 @@
+Group                   Heaters                                                                                                                 (All)                                       
+Group                   HeaterState                                                                                                                 (All)                                       
+
+Group                   Heater_Temp_Chart                                                                                                       (Sensors, Temp)                             
+
+Number                  Heater_Temp_Chart_Period                "Period"                                                                                                                    
+
+
+Number                  WB_ManifIn                              "Manifold in [%.2f °C]"                                         <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:8f67b874:0916f5dd3a:ManifIn" }
+Number                  WB_ManifOut                             "Manifold out [%.2f °C]"                                        <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:8f67b874:0916f5dd3a:ManifOut" }
+Number                  WB_Heater                               "Heater [%.2f °C]"                                              <temperature>   (Sensors, Heater_Temp_Chart)                { channel="mqtt:topic:8f67b874:0916f5dd3a:CHTemperature" }
+
+Switch                  WB_DHW_En                               "Hot water enabled"                                             <water>         (Water, Heaters)                            { channel="mqtt:topic:8f67b874:0916f5dd3a:DHW_Enabled" }
+Switch                  WB_CH_En                                "Heating enabled"                                               <fire>          (Heaters)                            { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_Enabled" }
+Switch                  WB_Flame                                "Flame"                                                         <fire>          (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:Flame_On" }
+Switch                  WB_CH_On                                "Heating"                                                       <fire>          (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_ON" }
+Switch                  WB_CH_Request                           "Heating request"                                               <fire>          (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_Request" }
+Switch                  WB_DHW_On                               "Hot water"                                                     <fire>          (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:DHW_ON" }
+Number                  WB_DHW_Spt                              "Temp. water [%.1f °C]"                                         <temperature>   (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:DHWSetpoint" }
+Number                  WB_CH_Spt                               "Tenp. heating [%.1f °C]"                                       <temperature>   (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CHSetpoint" }
+Number                  WB_Modulation                           "Modulation [%d %%]"                                            <heating>       (Heaters)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:Modulation" }
+
+Switch                  WB_CH_Floor1                            "Bath 1st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor1" }
+Switch                  WB_CH_Floor2                            "Hall"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor2" }
+Switch                  WB_CH_Floor3                            "Kitchen"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor3" }
+Switch                  WB_CH_Floor4                            "Bath 2st"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor4" }
+Switch                  WB_CH_Floor5                            "Kids room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor5" }
+Switch                  WB_CH_Floor6                            "Bed room"                                                       <radiator>          (HeaterState)                                   { channel="mqtt:topic:8f67b874:0916f5dd3a:CH_floor6" }

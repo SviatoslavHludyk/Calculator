@@ -1,7 +1,6 @@
 Group                   Sensors_Aqua_Chart                                   (Sensors, Temp)                             
 Number                  Sensors_Aqua_Chart_Period             "Period"                                                                                                                    
 
-
-Switch WB_aquaRelay1  "Aqua Light"                    {channel="mqtt:topic:cf2b98f3:aquaRelay1"}
-Switch WB_aquaRelay2  "Socket 2"                    {channel="mqtt:topic:cf2b98f3:aquaRelay2"}
-Number WB_AquaTemp "Aqua Temp [%.2f °C]"      <temperature>   (Sensors, Sensors_Aqua_Chart)           { channel="mqtt:topic:cf2b98f3:AquaTemp" }
+Switch WB_aquaRelay1  "Aqua Light"                    {channel="mqtt:topic:755b320e60:35388498e4:aquaRelay1"}
+Switch WB_aquaRelay2  "Socket 2"                    {channel="mqtt:topic:755b320e60:35388498e4:aquaRelay2"}
+Number WB_AquaTemp "Aqua Temp [%.2f °C]"      <temperature>   (Sensors, Sensors_Aqua_Chart)           { channel="mqtt:topic:755b320e60:35388498e4:AquaTemp" }

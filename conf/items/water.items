@@ -1,0 +1,20 @@
+Group                   Water_Press_Chart                                                                                                       (Water)                                     
+Group                   Boiler_Temp_Chart                                                                                                       (Sensors, Temp)                             
+Group                   Config
+Number                  Water_Press_Chart_Period                "Period"                                                                                                                    
+
+Number                  Boiler_Temp_Chart_Period                "Period"                                                                                                                    
+
+
+Number                  WB_Boiler                               "Boiler [%.2f °C]"                                              <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:8f67b874:0916f5dd3a:Boiler" }
+Number                  WB_RCPump                               "Recirculation [%.2f °C]"                                       <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:8f67b874:36a764b42e:RCPump" }
+Number                  WB_HotWater                             "Hot water [%.2f °C]"                                           <temperature>   (Sensors, Boiler_Temp_Chart)                { channel="mqtt:topic:8f67b874:36a764b42e:HotWater" }
+
+Number                  WB_RCPumpTemp                           "RC On Min Temp [%d °C]"                                        <temperature>   (Config)                                    { channel="mqtt:topic:8f67b874:36a764b42e:RCPumpTemp" }
+Number                  WB_RCBoilerTemp                         "Boiler Min Temp [%d °C]"                                       <temperature>   (Config)                                    { channel="mqtt:topic:8f67b874:36a764b42e:RCBoilerTemp" }
+Number                  WB_RCPumpTimer                          "RC Off Timer [%d s]"                                           <time>          (Config)                                    { channel="mqtt:topic:8f67b874:36a764b42e:RCPumpTimer" }
+
+Number                  WB_Pressure                             "Pressure [%.2f ppi]"                                           <pressure>      (Sensors, Water, Water_Press_Chart)         { channel="mqtt:topic:8f67b874:36a764b42e:water_pressure" }
+Switch                  WB_Valve                                "Main Valve"                                                    <water>         (Water)                                     { channel="mqtt:topic:8f67b874:36a764b42e:water_valve" }
+Switch                  WB_RPump                                "Recirculation"                                                 <pump>          (Water)                                     { channel="mqtt:topic:8f67b874:36a764b42e:recirc_pump" }
+
