@@ -1,0 +1,8 @@
+
+# /
+/*.mp3
+/*.txt
+/openhab.code-workspace
+
+# /scripts/
+/scripts/*.txt
